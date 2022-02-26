@@ -1,24 +1,36 @@
-# README
+# Culture Square
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+<お互いの教養を高められるブックレビューサイト>
 
-Things you may want to cover:
+### サイトテーマ
+<読んだ本の知識共有>
 
-* Ruby version
+### テーマを選んだ理由
+<自分自身本を読んで、今まで知らなかった面白いことが世の中に溢れていることを知り、多くの分野に夢中になった。さらに、思考力が付き、物事を本質的な視点で見る力を養う事ができた。
+そこで、自分が持っている知識と自分がまだ知らないたくさんの楽しいことを他の人と共有できるような環境が欲しいと思ったから。>
 
-* System dependencies
+### ターゲットユーザ
+<ビジネスのノウハウを勉強し、出世したいビジネスマン、
+楽しみながら教養を身に着けたい人、とにかくなんでもいいから知識を身に着けたい、
+色んなことを知りたい！と思っている人、人間関係を良くしたいと考えている人>
 
-* Configuration
+### 主な利用シーン
+<本好き、勉強好きが集まる、お互いに知識を共有し会えるサイト>
 
-* Database creation
+## 設計書
+<...>
 
-* Database initialization
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
