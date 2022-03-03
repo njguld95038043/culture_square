@@ -30,6 +30,12 @@
 興味がある本や分野について知りたい時、他の人の書籍レビューの閲覧や投稿者への質問、その書籍の閲覧もできる。
 
 ## 設計書
+- ER図 <br />
+
+- テーブル定義書 <br />
+
+- アプリケーション詳細設計<br />
+
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1hBMaKV7rghTu1Ix5wzF08KkjDNfbR7NeE7_hw1H_6t4/edit?usp=sharing
