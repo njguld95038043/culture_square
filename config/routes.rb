@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get '/admin' => "admin/homes#top"
+  end
   devise_for  :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
