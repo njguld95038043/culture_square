@@ -1,33 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'rakuten_books/search'
-  end
-  namespace :public do
-    get 'reviews/new'
-    get 'reviews/index'
-    get 'reviews/show'
-    get 'reviews/edit'
-  end
-  namespace :public do
-    get 'end_users/show'
-    get 'end_users/edit'
-    get 'end_users/unsubscribe'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  namespace :admin do
-    get 'end_users/index'
-    get 'end_users/show'
-    get 'end_users/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-  end
-  namespace :admin do
-    get '/admin' => "admin/homes#top"
-  end
   devise_for  :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -36,5 +7,22 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+
+  root to: 'public/homes#top'
+  get '/about' => 'public/homes#about'
+  get '/rakuten_books' => 'public/rakuten_books#search'
+  scope module: :public do
+    resources :end_users, only: [:edit, :update]
+    resources :reviews
+  get '/end_users/my_page' => 'end_users#show'
+  get "/end_users/unsubscribe" => "end_users#unsubscribe"
+  patch "/end_users/withdraw" => "end_users#withdraw"
+  end
+
+  namespace :admin do
+    resources :genres, only: [:index, :create, :destroy]
+    resources :end_users, only: [:index, :show, :edit, :update]
+    root to: "homes#top"
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
