@@ -1,26 +1,26 @@
 ja:
-    enums:
-      EndUser:
-        gender:
-          man: "男性"
-          woman: "女性"
-          other: "その他"
-    date:
-      month_numbers:
-      -
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      - 12
-      order:
-      - :year
-      - :month
-      - :day
+  enums:
+    end_user:
+      gender:
+        man: "男性"
+        woman: "女性"
+        other: "その他"
+  date:
+    month_numbers:
+    -
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    order:
+    - :year
+    - :month
+    - :day

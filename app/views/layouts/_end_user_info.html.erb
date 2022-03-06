@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <h2>ユーザー情報</h2>
+  </div>
+
+  <div class="row mt-5">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th><%= image_tag end_user.get_profile_image(100,100) %></th>
+        </tr>
+        <tr>
+          <th><%= end_user.nick_name %></th>
+        </tr>
+        <tr>
+          <th><%= end_user.gender_i18n %></th>
+        </tr>
+        <tr>
+          <th><%= end_user.calc_age %>歳</th>
+        </tr>
+        <tr>
+          <th><%= end_user.occupation %></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -16,14 +16,14 @@
         <div class="form-group row">
           <%= f.label :性別, class:"col-sm-3 col-form-label" %><br />
           <div class="col-md-3">
-           <%= f.select :gender, EndUser.genders.keys.map {|k| [I18n.t("enums.EndUser.gender.#{k}"), k]}.to_a, include_blank: "性別を選択してください" %>
+           <%= f.select :gender, EndUser.genders.keys.map {|k| [I18n.t("enums.end_user.gender.#{k}"), k]}.to_a, include_blank: "性別を選択してください" %><!--genderの中にある情報を一つずつ取り出していくイメージ-->
           </div>
         </div>
 
         <div class="form-group row">
           <%= f.label :職業, class:"col-sm-3 col-form-label" %><br />
           <div class="col-md-3">
-           <%= f.select :occupation, [['会社員・会社役員'], ['自営業'], ['公務員'], ['学生'], ['フリーター'], ['無職'], ['その他'] ], include_blank: "職業を選択してください" %>
+           <%= f.select :occupation, [['会社員・会社役員'], ['自営業'], ['公務員'], ['主婦'], ['学生'], ['フリーター'], ['無職'], ['その他'] ], include_blank: "職業を選択してください" %>
           </div>
         </div>
 
