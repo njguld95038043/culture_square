@@ -1,15 +1,15 @@
-$enable-rounded: false;
+// $enable-rounded: false;
 
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-body {
-  background: linear-gradient(35deg, #91DCFF, #75D0FA);
-}
+// body {
+//   background: linear-gradient(35deg, #188AF5, #0B55DE);
+// }
 
-.nav-tabs{
-  background: linear-gradient(35deg, #AD742F, #FABE75);
-}
+// .nav-tabs{
+//   background: linear-gradient(35deg, #0DD7FA, #0E9DE0);
+// }
 
 .nav-tabs > li > a {
   // border-radius: 5px;
