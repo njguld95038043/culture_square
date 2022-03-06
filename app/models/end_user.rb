@@ -5,6 +5,8 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
   enum gender: { man: 1, woman: 2, other: 3}
 
+  has_many :reviews, dependent: :destroy
+
   has_one_attached :profile_image
 
   def get_profile_image(width, height)
