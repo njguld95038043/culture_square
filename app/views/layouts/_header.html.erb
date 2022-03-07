@@ -15,6 +15,9 @@
           <% if end_user_signed_in? %>
             <li class="mx-5 mt-5">ようこそ、<%= current_end_user.nick_name %>さん！</li>
             <li>
+              <%= link_to 'トップ', root_path, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
+            </li>
+            <li>
               <%= link_to 'マイページ', end_users_my_page_path, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
             </li>
             <li>
