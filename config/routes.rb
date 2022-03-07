@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
+
   devise_for  :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -15,9 +12,17 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
   get '/rakuten_books' => 'public/rakuten_books#search'
+
   scope module: :public do
-    resources :end_users, only: [:edit, :update]
-    resources :reviews
+    resources :end_users, only: [:edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
+    resources :reviews do
+      resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
   get '/end_users/my_page' => 'end_users#show'
   get "/end_users/unsubscribe" => "end_users#unsubscribe"
   patch "/end_users/withdraw" => "end_users#withdraw"
