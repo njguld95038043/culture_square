@@ -16,6 +16,12 @@ class Public::EndUsersController < ApplicationController
   def unsubscribe
   end
 
+  def withdraw
+    @end_user = current_end_user
+    @end_user.update(is_deleted: true)
+    redirect_to root_path
+  end
+
   private
 
   def end_user_params

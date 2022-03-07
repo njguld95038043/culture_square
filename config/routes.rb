@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/rakuten_books' => 'public/rakuten_books#search'
 
   scope module: :public do
+    patch "/end_users/withdraw" => "end_users#withdraw"
     resources :end_users, only: [:edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -23,9 +24,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-  get '/end_users/my_page' => 'end_users#show'
-  get "/end_users/unsubscribe" => "end_users#unsubscribe"
-  patch "/end_users/withdraw" => "end_users#withdraw"
+    get '/end_users/my_page' => 'end_users#show'
+    get "/end_users/unsubscribe" => "end_users#unsubscribe"
   end
 
   namespace :admin do
