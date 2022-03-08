@@ -30,8 +30,7 @@
       </div>
     </div>
   </div>
-  <% end %>
-
+  <% else %>
   <div>
     <h3 class="mb-5">書籍から学んだ知識をアウトプットし、お互いに教養を高め合える知識投稿サイト</h3>
     <p>
@@ -41,4 +40,5 @@
     </p>
     <%= link_to 'ログインする', new_end_user_session_path %>
   </div>
+  <% end %>
 </div>
