@@ -1,15 +1,34 @@
 <% @rakuten_books.each do |rakuten_book| %>
   <div class="container">
     <div class="row">
-      <div><%= link_to (image_tag(rakuten_book.large_image_url)), rakuten_book.item_url %></div>
-      <div><%= rakuten_book.title %></div>
-      <div><%= rakuten_book.author %></div>
-      <div><%= rakuten_book.isbn %></div>
-      <div><%= rakuten_book.sales_date %></div>
-      <div><%= rakuten_book.item_price %>円</div>
-      <div><%= rakuten_book.item_caption %></div>
-      <div><%= rakuten_book.publisher_name %></div>
-      <div><%= link_to '読んだ感想をみんなに共有する', new_review_path, class:'btn btn-primary' %></div>
+      <table>
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th>ISBN</th>
+            <th>出版日</th>
+            <th>価格</th>
+            <th>商品説明文</th>
+            <th>出版社</th>
+            <th>登録</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= link_to (image_tag(rakuten_book.medium_image_url)), rakuten_book.item_url %></td>
+            <td><%= rakuten_book.title %></td>
+            <td><%= rakuten_book.author %></td>
+            <td><%= rakuten_book.isbn %></td>
+            <td><%= rakuten_book.sales_date %></td>
+            <td><%= rakuten_book.item_price %>円</td>
+            <td><%= rakuten_book.item_caption %></td>
+            <td><%= rakuten_book.publisher_name %></td>
+            <td><%= link_to '読んだ感想を共有する', new_review_path, class:'btn btn-primary' %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 <% end %>
