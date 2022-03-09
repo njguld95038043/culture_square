@@ -1,17 +1,20 @@
 class Public::RakutenBooksController < ApplicationController
   def search
     if params[:keyword]
-      @rakuten_books = RakutenWebService::Books::Book.search(title: params[:keyword])
+      @rakuten_books = RakutenWebService::Books::Book.search(title: params[:keyword])#keywordをもとに楽天ブックスの書籍から探し出し、その情報を@rakuten_booksへ格納する
       # render json: {status: 'success', data:@rakuten_books}
     end
     @book = Book.new
   end
 
   def create
-    @book = Book.new(book_params)
-    binding.pry
-    @book.save
-    redirect_to new_review_path
+    if Book.find_by(isbn: book_params[:isbn])
+      redirect_to new_review_path
+    else
+      @book = Book.new(book_params)
+      @book.save
+      redirect_to new_review_path
+    end
   end
 
   private
