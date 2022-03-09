@@ -1,2 +1,11 @@
-<h1>Public::Reviews#new</h1>
-<p>Find me in app/views/public/reviews/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'layouts/end_user_info', end_user: @end_user %>
+    </div>
+    <div class="col-9">
+      <h2>レビュー登録</h2>
+      <div><%= @book.title %></div>
+    </div>
+  </div>
+</div>

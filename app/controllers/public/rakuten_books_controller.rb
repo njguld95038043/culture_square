@@ -8,7 +8,7 @@ class Public::RakutenBooksController < ApplicationController
   end
 
   def create
-    if Book.find_by(isbn: book_params[:isbn])
+    if Book.find_by(isbn: book_params[:isbn])#同じ本を二重で登録しないようにfind_byでisbnを探し、trueとfalseで条件分岐を行う
       redirect_to new_review_path
     else
       @book = Book.new(book_params)
