@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
-
+    <div>
+      <%= form_with url: rakuten_books_path, method: :get, local:true do |f| %>
+        <%= f.text_field :keyword, class: "form_control" %>
+        <%= f.submit '本の題名を検索', class: "form_control" %>
+      <% end %>
+    </div>
   </div>
   <% if end_user_signed_in? %>
   <div class="row">

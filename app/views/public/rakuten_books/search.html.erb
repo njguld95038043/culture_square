@@ -1,2 +1,14 @@
-<h1>Public::RakutenBooks#search</h1>
-<p>Find me in app/views/public/rakuten_books/search.html.erb</p>
+<% @rakuten_books.each do |rakuten_book| %>
+  <div class="container">
+    <div class="row">
+      <div><%= link_to (image_tag(rakuten_book.large_image_url)), rakuten_book.item_url %></div>
+      <div><%= rakuten_book.title %></div>
+      <div><%= rakuten_book.author %></div>
+      <div><%= rakuten_book.isbn %></div>
+      <div><%= rakuten_book.sales_date %></div>
+      <div><%= rakuten_book.item_price %>円</div>
+      <div><%= rakuten_book.item_caption %></div>
+      <div><%= rakuten_book.publisher_name %></div>
+    </div>
+  </div>
+<% end %>
