@@ -1,3 +1,5 @@
+<%= form_with model: @book, url: rakuten_books_path, method: :post do |f| %>
+
 <% @rakuten_books.each do |rakuten_book| %>
   <div class="container">
     <div class="row">
@@ -25,10 +27,11 @@
             <td><%= rakuten_book.item_price %>円</td>
             <td><%= rakuten_book.item_caption %></td>
             <td><%= rakuten_book.publisher_name %></td>
-            <td><%= link_to '読んだ感想を共有する', new_review_path, class:'btn btn-primary' %></td>
+            <td><%= link_to 'レビュー本として登録', new_review_path, class:'btn btn-primary' %></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 <% end %>
+          <% end %>
