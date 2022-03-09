@@ -19,15 +19,18 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= link_to (image_tag(rakuten_book.medium_image_url)), rakuten_book.item_url %></td>
-            <td><%= rakuten_book.title %></td>
-            <td><%= rakuten_book.author %></td>
-            <td><%= rakuten_book.isbn %></td>
-            <td><%= rakuten_book.sales_date %></td>
-            <td><%= rakuten_book.item_price %>円</td>
-            <td><%= rakuten_book.item_caption %></td>
-            <td><%= rakuten_book.publisher_name %></td>
-            <td><%= link_to 'レビュー本として登録', new_review_path, class:'btn btn-primary' %></td>
+            <td><%= link_to (image_tag(rakuten_book.medium_image_url)), rakuten_book.item_url %><%= f.hidden_field :item_url, :value => rakuten_book.item_url %></td>
+            <td><%= rakuten_book.title %><%= f.hidden_field :title, :value => rakuten_book.title %></td>
+            <td><%= rakuten_book.author %><%= f.hidden_field :author, :value => rakuten_book.author %></td>
+            <td><%= rakuten_book.isbn %><%= f.hidden_field :isbn, :value => rakuten_book.isbn %></td>
+            <td><%= rakuten_book.sales_date %><%= f.hidden_field :sales_date, :value => rakuten_book.sales_date %></td>
+            <td><%= rakuten_book.item_price %><%= f.hidden_field :item_price, :value => rakuten_book.item_price %>円</td>
+            <td><%= rakuten_book.item_caption %><%= f.hidden_field :item_caption, :value => rakuten_book.item_caption %></td>
+            <td><%= rakuten_book.publisher_name %><%= f.hidden_field :publisher_name, :value => rakuten_book.publisher_name %></td>
+            <%= f.hidden_field :small_image_url, :value => rakuten_book.small_image_url %>
+            <%= f.hidden_field :medium_image_url, :value => rakuten_book.medium_image_url %>
+            <%= f.hidden_field :large_image_url, :value => rakuten_book.large_image_url %>
+            <td><%= f.submit 'レビュー本として登録', class:'btn btn-primary' %></td>
           </tr>
         </tbody>
       </table>

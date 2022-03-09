@@ -2,13 +2,14 @@ class Public::RakutenBooksController < ApplicationController
   def search
     if params[:keyword]
       @rakuten_books = RakutenWebService::Books::Book.search(title: params[:keyword])
+      # render json: {status: 'success', data:@rakuten_books}
     end
     @book = Book.new
   end
 
   def create
-    binding.pry
     @book = Book.new(book_params)
+    binding.pry
     @book.save
     redirect_to new_review_path
   end
