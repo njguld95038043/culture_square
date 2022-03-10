@@ -18,7 +18,7 @@ body {
   background: #f0f0f0;
 }
 
-.background {
+.bg-image-ground {
   /*width:600px;*/
   /*height:600px;*/
   background-image: image-url("book4.jpg");
