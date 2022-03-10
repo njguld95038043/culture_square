@@ -1,2 +1,36 @@
-<h1>Public::Reviews#show</h1>
-<p>Find me in app/views/public/reviews/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'layouts/end_user_info', end_user: @end_user %>
+    </div>
+    <div class="col-9">
+      <h2>レビュー詳細</h2>
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>タイトル</td>
+              <td>著者</td>
+              <td>発売日</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>レビュー登録</h3>
+        <div class="form-group row">
+          <div>ジャンル</div><br />
+          <div class="col-md-3">
+           <%= @review.genre.id %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div>レビュー内容</div><br />
+          <div class="col-md-3">
+            <%= @review.review %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
