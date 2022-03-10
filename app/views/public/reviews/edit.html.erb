@@ -1,2 +1,15 @@
-<h1>Public::Reviews#edit</h1>
-<p>Find me in app/views/public/reviews/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2>レビュー編集</h2>
+  </div>
+  <div class="row">
+    <%= @book.title %>
+    <%= @book.author %>
+  </div>
+  <div class="row">
+    <%= form_with model: @review, url: review_path(@review), method: :patch, local: true do |f| %>
+      <h2>書籍情報</h2>
+
+    <% end %>
+  </div>
+</div>

@@ -1,9 +1,8 @@
 class Public::ReviewsController < ApplicationController
   def new
     @review = Review.new
-    @end_user = current_end_user
     @genres = Genre.all
-    @rakuten_book = Book.new(rakuten_book_params)
+    @rakuten_book = Book.new(book_params)
   end
 
   def create
@@ -14,7 +13,7 @@ class Public::ReviewsController < ApplicationController
     end
 
     @review = current_end_user.reviews.new(review_params)
-    @review.book_id = book.id
+    @review.book_id = @book.id
     @review.save
     redirect_to review_path(@review)
   end
@@ -29,12 +28,18 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
+    @review = Review.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   private
 
-  def rakuten_book_params
+  def book_params
     params.require(:book).permit(:title, :author, :isbn, :sales_date, :item_price, :item_caption, :publisher_name, :small_image_url, :medium_image_url, :large_image_url, :item_url)
+  end
+
+  def review_params
+    params.require(:review).permit(:review)
   end
 
 end

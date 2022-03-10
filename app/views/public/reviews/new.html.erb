@@ -1,11 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <%= render 'layouts/end_user_info', end_user: @end_user %>
-    </div>
-    <div class="col-9">
+    <div class="mx-auto">
     <%= form_with model: @review, url: reviews_path, method: :post, local: true do |f| %>
-      <h2>レビュー登録</h2>
+      <h2>書籍情報</h2>
       <div>
         <table>
           <tbody>
