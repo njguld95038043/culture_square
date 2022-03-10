@@ -2,8 +2,14 @@ class Public::ReviewsController < ApplicationController
   def new
     @review = Review.new
     @end_user = current_end_user
-    # @book = Book.find_by(book_params[:id])
     @genres = Genre.all
+  end
+
+  def create
+    @review = current_end_user.reviews.new(review_params)
+    @review.book_id = book.id
+    @review.save
+    redirect_to review_path(@review)
   end
 
   def index
@@ -17,8 +23,8 @@ class Public::ReviewsController < ApplicationController
 
   private
 
-  # def book_params
-  #   params.require(:book).permit(:book_id)
-  # end
+  def review_params
+    params.require(:review).permit(:genre, :review)
+  end
 
 end
