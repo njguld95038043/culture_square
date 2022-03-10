@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
   get '/rakuten_books' => 'public/rakuten_books#search'
-  post '/rakuten_books' => 'public/rakuten_books#create'
 
   scope module: :public do
     patch "/end_users/withdraw" => "end_users#withdraw"

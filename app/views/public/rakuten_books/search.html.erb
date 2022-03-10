@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= form_with model: @book, url: rakuten_books_path, method: :post do |f| %>
+          <%= form_with model: @book, url: new_review_path, method: :get do |f| %>
           <tr>
             <td>
               <%= link_to (image_tag(rakuten_book.medium_image_url)), rakuten_book.item_url %>

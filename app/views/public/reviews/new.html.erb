@@ -4,20 +4,21 @@
       <%= render 'layouts/end_user_info', end_user: @end_user %>
     </div>
     <div class="col-9">
+    <%= form_with model: @review, url: reviews_path, method: :post, local: true do |f| %>
       <h2>レビュー登録</h2>
       <div>
         <table>
           <tbody>
             <tr>
-              <td>タイトル</td>
-              <td>著者</td>
-              <td>発売日</td>
+              <td><%= link_to (image_tag(@rakuten_book.large_image_url)), @rakuten_book.item_url %></td>
+              <td>タイトル<%= @rakuten_book.title %></td>
+              <td>著者<%= @rakuten_book.author %></td>
+              <td>発売日<%= @rakuten_book.sales_date %></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div>
-        <%= form_with model: @review, url: reviews_path, method: :post, local: true do |f| %>
         <h3>レビュー登録</h3>
         <div class="form-group row">
           <%= f.label :ジャンル, class:"col-sm-3 col-form-label" %><br />
@@ -34,8 +35,8 @@
         <div>
           <%= f.submit '投稿する', class: "btn btn-primary" %>
         </div>
-        <% end %>
       </div>
+    <% end %>
     </div>
   </div>
 </div>
