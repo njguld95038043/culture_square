@@ -5,7 +5,28 @@
     </div>
     <div class="col-9">
       <h2>レビュー登録</h2>
-      <div><%= @book.title %></div>
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>タイトル</td>
+              <td>著者</td>
+              <td>発売日</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <%= form_with model: @review, url: reviews_path, method: :post, local: true do |f| %>
+        <h3>レビュー登録</h3>
+        <div class="form-group row">
+          <%= f.label :ジャンル, class:"col-sm-3 col-form-label" %><br />
+          <div class="col-md-3">
+           <%= f.collection_select :genre_id, Genre.where.not(name: '総合'), :id, :name, include_blank: "本のジャンルを選択してください" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
