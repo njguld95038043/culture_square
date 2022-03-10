@@ -6,10 +6,9 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    if Book.find_by(isbn: book_params[:isbn])#同じ本を二重で登録しないようにfind_byでisbnを探し、trueとfalseで条件分岐を行う
-    else
+    unless @book = Book.find_by(isbn: book_params[:isbn])#同じ本を二重で登録しないようにfind_byでisbnを探し、trueとfalseで条件分岐を行う
       @book = Book.new(book_params)
-      @book.save
+      @book.save!
     end
 
     @review = current_end_user.reviews.new(review_params)
@@ -39,7 +38,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:review)
+    params.require(:review).permit(:review, :genre_id)
   end
 
 end
