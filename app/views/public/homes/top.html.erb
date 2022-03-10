@@ -30,6 +30,7 @@
         <% @genres.each_with_index do |genre, index| %>
           <div id="panel-<%= genre.id %>" class="tab-pane<%= index == 0 ? " active" : "" %>">
             panel-<%= genre.id %>
+            <%#= genre.review.review %>
           </div>
         <% end %>
       </div>

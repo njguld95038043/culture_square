@@ -2,7 +2,7 @@ class Public::ReviewsController < ApplicationController
   def new
     @review = Review.new
     @genres = Genre.all
-    @rakuten_book = Book.new(book_params)
+    @book = Book.new(book_params)
   end
 
   def create
