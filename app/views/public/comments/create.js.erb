@@ -1,0 +1,3 @@
+$('textarea').val("")
+$('.comments-counter').html("<%= j(render 'public/comments/counter', review: @comment.review) %>")
+$('.comments-index').html("<%= j(render 'public/comments/comment', review: @comment.review) %>")

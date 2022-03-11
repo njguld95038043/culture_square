@@ -34,8 +34,14 @@
           <div class=<%= "favorite-" + @review.id.to_s %> >
             <%= render 'public/favorites/favorite', review: @review %>
           </div>
-          <div>
+          <div class="comments-counter">
+            <%= render 'public/comments/counter', review: @review %>
+          </div>
+          <div class="comments-index">
             <%= render 'public/comments/comment', review: @review, comment: @comment %>
+          </div>
+          <div>
+            <%= render "public/comments/form", review: @review, comment: @comment %>
           </div>
         </div>
       </div>
