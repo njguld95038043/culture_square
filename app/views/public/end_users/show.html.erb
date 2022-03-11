@@ -47,4 +47,12 @@
       <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-success mr-5"%>
     </div>
   </div>
+
+  <div class="row">
+    <% @end_user.reviews.each do |review| %>
+    <p><%= link_to review_path(review) do %>
+     <%= review.review %>
+    <% end %></p>
+    <% end %>
+  </div>
 </div>
