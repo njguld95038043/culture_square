@@ -3,13 +3,15 @@
     <h2>レビュー編集</h2>
   </div>
   <div class="row">
-    <%= @book.title %>
-    <%= @book.author %>
+    <%= link_to (image_tag(@review.book.large_image_url)), @review.book.item_url %>
+    <%= @review.book.title %>
+    <%= @review.book.author %>
   </div>
   <div class="row">
     <%= form_with model: @review, url: review_path(@review), method: :patch, local: true do |f| %>
       <h2>書籍情報</h2>
-
+      <%= f.text_area :review %>
+      <%= f.submit '内容を保存' %>
     <% end %>
   </div>
 </div>

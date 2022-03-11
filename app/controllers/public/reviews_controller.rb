@@ -28,7 +28,12 @@ class Public::ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    @book = Book.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to root_path
   end
 
   private
