@@ -4,38 +4,32 @@
       <%= render 'layouts/end_user_info', end_user: @end_user %>
     </div>
     <div class="col-9">
-      <h2>レビュー詳細</h2>
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <td>タイトル</td>
-              <td>著者</td>
-              <td>発売日</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <div class="form-group row">
-          <div>ジャンル</div><br />
-          <div class="col-md-3">
-           <%= @review.genre.id %>
-          </div>
+      <div class="row">
+        <h2>レビュー詳細</h2>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <td><%= link_to (image_tag(@review.book.large_image_url)), @review.book.item_url %></td>
+                <td><%= @review.book.title %></td>
+                <td><%= @review.book.author %></td>
+                <td><%= @review.book.sales_date %></td>
+              </tr>
+            </thead>
+          </table>
         </div>
-        <div class="form-group row">
-          <div>レビュー内容</div><br />
-          <div class="col-md-3">
-            <%= link_to (image_tag(@review.book.large_image_url)), @review.book.item_url %>
-            <%= @review.book.title %>
-            <%= @review.review %>
-            <%= link_to '編集画面へ進む', edit_review_path(@review) %>
-            <%= link_to '削除する', review_path(@review), method: :delete %>
+      </div>
+      <div class="row">
+        <div class="col-12">
+         ジャンル   <%= @review.genre.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div>レビュー内容  <%= @review.review %></div>
+          <div class="col-12">
+            <%= link_to '編集画面へ進む', edit_review_path(@review), class: "btn btn-primary" %>
+            <%= link_to '削除する', review_path(@review), method: :delete, class: "btn btn-danger" %>
           </div>
         </div>
       </div>
