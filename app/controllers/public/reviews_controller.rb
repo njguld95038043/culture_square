@@ -36,6 +36,12 @@ class Public::ReviewsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to root_path
+  end
+
   private
 
   def book_params

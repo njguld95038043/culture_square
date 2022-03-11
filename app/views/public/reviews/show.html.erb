@@ -7,17 +7,21 @@
       <h2>レビュー詳細</h2>
       <div>
         <table>
-          <tbody>
+          <thead>
             <tr>
               <td>タイトル</td>
               <td>著者</td>
               <td>発売日</td>
             </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+            </tr>
           </tbody>
         </table>
       </div>
       <div>
-        <h3>レビュー登録</h3>
         <div class="form-group row">
           <div>ジャンル</div><br />
           <div class="col-md-3">
@@ -31,6 +35,7 @@
             <%= @review.book.title %>
             <%= @review.review %>
             <%= link_to '編集画面へ進む', edit_review_path(@review) %>
+            <%= link_to '削除する', review_path(@review), method: :delete %>
           </div>
         </div>
       </div>
