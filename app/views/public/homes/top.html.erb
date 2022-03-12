@@ -31,9 +31,9 @@
       </ul>
       <div class="tab-content">
         <div id="panel-0" class="tab-pane active">
-          <div class="d-flex flex-wrap justify-content-between mt-3">
+          <div class="d-flex flex-wrap mt-3 ml-4">
             <% @random_reviews.each do |review| %>
-            <div class="card mr-2 mt-3" style="width: 11rem;">
+            <div class="card mr-3 mt-3 ml-1" style="width: 11rem;">
               <p class="mx-auto"><%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %></p>
               <div class="card-body">
                 <p class="card-text text-truncate"><%= review.book.title %></p>
@@ -47,9 +47,9 @@
         </div>
         <% @genres.each_with_index do |genre, index| %>
           <div id="panel-<%= genre.id %>" class="tab-pane<%= index == 0 ? " active" : "" %>">
-            <div class="d-flex flex-wrap justify-content-between mt-3">
+            <div class="d-flex flex-wrap mt-3 ml-4">
               <% genre.reviews.each do |review| %>
-              <div class="card mr-2 mt-3" style="width: 11rem;">
+              <div class="card mr-3 mt-3" style="width: 11rem;">
                 <p class="mx-auto"><%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %></p>
                 <div class="card-body">
                   <p class="card-text text-truncate"><%= review.book.title %></p>
