@@ -56,7 +56,8 @@
   <div class="row">
     <% @end_user.reviews.each do |review| %>
     <p><%= link_to review_path(review) do %>
-     <%= review.review %>
+     <%#= review.review %>
+     <%#= review.review %>
     <% end %></p>
     <% end %>
   </div>

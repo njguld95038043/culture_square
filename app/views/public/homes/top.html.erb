@@ -20,24 +20,42 @@
 
     <div class="col-md-9">
       <ul class="nav nav-tabs justify-content-center">
-        <% @genres.each_with_index do |genre, index| %>
+        <li class="nav-item ml-4">
+          <a href="#panel-0" class="nav-link active" data-toggle="tab"><span class="text-dark">総合</span></a>
+        </li>
+        <% @genres.each_with_index do |genre, index| %><!--each_with_indexを使うことにより、eachで回す回数をindexへ代入している。-->
           <li class="nav-item ml-4">
-            <a href="#panel-<%= genre.id %>" class="nav-link<%= index == 0 ? " active" : "" %>" data-toggle="tab"><%= genre.name %></a>
+            <a href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab"><span class="text-dark"><%= genre.name %></span></a>
           </li>
         <% end %>
       </ul>
       <div class="tab-content">
+        <div id="panel-0" class="tab-pane active">
+          <div class="d-flex flex-wrap justify-content-between mt-3">
+            <% @random_reviews.each do |review| %>
+            <div class="card mr-2 mt-3" style="width: 11rem;">
+              <p class="mx-auto"><%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %></p>
+              <div class="card-body">
+                <p class="card-text text-truncate"><%= review.book.title %></p>
+                <p class="card-text text-truncate"><%= review.book.author %></p>
+                <p class="card-text text-truncate"><%= review.review %></p>
+                <p><%= link_to 'レビュー確認', review_path(review), class: "btn btn-primary" %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
         <% @genres.each_with_index do |genre, index| %>
           <div id="panel-<%= genre.id %>" class="tab-pane<%= index == 0 ? " active" : "" %>">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex flex-wrap justify-content-between mt-3">
               <% genre.reviews.each do |review| %>
-              <div class="card" style="width: 10rem;">
-                <%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %>
+              <div class="card mr-2 mt-3" style="width: 11rem;">
+                <p class="mx-auto"><%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %></p>
                 <div class="card-body">
-                  <p class="card-text text-truncate text-dark"><%= review.book.title %></p>
-                  <p class="card-text text-truncate text-dark"><%= review.book.author %></p>
-                  <p class="card-text text-truncate text-dark"><%= review.review %></p>
-                  <p><%= link_to 'レビューを見る', review_path(review), class: "btn btn-primary" %></p>
+                  <p class="card-text text-truncate"><%= review.book.title %></p>
+                  <p class="card-text text-truncate"><%= review.book.author %></p>
+                  <p class="card-text text-truncate"><%= review.review %></p>
+                  <p><%= link_to 'レビュー確認', review_path(review), class: "btn btn-primary" %></p>
                 </div>
               </div>
               <% end %>
