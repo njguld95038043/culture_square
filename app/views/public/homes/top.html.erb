@@ -29,8 +29,14 @@
       <div class="tab-content">
         <% @genres.each_with_index do |genre, index| %>
           <div id="panel-<%= genre.id %>" class="tab-pane<%= index == 0 ? " active" : "" %>">
-            panel-<%= genre.id %>
-            <%#= genre.reviews.review %>
+            <div class="d-flex">
+              <% genre.reviews.each do |review| %>
+                <%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %>
+                <%= review.book.title %>
+                <%= review.book.author %>
+                <%= review.review %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -44,7 +50,7 @@
       興味のある投稿から学べたり、他者の投稿に対してコメントや質問を残すことができます。また、書籍をその場で検索することもできます。<br />
       投稿者は書籍から学んだ有益な知識や印象的だった内容を投稿し、閲覧者は興味がある分野について他者が発信した投稿を閲覧、コメント、評価できるので、お互いに効率良く教養を高めていくことができます。
     </p>
-    <%= link_to 'ログインする', new_end_user_session_path %>
+    <%= link_to 'ログインする', new_end_user_session_path, class:"btn btn-primary btn-lg" %>
   </div>
   <% end %>
 </div>
