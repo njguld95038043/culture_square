@@ -29,12 +29,17 @@
       <div class="tab-content">
         <% @genres.each_with_index do |genre, index| %>
           <div id="panel-<%= genre.id %>" class="tab-pane<%= index == 0 ? " active" : "" %>">
-            <div class="d-flex">
+            <div class="d-flex justify-content-between">
               <% genre.reviews.each do |review| %>
+              <div class="card" style="width: 10rem;">
                 <%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %>
-                <%= review.book.title %>
-                <%= review.book.author %>
-                <%= review.review %>
+                <div class="card-body">
+                  <p class="card-text text-truncate text-dark"><%= review.book.title %></p>
+                  <p class="card-text text-truncate text-dark"><%= review.book.author %></p>
+                  <p class="card-text text-truncate text-dark"><%= review.review %></p>
+                  <p><%= link_to 'レビューを見る', review_path(review), class: "btn btn-primary" %></p>
+                </div>
+              </div>
               <% end %>
             </div>
           </div>
