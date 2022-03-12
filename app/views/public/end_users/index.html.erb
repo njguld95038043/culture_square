@@ -26,13 +26,7 @@
               <td><%= end_user.calc_age %>歳</td>
               <td><%= end_user.occupation %></td>
               <td>
-                <% if current_end_user != end_user %>
-                  <% if current_end_user.following?(end_user) %>
-                    <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-primary" %>
-                  <% else %>
-                    <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
-                  <% end %>
-                <% end %>
+                <%= render 'public/end_users/relationship', end_user: end_user %>
               </td>
             </tr>
           <% end %>
