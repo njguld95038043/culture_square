@@ -21,6 +21,20 @@
        ジャンル   <%= @review.genre.name %>
       </div>
       <div class="row offset-4">
+      <h4>評価：<%= @review.rate %>点 </h4>
+      <div id="star-rate-<%= @review.id %>"></div>
+        <script>
+          $('#star-rate-<%= @review.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            score: <%= @review.rate %>,
+            });
+        </script>
+      </div>
+      <div class="row offset-4">
         レビュー内容  <%= @review.review %>
         <%= link_to '編集画面へ進む', edit_review_path(@review), class: "btn btn-primary" %>
         <%= link_to '削除する', review_path(@review), method: :delete, class: "btn btn-danger" %>

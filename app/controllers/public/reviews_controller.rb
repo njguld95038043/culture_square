@@ -49,7 +49,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:review, :genre_id)
+    params.require(:review).permit(:review, :genre_id, :rate)
   end
 
 end
