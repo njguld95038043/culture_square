@@ -21,6 +21,9 @@
               <%= link_to 'マイページ', end_users_my_page_path, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
             </li>
             <li>
+              <%= link_to 'ユーザー一覧', end_users_path, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
+            </li>
+            <li>
               <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
             </li>
           <% elsif admin_signed_in? %>

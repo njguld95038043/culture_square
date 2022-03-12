@@ -21,6 +21,14 @@
         <tr>
           <th><%= end_user.occupation %></th>
         </tr>
+        <tr>
+          <th>follows</th>
+          <th><%= link_to end_user.followings.count, end_user_followings_path(end_user) %></th>
+        </tr>
+        <tr>
+          <th>followers</th>
+          <th><%= link_to end_user.followers.count, end_user_followers_path(end_user) %></th>
+        </tr>
       </tbody>
     </table>
   </div>

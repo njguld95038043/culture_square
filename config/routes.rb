@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     patch "/end_users/withdraw" => "end_users#withdraw"
-    resources :end_users, only: [:edit, :update] do
+    resources :end_users, only: [:edit, :update, :index] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
