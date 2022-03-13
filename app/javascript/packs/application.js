@@ -7,14 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "script"
 
 import "jquery";
+import "script.js";
 import "skippr.min";
 import "raty";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+import "../stylesheets/skippr"
 //import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()
