@@ -30,7 +30,8 @@
             starOn : '<%= asset_path('star-on.png') %>',
             starHalf: '<%= asset_path('star-half.png') %>',
             half: true,
-            score: <%= @review.rate %>,
+            readOnly: true,//読み取り専用（入力できない）
+            score: <%= @review.rate %>,//星の入力値を読み込む
             });
         </script>
       </div>

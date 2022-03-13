@@ -10,7 +10,21 @@
   <div class="row">
     <%= form_with model: @review, url: review_path(@review), method: :patch, local: true do |f| %>
       <h2>書籍情報</h2>
-      <%= f.collection_select :genre_id, Genre.where.not(name: '総合'), :id, :name, include_blank: "本のジャンルを選択してください" %>
+      <div class="row offset-4">
+      <h4>評価：<%= @review.rate %>点 </h4>
+      <div id="star-rate-<%= @review.id %>"></div>
+        <script>
+          $('#star-rate-<%= @review.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            score: <%= @review.rate %>,
+            });
+        </script>
+      </div>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "本のジャンルを選択してください" %>
       <%= f.text_area :review %>
       <%= f.submit '内容を保存' %>
     <% end %>
