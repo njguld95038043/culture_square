@@ -13,9 +13,31 @@
  *= require_tree .
  *= require_self
  */
+ //= require bootstrap
+
 body {
   background: linear-gradient(35deg, #C3C3E0, #ADADC7);
   background: #f0f0f0;
+}
+
+#container{
+  height: 500px;
+}
+
+.image1 {
+  background-image: image-url("image1.jpg");
+}
+.image2 {
+  background-image: image-url("image2.jpg");
+}
+.image3 {
+  background-image: image-url("image3.jpg");
+}
+.image4 {
+  background-image: image-url("image4.jpg");
+}
+.image5 {
+  background-image: image-url("image5.jpg");
 }
 
 .bg-image-ground {
@@ -30,7 +52,7 @@ body {
 // }
 
 .nav-tabs > li > a {
- border-radius: 5px;
+border-radius: 5px;
 }
 
 .nav-tabs > li > a:hover {
