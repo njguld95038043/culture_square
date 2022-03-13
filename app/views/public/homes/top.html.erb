@@ -21,11 +21,11 @@
     <div class="col-md-9">
       <ul class="nav nav-tabs justify-content-center">
         <li class="nav-item ml-4">
-          <a href="#panel-0" class="nav-link active" data-toggle="tab"><span class="text-dark">総合</span></a>
+          <a id="genre_panel_0" href="#panel-0" class="nav-link active" data-toggle="tab"><span class="text-dark">総合</span></a>
         </li>
         <% @genres.each_with_index do |genre, index| %><!--each_with_indexを使うことにより、eachで回す回数をindexへ代入している。-->
           <li class="nav-item ml-4">
-            <a href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab"><span class="text-dark"><%= genre.name %></span></a>
+            <a id="genre_panel_<%=genre.id%>" href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab"><span class="text-dark"><%= genre.name %></span></a>
           </li>
         <% end %>
       </ul>
@@ -46,7 +46,7 @@
           </div>
         </div>
         <% @genres.each_with_index do |genre, index| %>
-          <div id="panel-<%= genre.id %>" class="tab-pane<%= index == 0 ? " active" : "" %>">
+          <div id="panel-<%= genre.id %>" class="tab-pane<%#= index == 0 ? " active" : "" %>">
             <div class="d-flex flex-wrap mt-3 ml-4">
               <% genre.reviews.each do |review| %>
               <div class="card mr-3 mt-3" style="width: 11rem;">

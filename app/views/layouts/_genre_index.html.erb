@@ -3,10 +3,28 @@
       <div class="card">
         <div class="card-header">ジャンル一覧</div>
         <div class="card-body">
-          <% genres.each do |genre| %>
-            <p class="card-text offset-2"><%= genre.name %></p>
+          <a href="#panel-0" class="nav-link" data-toggle="tab" onclick="changeGenrePanelAttribute(0)"><span class="text-blue">総合</span></a>
+          <% genres.each_with_index do |genre, index| %><!--each_with_indexを使うことにより、eachで回す回数をindexへ代入している。-->
+            <a href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab" onclick="changeGenrePanelAttribute(<%=genre.id%>)"><span class="text-blue"><%= genre.name %></span></a>
           <% end %>
         </div>
       </div>
   </div>
 </div>
+
+<!-- クリックされた時に発火させる。idとpanelを取得して'active'をつけ、クリックされていないところは'active'をremoveしている。 -->
+<script>
+function changeGenrePanelAttribute(genre_id)
+{
+  for (var i = 0;i <= <%=genres.maximum(:id)%>;i++) {
+    var id = 'genre_panel_' + i;
+    var panel = document.getElementById(id);
+    if (panel != null) {
+      panel.classList.remove('active');
+    }
+  }
+  var id = 'genre_panel_' + genre_id;
+  var panel = document.getElementById(id);
+  panel.classList.add('active');
+}
+</script>
