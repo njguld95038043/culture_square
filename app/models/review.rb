@@ -11,4 +11,8 @@ class Review < ApplicationRecord
     favorites.exists?(end_user_id: end_user.id)
   end
 
+  def ranking
+    Review.includes(:favorited_end_users).limit(12).sort {|a,b| b.favorited_end_users.size <=> a.favorited_end_users.size}
+  end
+
 end
