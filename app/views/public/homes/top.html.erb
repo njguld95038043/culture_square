@@ -9,16 +9,11 @@
   </div>
   <% if end_user_signed_in? %>
   <div class="row">
-    <div class="col-md-3">
-      <div class="row">
-        <%= render 'layouts/end_user_info', end_user: @end_user %>
-      </div>
-      <div class="row">
-        <%= render 'layouts/genre_index', genres: @genres %>
-      </div>
+    <div class="col-2" style="width: 30rem;">
+      <%= render 'layouts/genre_index', genres: @genres %>
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-10">
       <ul class="nav nav-tabs justify-content-center">
         <li class="nav-item ml-4">
           <a id="genre_panel_0" href="#panel-0" class="nav-link active" data-toggle="tab"><span class="text-dark">総合</span></a>
@@ -38,7 +33,7 @@
           </div>
         </div>
         <% @genres.each_with_index do |genre, index| %>
-          <div id="panel-<%= genre.id %>" class="tab-pane<%#= index == 0 ? " active" : "" %>">
+          <div id="panel-<%= genre.id %>" class="tab-pane">
             <div class="d-flex flex-wrap mt-3 ml-4">
               <% genre.reviews.each do |review| %>
                 <%= render 'card', review: review %>

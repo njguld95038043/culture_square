@@ -3,7 +3,10 @@
   <div class="card-body pt-0">
     <p class="card-text text-truncate mb-0"><strong>「<%= review.book.title %>」</strong></p>
     <p class="card-text text-truncate offset-1">(<%= review.book.author %>. 著)</p>
-    <p class="card-text text-truncate mb-0"><%= review.end_user.nick_name %></p>
+    <p class="card-text text-truncate">
+      <%= review.end_user.nick_name %>
+      <span class=<%= "favorite-" + review.id.to_s %> ><%= render 'public/favorites/favorite', review: review %></span>
+    </p>
     <p id="star-rate-<%= review.id %>"></p>
     <p class="card-text mb-0">
       <script>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2>ユーザー情報</h2>
+    <h2>User's info</h2>
   </div>
 
   <div class="row mt-5">
@@ -22,12 +22,10 @@
           <th><%= end_user.occupation %></th>
         </tr>
         <tr>
-          <th>follows</th>
-          <th><%= link_to end_user.followings.count, end_user_followings_path(end_user) %></th>
+          <th>follows<%= link_to end_user.followings.count, end_user_followings_path(end_user) %></th>
         </tr>
         <tr>
-          <th>followers</th>
-          <th><%= link_to end_user.followers.count, end_user_followers_path(end_user) %></th>
+          <th>followers<%= link_to end_user.followers.count, end_user_followers_path(end_user) %></th>
         </tr>
         <tr>
           <th><%= render 'public/end_users/relationship', end_user: end_user %></th>
