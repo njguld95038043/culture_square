@@ -32,16 +32,8 @@
       <div class="tab-content">
         <div id="panel-0" class="tab-pane active">
           <div class="d-flex flex-wrap mt-3 ml-4">
-            <% @random_reviews.each do |review| %>
-            <div class="card mr-3 mt-3 ml-1" style="width: 11rem;">
-              <p class="mx-auto"><%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %></p>
-              <div class="card-body">
-                <p class="card-text"><%= review.book.title %></p>
-                <p class="card-text text-truncate"><%= review.book.author %></p>
-                <p class="card-text text-truncate"><%= review.review %></p>
-                <p><%= link_to 'レビュー確認', review_path(review), class: "btn btn-primary" %></p>
-              </div>
-            </div>
+            <% @random_reviews.each do |random_review| %>
+              <%= render 'card', review: random_review %>
             <% end %>
           </div>
         </div>
@@ -49,15 +41,7 @@
           <div id="panel-<%= genre.id %>" class="tab-pane<%#= index == 0 ? " active" : "" %>">
             <div class="d-flex flex-wrap mt-3 ml-4">
               <% genre.reviews.each do |review| %>
-              <div class="card mr-3 mt-3" style="width: 11rem;">
-                <p class="mx-auto"><%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %></p>
-                <div class="card-body">
-                  <p class="card-text text-truncate"><%= review.book.title %></p>
-                  <p class="card-text text-truncate"><%= review.book.author %></p>
-                  <p class="card-text text-truncate"><%= review.review %></p>
-                  <p><%= link_to 'レビュー確認', review_path(review), class: "btn btn-primary" %></p>
-                </div>
-              </div>
+                <%= render 'card', review: review %>
               <% end %>
             </div>
           </div>
