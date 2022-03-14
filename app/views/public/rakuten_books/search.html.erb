@@ -24,7 +24,7 @@
             <%= f.hidden_field :author, :value => rakuten_book.author %>
           </div>
           <div class="col-1">
-            <%= rakuten_book.item_price %>
+            <%= rakuten_book.item_price.to_s(:delimited, delimiter: ',') %>
             <%= f.hidden_field :item_price, :value => rakuten_book.item_price %>円
           </div>
           <div class="col-2">
