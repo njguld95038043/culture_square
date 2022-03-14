@@ -38,6 +38,7 @@
                   <p id="star-rate-<%= random_review.id %>"></p>
                   <p class="card-text mb-0">
                     <script>
+                    $('#star-rate-<%= random_review.id %>').empty();
                       $('#star-rate-<%= random_review.id %>').raty({
                         size: 36,
                         starOff:  '<%= asset_path('star-off.png') %>',
@@ -69,6 +70,7 @@
                     <p id="star-genre-rate-<%= review.id %>"></p>
                     <p class="card-text mb-0">
                       <script>
+                      $('#star-genre-rate-<%= review.id %>').empty();
                         $('#star-genre-rate-<%= review.id %>').raty({
                           size: 36,
                           starOff:  '<%= asset_path('star-off.png') %>',
