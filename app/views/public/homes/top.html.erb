@@ -2,7 +2,7 @@
   <div class="row">
     <div class="mx-auto p-5">
       <%= form_with url: rakuten_books_path, method: :get, local:true do |f| %>
-        <%= f.text_field :keyword, autofocus: true, style:"text-align: left;", placeholder: "Search for books here ...", class: "btn btn-outline-light text-dark", size: 90 %>
+        <%= f.text_field :keyword, autofocus: true, style:"text-align: left;", placeholder: "Search for books here to share your cultures ...", class: "btn btn-outline-light text-dark", size: 90 %>
         <%= f.submit 'Search', class: "btn btn-outline-light text-dark" %>
       <% end %>
     </div>

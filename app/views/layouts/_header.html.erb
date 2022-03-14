@@ -3,7 +3,7 @@
     <div class="col-2">
       <%= link_to root_path, class: "navbar-brand" do %>
         <h2>Culture Square</h2>
-        <p>-いっしょに教養を高めよう-</p>
+        <p>- Let's boost your cultures!! -</p>
       <% end %>
     </div>
     <div class="col-10">
@@ -13,7 +13,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if end_user_signed_in? %>
-            <li class="mx-5 mt-5">ようこそ、<%= current_end_user.nick_name %>さん！</li>
+            <li class="mx-5 mt-5">Welcome to <strong><%= current_end_user.nick_name %></strong>！</li>
             <li>
               <%= link_to 'Top', root_path, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
             </li>
