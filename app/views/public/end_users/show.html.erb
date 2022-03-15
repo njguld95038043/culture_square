@@ -1,44 +1,44 @@
 <div class="container">
-  <div class="row">
+  <div class="row offset-4">
     <h3 class="p-3"><%= @end_user.nick_name %>さんのユーザー情報</h3>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row offset-4">
     <div class="col-2">ユーザー画像</div>
     <div class="col-2"><%=image_tag @end_user.get_profile_image(100,100) %></div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row offset-4">
     <div class="col-2">ユーザーID</div>
     <div class="col-2"><%= @end_user.id%></div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row offset-4">
     <div class="col-2">ニックネーム</div>
     <div class="col-5"><%= @end_user.nick_name %></div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row offset-4">
     <div class="col-2">メールアドレス</div>
     <div class="col-5"><%= @end_user.email %></div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row offset-4">
     <div class="col-2">性別</div>
     <div class="col-5"><%= @end_user.gender_i18n %></div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row offset-4">
     <div class="col-2">年齢</div>
     <div class="col-5"><%= @end_user.calc_age %></div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row offset-4">
     <div class="col-2">職業</div>
     <div class="col-5"><%= @end_user.occupation %></div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row offset-4">
     <div class="col-2">ユーザーステータス</div>
     <% if @end_user.is_deleted == false %>
       <div class="col-2 text-success">有効</div>
@@ -47,18 +47,42 @@
     <% end %>
   </div>
 
-  <div class="row">
+  <div class="row offset-4">
     <div class="col-7 offset-2">
       <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-success mr-5"%>
     </div>
   </div>
 
-  <div class="row">
-    <% @end_user.reviews.each do |review| %>
-    <p><%= link_to review_path(review) do %>
-     <%#= review.review %>
-     <%#= review.review %>
-    <% end %></p>
-    <% end %>
+  <div class="row mt-5">
+    <div class="col-10 offset-1">
+      <table class="table table-hover">
+        <thead class="table-active">
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Sales Date</th>
+            <th>Publiser</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @end_user.reviews.each do |review| %>
+            <tr>
+              <td>
+                <%= link_to (image_tag(review.book.small_image_url)), review.book.item_url %>
+              </td>
+              <td>「<%= review.book.title %>」（ジャンル:<%= review.genre.name %>）</td>
+              <td><%= review.book.author %></td>
+              <td><%= review.book.sales_date %>発売</td>
+              <td><%= review.book.publisher_name %></td>
+              <td>¥<%= review.book.item_price.to_s(:delimited, delimiter: ',') %></td>
+              <td><%= link_to '詳細', review_path(review), class: "btn btn-primary btn-sm" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
