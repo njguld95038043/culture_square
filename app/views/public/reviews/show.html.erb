@@ -6,7 +6,7 @@
     <div class="col-10">
       <div class="row">
         <h2 class="mx-auto">書籍詳細</h2>
-        <table class="table table-hover">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th>
@@ -16,7 +16,7 @@
                   </div>
                   <div class="p-3">
                     <div class="mb-5">
-                      「<%= @review.book.title %>」
+                      「<%= @review.book.title %>」（ジャンル:<%= @review.genre.name %>）
                     </div>
                     <div class="mb-3">
                       <%= @review.book.author %>
@@ -43,40 +43,44 @@
             </tr>
           </tbody>
         </table>
+      </div>
 
-      </div>
       <div class="row">
-        <h2>レビュー詳細</h2>
-        <div class=<%= "favorite-" + @review.id.to_s %> >
-          <%= render 'public/favorites/favorite', review: @review %>
+        <div class="col-12">
+          <h2>
+            <%= @review.end_user.nick_name %>さんのレビュー
+          </h2>
         </div>
-        <p><%= link_to '編集画面へ進む', edit_review_path(@review), class: "btn btn-primary" %></p>
-        <p><%= link_to '削除する', review_path(@review), method: :delete, class: "btn btn-danger" %></p>
+        <div class="col-12 mb-5">
+          <div>
+            <h4>【評価】</h4>
+            <p id="star-rate-<%= @review.id %>"></p>
+              <script>
+                $('#star-rate-<%= @review.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,//読み取り専用（入力できない）
+                  score: <%= @review.rate %>,//星の入力値を読み込む
+                  });
+              </script>
+          </div>
+          <div>
+            <h4>【レビュー】</h4>
+            <div><%= @review.review %></div>
+          </div>
+            <h4 class=<%= "favorite-" + @review.id.to_s %> >
+              <%= render 'public/favorites/favorite', review: @review %>
+            </h4>
+            <% if @review.end_user == current_end_user %>
+              <%= link_to '編集画面へ進む', edit_review_path(@review), class: "btn btn-primary" %>
+              <%= link_to '削除する', review_path(@review), method: :delete, class: "btn btn-danger" %>
+            <% end %>
+        </div>
       </div>
-      <div class="form-group row">
-        <div class="col-5">ジャンル</div>
-        <div class="col-5"><%= @review.genre.name %></div>
-      </div>
-      <div class="form-group row">
-        <div class="col-2">評価</div>
-        <div class="col-5"><%= @review.rate %>点</div>
-        <div class="col-5" id="star-rate-<%= @review.id %>"></div>
-          <script>
-            $('#star-rate-<%= @review.id %>').raty({
-              size: 36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,//読み取り専用（入力できない）
-              score: <%= @review.rate %>,//星の入力値を読み込む
-              });
-          </script>
-      </div>
-      <div class="form-group row">
-        <div class="col-5">レビュー内容</div>
-        <div class="col-5"><%= @review.review %></div>
-      </div>
+
       <div class="row">
         <h2>レビューに対するコメント</h2>
         <div class="comments-counter">
