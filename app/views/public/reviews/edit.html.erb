@@ -43,44 +43,46 @@
   <div class="row">
     <h2 class="mx-auto">書籍編集</h2>
   </div>
-  <div class="row">
-    <%= form_with model: @review, url: review_path(@review), method: :patch, local: true do |f| %>
-    <table>
-      <tbody>
-        <tr>
-          <td class="mx-auto"><h2>評価：<%= @review.rate %>点</h2></td>
-          <td>
-            <div id="star-rate-<%= @review.id %>"></div>
-            <script>
-              $('#star-rate-<%= @review.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                scoreName: 'review[rate]',
-                half: true,
-                score: <%= @review.rate %>,
-                });
-            </script>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "本のジャンルを選択してください" %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <%= f.text_area :review, rows: '5', style:"text-align: left;", class: "btn btn-outline-light text-dark", size: "80x5" %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <%= f.submit '内容を保存', class: "btn btn-outline-light text-dark" %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+  <%= form_with model: @review, url: review_path(@review), method: :patch, local: true do |f| %>
+    <div class="row offset-1">
+      <div class="mx-auto">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <h4>評価：<%= @review.rate %>点</h4>
+                <span id="star-rate-<%= @review.id %>"></span>
+                <script>
+                  $('#star-rate-<%= @review.id %>').raty({
+                    size: 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    scoreName: 'review[rate]',
+                    half: true,
+                    score: <%= @review.rate %>,
+                    });
+                </script>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "本のジャンルを選択してください" %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <span class="offset-3"><%= f.text_area :review, rows: '5', style:"text-align: left;", class: "btn btn-outline-light text-dark", size: "80x5" %></span><br />
+  <span class="offset-3"><%= f.submit '内容を保存', class: "btn btn-outline-light text-dark" %></span>
+  <% end %>
 </div>
