@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3 class="p-3"><span class="header">会員一覧</span></h3>
+    <h3 class="p-3"><span class="header">Users</span></h3>
   </div>
 
   <div class="row">
@@ -8,11 +8,11 @@
       <table class="table table-hover">
         <thead class="table-active">
           <tr>
-            <th>ユーザーID</th>
-            <th>ニックネーム</th>
-            <th>性別</th>
-            <th>年齢</th>
-            <th>職業</th>
+            <th></th>
+            <th>Nick Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Occupation</th>
             <th></th>
             <th></th>
           </tr>
@@ -20,8 +20,12 @@
         <tbody>
           <% @end_users.each do |end_user| %>
             <tr>
-              <td><%= end_user.id %></td>
-              <td><u><%=link_to end_user.nick_name, admin_end_user_path(end_user.id), class: "text-dark" %></u></td>
+              <td>
+                <%= link_to end_user_path(end_user) do %>
+                  <%= image_tag end_user.get_profile_image(80,80) %>
+                <% end %>
+              </td>
+              <td><u><%= link_to end_user.nick_name, end_user_path(end_user), class: "text-dark" %></u></td>
               <td><%= end_user.gender_i18n %></td>
               <td><%= end_user.calc_age %>歳</td>
               <td><%= end_user.occupation %></td>
