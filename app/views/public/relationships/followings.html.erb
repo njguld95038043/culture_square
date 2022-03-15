@@ -1,6 +1,43 @@
-<h2>Follow Users</h2>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3 mx-auto"><span class="header">Follower Users</span></h3>
+  </div>
 <% if @end_users.exists? %>
-  <%= render 'public/end_users/index', end_users: @end_users %>
+    <div class="row">
+      <div class="col-10 offset-1">
+        <table class="table table-hover">
+          <thead class="table-active">
+            <tr>
+              <th></th>
+              <th>Nick Name</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Occupation</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @end_users.each do |end_user| %>
+              <tr>
+                <td>
+                  <%= link_to end_user_path(end_user) do %>
+                    <%= image_tag end_user.get_profile_image(80,80) %>
+                  <% end %>
+                </td>
+                <td><u><%= link_to end_user.nick_name, end_user_path(end_user), class: "text-dark" %></u></td>
+                <td><%= end_user.gender_i18n %></td>
+                <td><%= end_user.calc_age %>歳</td>
+                <td><%= end_user.occupation %></td>
+                <td>
+                  <%= render 'public/end_users/relationship', end_user: end_user %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
+</div>
