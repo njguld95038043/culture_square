@@ -89,3 +89,13 @@ border-radius: 5px;
 .review_show {
   overflow: scroll;
 }
+
+#back {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+}
+
+#back img {
+  width: 50px;
+}
