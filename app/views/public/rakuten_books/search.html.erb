@@ -38,7 +38,7 @@
                   <%= f.hidden_field :publisher_name, :value => rakuten_book.publisher_name %>
                 </td>
                 <td>
-                  <%= rakuten_book.item_price.to_s(:delimited, delimiter: ',') %>
+                  ¥<%= rakuten_book.item_price.to_s(:delimited, delimiter: ',') %>
                   <%= f.hidden_field :item_price, :value => rakuten_book.item_price %>
                 </td>
                 <td><%= f.submit 'レビュー登録', class:'btn btn-primary' %></td>
@@ -49,7 +49,6 @@
                 <%= f.hidden_field :large_image_url, :value => rakuten_book.large_image_url %>
               </tr>
             <% end %>
-            <%#= paginate @rakuten_books %>
           <% end %>
         </tbody>
       </table>
