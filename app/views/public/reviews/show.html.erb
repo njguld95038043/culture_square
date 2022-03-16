@@ -75,7 +75,7 @@
           </div>
           <div class="mb-3">
             <h5>【レビュー】</h5>
-            <div><%= @review.review %></div>
+            <div class="review_show"><%= @review.review %></div>
           </div>
             <h5>【いいね数】</h5>
             <h5 class=<%= "favorite-" + @review.id.to_s %> >
@@ -89,7 +89,7 @@
         <div class="comments-counter offset-1 mt-3">
           <%= render 'public/comments/counter', review: @review %>
         </div>
-        <div class="comments-index col-12">
+        <div class="comments-index">
           <%= render 'public/comments/comment', review: @review %>
         </div>
         <div>
