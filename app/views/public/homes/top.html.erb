@@ -56,37 +56,12 @@
             <% end %>
           </div>
         </div>
+        <%# ボタンタグにする %>
+        <div><button id="sort_button_created_at" onclick="onSortNew()">新着順</button> | <button id="sort_button_rate" onclick="onSortRate()">評価順</button></div>
+
         <% @genres.each_with_index do |genre, index| %>
           <div id="panel-<%= genre.id %>" class="tab-pane">
-            <div class="d-flex flex-wrap mt-3 ml-4">
-              <% genre.reviews.shuffle.first(12).each do |review| %>
-                <div class="card mr-2 mt-2" style="width: 13rem;">
-                  <p class="mx-auto mt-1"><%= link_to (image_tag(review.book.large_image_url)), review.book.item_url %></p>
-                  <div class="card-body pt-0">
-                    <p class="card-text text-truncate mb-0"><strong>「<%= review.book.title %>」</strong></p>
-                    <p class="card-text text-truncate offset-1">(<%= review.book.author %>. 著)</p>
-                    <p class="card-text text-truncate"><%= review.end_user.nick_name %></p>
-                    <p>いいね数　　　<i class="fas fa-thumbs-up"></i><%= review.favorites.count %>件</p>
-                    <p id="star-genre-rate-<%= review.id %>"></p>
-                    <p class="card-text mb-0">
-                      <script>
-                      $('#star-genre-rate-<%= review.id %>').empty();
-                        $('#star-genre-rate-<%= review.id %>').raty({
-                          size: 36,
-                          starOff:  '<%= asset_path('star-off.png') %>',
-                          starOn : '<%= asset_path('star-on.png') %>',
-                          starHalf: '<%= asset_path('star-half.png') %>',
-                          half: true,
-                          readOnly: true,
-                          score: <%= review.rate %>,
-                          });
-                      </script>
-                    </p>
-                    <p><%= link_to 'レビューを見る', review_path(review), class: "btn btn-primary" %></p>
-                  </div>
-                </div>
-              <% end %>
-            </div>
+            <%= render 'public/reviews/genre_review', genre: genre %>
           </div>
         <% end %>
       </div>
@@ -104,3 +79,27 @@
   </div>
   <% end %>
 </div>
+
+<script>
+function onSortNew(){
+
+  var panel_id = $('.tab-content').children('.active').attr('id');
+  var id = panel_id.substring(6)
+  $.ajax({
+    type: 'get',
+    url: 'reviews/sort_new?genre_id='+id,
+    datatype: "script"
+  });
+
+}
+function onSortRate(){
+  var panel_id = $('.tab-content').children('.active').attr('id');
+  var id = panel_id.substring(6)
+  $.ajax({
+    type: 'get',
+    url: 'reviews/sort_rate?genre_id='+id,
+    datatype: "script"
+  });
+
+}
+</script>

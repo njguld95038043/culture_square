@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     resources :reviews do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+      collection do
+        get 'sort_new'
+        get 'sort_rate'
+      end
     end
     get "/end_users/unsubscribe" => "end_users#unsubscribe"
   end
