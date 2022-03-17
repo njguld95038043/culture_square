@@ -1,4 +1,4 @@
-<div class="container background-color-arange">
+<div class="container background-color-arange p-5">
   <div class="row">
     <div class="col-5 p-5">
 
@@ -43,8 +43,19 @@
         <% end %>
       </div>
 
-      <div class="form-group row mx-auto">
-        <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-success mr-5"%>
+      <div class="form-group row">
+        <div>フォロー</div>
+        <div class="col-5"><%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %></div>
+      </div>
+
+      <div class="form-group row">
+        <div>フォロワー</div>
+        <div class="col-5"><%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %></div>
+      </div>
+
+      <div class="form-group row">
+        <%= render 'public/end_users/relationship', end_user: @end_user %>
+        <div class="pl-5"><%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-success mr-5"%></div>
       </div>
     </div>
 
@@ -129,7 +140,7 @@
     </div>
   </div>
 
-  <div class="row mt-5">
+  <div class="row">
     <div class="col-10 offset-1">
       <table class="table table-hover">
         <thead class="table-active">

@@ -15,7 +15,7 @@ class Public::EndUsersController < ApplicationController
   end
 
   def edit
-    @end_user = current_end_user
+    @end_user = EndUser.find(params[:id])
   end
 
   def update

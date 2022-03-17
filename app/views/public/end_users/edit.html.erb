@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container background-color-arange p-5">
   <div class="row">
     <h3 class="p-3"><span class="header">ユーザー情報編集</span></h3>
   </div>
 
-  <%= form_with model: @end_user, url: end_user_path, method: :patch do |f| %>
+  <%= form_with model: @end_user, url: end_user_path(@end_user), method: :patch do |f| %>
     <form>
       <div class="form-group row">
         <%= f.label :プロフィール画像, class:"col-sm-3 col-form-label" %>
@@ -19,14 +19,14 @@
       </div>
 
       <div class="form-group row">
-        <%= f.label :性別, class:"col-sm-2 col-form-label" %>
+        <%= f.label :性別, class:"col-sm-3 col-form-label" %>
         <div class="col-md-3">
          <%= f.select :gender, EndUser.genders.keys.map {|k| [I18n.t("enums.end_user.gender.#{k}"), k]}.to_a, include_blank: "性別を選択してください" %><!--genderの中にある情報を一つずつ取り出していくイメージ-->
         </div>
       </div>
 
       <div class="form-group row">
-        <%= f.label :職業, class:"col-sm-2 col-form-label" %>
+        <%= f.label :職業, class:"col-sm-3 col-form-label" %>
         <div class="col-md-3">
          <%= f.select :occupation, [['会社員・会社役員'], ['自営業'], ['公務員'], ['主婦'], ['学生'], ['フリーター'], ['無職'], ['その他'] ], include_blank: "職業を選択してください" %>
         </div>
@@ -40,7 +40,7 @@
       </div>
 
       <div class="form-group row">
-        <%= f.label :メールアドレス, class:"col-sm-2 col-form-label" %>
+        <%= f.label :メールアドレス, class:"col-sm-3 col-form-label" %>
         <div class="col-md-3">
          <%= f.email_field :email, autocomplete: "email", placeholder:"sample@example.com", class:"form-control" %>
         </div>
@@ -50,7 +50,7 @@
         <div class="col-md-3 offset-3">
           <%= f.submit "変更内容を保存", class:"btn btn-success btn-block btn-sm" %>
         </div>
-        <div class="col-md-2 offset-2">
+        <div class="col-md-2">
           <%= link_to "退会する", end_users_unsubscribe_path, class:"btn btn-danger btn-block btn-sm"%>
         </div>
       </div>
