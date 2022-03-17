@@ -136,6 +136,12 @@
             }
           });
         });
+        $(function(){
+           history.pushState(null, null);
+           $(window).on("popstate", function (event) {
+             location.href = "1";
+           })
+         });
       </script>
     </div>
   </div>

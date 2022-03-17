@@ -18,9 +18,13 @@
         <li class="nav-item ml-4">
           <a id="genre_panel_0" href="#panel-0" class="nav-link active" data-toggle="tab"><span class="text-dark">総合</span></a>
         </li>
-        <% @genres.each_with_index do |genre, index| %><!--each_with_indexを使うことにより、eachで回す回数をindexへ代入している。-->
+        <% @genres.each do |genre| %>
           <li class="nav-item ml-4">
-            <a id="genre_panel_<%=genre.id%>" href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab"><span class="text-dark"><%= genre.name %></span></a>
+            <a id="genre_panel_<%=genre.id%>" href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab">
+              <span class="text-dark">
+                <%= genre.name %>
+              </span>
+            </a>
           </li>
         <% end %>
       </ul>
@@ -57,12 +61,11 @@
             <% end %>
           </div>
         </div>
-        <%# ボタンタグにする %>
-        <div><button id="sort_button_created_at" onclick="onSortNew()">新着順</button> | <button id="sort_button_rate" onclick="onSortRate()">評価順</button></div>
 
-        <% @genres.each_with_index do |genre, index| %>
+
+        <% @genres.each do |genre| %>
           <div id="panel-<%= genre.id %>" class="tab-pane">
-            <%= render 'public/reviews/genre_review', genre: genre %>
+            <%= render 'public/reviews/genre_review', reviews: Genre.extruct_reviews_from_genre(genre) %>
           </div>
         <% end %>
       </div>
@@ -83,7 +86,6 @@
 
 <script>
 function onSortNew(){
-
   var panel_id = $('.tab-content').children('.active').attr('id');
   var id = panel_id.substring(6)
   $.ajax({
