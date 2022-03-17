@@ -21,7 +21,7 @@
               <%= link_to 'About', about_path, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
             </li>
             <li>
-              <%= link_to 'My page', end_user_path(current_end_user), class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
+              <%= link_to 'My page', end_user_path(current_end_user), data: { 'turbolinks': false }, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
             </li>
             <li>
               <%= link_to 'Users', end_users_path, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>

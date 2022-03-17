@@ -22,7 +22,7 @@
         <li><%= link_to 'Top', root_path %></li>
         <li><%= link_to 'About', about_path %></li>
         <% if end_user_signed_in? %>
-          <li><%= link_to 'My Page', end_user_path(current_end_user) %></li>
+          <li><%= link_to 'My Page', end_user_path(current_end_user), data: { 'turbolinks': false } %></li>
           <li><%= link_to 'Users', end_users_path %></li>
           <li><%= link_to 'Log out', destroy_end_user_session_path, method: :delete %></li>
         <% else %>
