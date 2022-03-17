@@ -1,6 +1,13 @@
 class Public::EndUsersController < ApplicationController
   def show
     @end_user = EndUser.find(params[:id])
+
+    @reviews = @end_user.reviews.page(params[:page]).reverse_order
+    @today_review =  @reviews.created_today
+    @yesterday_review = @reviews.created_yesterday
+    @this_week_review = @reviews.created_this_week
+    @last_week_review = @reviews.created_last_week
+    @review = Review.new
   end
 
   def index

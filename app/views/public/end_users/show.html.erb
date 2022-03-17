@@ -1,55 +1,131 @@
 <div class="container background-color-arange">
-  <div class="row offset-4">
-    <h3 class="p-3"><%= @end_user.nick_name %>さんのユーザー情報</h3>
-  </div>
+  <div class="row">
+    <div class="col-5 p-5">
 
-  <div class="form-group row offset-4">
-    <div class="col-2">ユーザー画像</div>
-    <div class="col-2"><%=image_tag @end_user.get_profile_image(100,100) %></div>
-  </div>
+      <div class="row">
+        <h3 class="pb-3"><%= @end_user.nick_name %>さんの情報</h3>
+      </div>
 
-  <div class="form-group row offset-4">
-    <div class="col-2">ユーザーID</div>
-    <div class="col-2"><%= @end_user.id%></div>
-  </div>
+      <div class="form-group row">
+        <div class="col-1"><%=image_tag @end_user.get_profile_image(100,100) %></div>
+      </div>
 
-  <div class="form-group row offset-4">
-    <div class="col-2">ニックネーム</div>
-    <div class="col-5"><%= @end_user.nick_name %></div>
-  </div>
+      <div class="form-group row">
+        <div>ニックネーム</div>
+        <div class="col-5"><%= @end_user.nick_name %></div>
+      </div>
 
-  <div class="form-group row offset-4">
-    <div class="col-2">メールアドレス</div>
-    <div class="col-5"><%= @end_user.email %></div>
-  </div>
+      <div class="form-group row">
+        <div>メールアドレス</div>
+        <div class="col-5"><%= @end_user.email %></div>
+      </div>
+      <div class="form-group row">
+        <div>性別</div>
+        <div class="col-5"><%= @end_user.gender_i18n %></div>
+      </div>
 
-  <div class="form-group row offset-4">
-    <div class="col-2">性別</div>
-    <div class="col-5"><%= @end_user.gender_i18n %></div>
-  </div>
+      <div class="form-group row">
+        <div>年齢</div>
+        <div class="col-5"><%= @end_user.calc_age %></div>
+      </div>
 
-  <div class="form-group row offset-4">
-    <div class="col-2">年齢</div>
-    <div class="col-5"><%= @end_user.calc_age %></div>
-  </div>
+      <div class="form-group row">
+        <div>職業</div>
+        <div class="col-5"><%= @end_user.occupation %></div>
+      </div>
 
-  <div class="form-group row offset-4">
-    <div class="col-2">職業</div>
-    <div class="col-5"><%= @end_user.occupation %></div>
-  </div>
+      <div class="form-group row">
+        <div>ユーザーステータス</div>
+        <% if @end_user.is_deleted == false %>
+          <div class="col-2 text-success">有効</div>
+        <% else %>
+          <div class="col-2 text-secondary">退会</div>
+        <% end %>
+      </div>
 
-  <div class="form-group row offset-4">
-    <div class="col-2">ユーザーステータス</div>
-    <% if @end_user.is_deleted == false %>
-      <div class="col-2 text-success">有効</div>
-    <% else %>
-      <div class="col-2 text-secondary">退会</div>
-    <% end %>
-  </div>
+      <div class="form-group row mx-auto">
+        <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-success mr-5"%>
+      </div>
+    </div>
 
-  <div class="row offset-4">
-    <div class="col-7 offset-2">
-      <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-success mr-5"%>
+    <div class="col-7 p-5">
+      <h3 class="pb-3">レビュー投稿数</h3>
+      <table class="table">
+       <thead>
+        <tr>
+         <th>６日前</th>
+         <th>5日前</th>
+         <th>4日前</th>
+         <th>3日前</th>
+         <th>２日前</th>
+         <th>昨日</th>
+         <th>今日</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <th><%= @reviews.created_6days.count %></th>
+         <th><%= @reviews.created_5days.count %></th>
+         <th><%= @reviews.created_4days.count %></th>
+         <th><%= @reviews.created_3days.count %></th>
+         <th><%= @reviews.created_2days.count %></th>
+         <th><%= @yesterday_review.count %></th>
+         <th><%= @today_review.count %></th>
+        </tr>
+       </tbody>
+      </table>
+
+
+      <canvas id="myChart"></canvas>
+      <script
+      　src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+      　integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+      　crossorigin="anonymous"
+      　referrerpolicy="no-referrer">
+      </script>
+      <script>
+        $(document).on('turbolinks:load', function() {
+          var ctx = document.getElementById('myChart').getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+              datasets: [
+                {
+                  label: '投稿したレビューの数',
+                  data: [<%= @reviews.created_6days.count %>,
+                         <%= @reviews.created_5days.count %>,
+                         <%= @reviews.created_4days.count %>,
+                         <%= @reviews.created_3days.count %>,
+                         <%= @reviews.created_2days.count %>,
+                         <%= @yesterday_review.count %>,
+                         <%= @today_review.count%>],
+                  borderColor: "rgba(0,0,255,1)",
+                  backgroundColor: "rgba(0,0,0,0)"
+                }
+              ],
+            },
+            options: {
+              title: {
+                display: true,
+                text: '7日間の投稿数の比較'
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    suggestedMax: 10,
+                    suggestedMin: 0,
+                    stepSize: 1,
+                    callback: function(value, index, values){
+                      return  value
+                    }
+                  }
+                }]
+              },
+            }
+          });
+        });
+      </script>
     </div>
   </div>
 
