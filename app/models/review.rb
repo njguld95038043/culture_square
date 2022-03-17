@@ -18,6 +18,8 @@ class Review < ApplicationRecord
   scope :created_5days, -> { where(created_at: 5.days.ago.all_day) }
   scope :created_6days, -> { where(created_at: 6.days.ago.all_day) }
 
+  is_impressionable counter_cache: true
+
   def favorited_by?(end_user)
     favorites.exists?(end_user_id: end_user.id)
   end

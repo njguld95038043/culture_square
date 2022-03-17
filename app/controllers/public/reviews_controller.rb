@@ -24,6 +24,7 @@ class Public::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new
+    impressionist(@review, nil, unique: [:ip_address])
   end
 
   def edit

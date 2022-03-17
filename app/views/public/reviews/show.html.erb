@@ -48,7 +48,7 @@
       <div class="row">
         <div class="mx-auto" style="border-bottom: 0.5px solid #D9D2DC;">
           <h2>
-            <%= @review.end_user.nick_name %>さんのレビュー
+            <%= @review.end_user.nick_name %>さんのレビュー<h5>（閲覧数<%= @review.impressions_count %>）</h5>
             <% if @review.end_user == current_end_user %>
               <%= link_to '編集画面へ進む', edit_review_path(@review), class: "btn btn-primary" %>
               <%= link_to '削除する', review_path(@review), method: :delete, class: "btn btn-danger" %>
@@ -80,7 +80,7 @@
             <h5>【いいね数】</h5>
             <h5 class=<%= "favorite-" + @review.id.to_s %> >
               <%= render 'public/favorites/favorite', review: @review %>
-            </h4>
+            </h5>
         </div>
       </div>
 
