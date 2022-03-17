@@ -48,10 +48,13 @@
 
       <div class="form-group row">
         <div class="col-md-3 offset-3">
-          <%= f.submit "変更内容を保存", class:"btn btn-success btn-block btn-sm" %>
+          <%= link_to 'Back', end_user_path(current_end_user), data: { 'turbolinks': false }, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.submit "変更内容を保存", class: "btn btn-outline-success nav-link mx-2 text-dark" %>
         </div>
         <div class="col-md-2">
-          <%= link_to "退会する", end_users_unsubscribe_path, class:"btn btn-danger btn-block btn-sm"%>
+          <%= link_to "退会する", end_users_unsubscribe_path, class: "btn btn-outline-danger nav-link mx-2 text-dark" %>
         </div>
       </div>
    </form>

@@ -70,6 +70,7 @@
             <h5>【評価】<%= @review.rate %>点</h5>
             <p id="star-rate-<%= @review.id %>"></p>
               <script>
+              $('#star-rate-<%= @review.id %>').empty();
                 $('#star-rate-<%= @review.id %>').raty({
                   size: 36,
                   starOff:  '<%= asset_path('star-off.png') %>',
