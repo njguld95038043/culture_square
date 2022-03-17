@@ -90,6 +90,10 @@ border-radius: 5px;
   overflow: scroll;
 }
 
+.review_show:hover {
+  background-color: #E3E3E3;
+}
+
 #back {
   position: fixed;
   right: 50px;
@@ -102,6 +106,7 @@ border-radius: 5px;
 
 .background-color-arange {
   background-color: #f0f0f0;
+  border-radius: 100px;
 }
 
 /* ---------------------------- */
@@ -181,4 +186,8 @@ border-radius: 5px;
 
 .comment-text-wrap {
   word-break: break-all;
+}
+
+.review_font {
+  font-size: 21px;
 }
