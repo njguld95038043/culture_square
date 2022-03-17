@@ -46,13 +46,11 @@ class Public::ReviewsController < ApplicationController
   def sort_new
     @reviews = Review.where(genre_id: params[:genre_id]).order(updated_at: :desc)
     @genre_id = params[:genre_id]
-    @genre = Genre.find(params[:genre_id])
   end
 
   def sort_rate
     @reviews = Review.where(genre_id: params[:genre_id]).order(rate: :desc)
     @genre_id = params[:genre_id]
-    @genre = Genre.find(params[:genre_id])
   end
 
   private
