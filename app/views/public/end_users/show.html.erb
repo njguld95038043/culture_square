@@ -1,4 +1,4 @@
-<div class="container background-color-arange p-5">
+<div class="container background-color p-5">
   <div class="row">
     <div class="col-5 p-5">
 
@@ -55,7 +55,7 @@
 
       <div class="form-group row">
         <%= render 'public/end_users/relationship', end_user: @end_user %>
-        <div class="pl-5"><%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-success mr-5"%></div>
+        <div><%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-outline-success btn-block text-dark"%></div>
       </div>
     </div>
 
@@ -139,7 +139,7 @@
         $(function(){
            history.pushState(null, null);
            $(window).on("popstate", function (event) {
-             location.href = "1";
+             location.href = "";
            })
          });
       </script>
@@ -147,7 +147,7 @@
   </div>
 
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-12">
       <table class="table table-hover">
         <thead class="table-active">
           <tr>
@@ -171,7 +171,7 @@
               <td><%= review.book.sales_date %>発売</td>
               <td><%= review.book.publisher_name %></td>
               <td>¥<%= review.book.item_price.to_s(:delimited, delimiter: ',') %></td>
-              <td><%= link_to '詳細', review_path(review), class: "btn btn-primary btn-sm" %></td>
+              <td><%= link_to '詳細', review_path(review), class: "btn btn-outline-primary nav-link text-dark btn-block" %></td>
             </tr>
           <% end %>
         </tbody>

@@ -1,4 +1,4 @@
-<div class="container background-color-arange p-5">
+<div class="container background-color p-5">
   <div class="row">
     <div class="col-2">
       <%= render 'layouts/end_user_info', end_user: @review.end_user %>
@@ -52,8 +52,8 @@
             <%= render 'public/favorites/favorite', review: @review %>
           </span>
           <% if @review.end_user == current_end_user %>
-            <%= link_to '編集画面へ進む', edit_review_path(@review), class: "btn btn-primary rounded-0" %>
-            <%= link_to '削除する', review_path(@review), method: :delete, class: "btn btn-danger rounded-0" %>
+            <%= link_to '編集画面へ進む', edit_review_path(@review), class: "btn btn-outline-primary text-dark" %>
+            <%= link_to '削除する', review_path(@review), method: :delete, class: "btn btn-outline-danger text-dark" %>
           <% end %>
         </h2>
         <table class="table table-hover">

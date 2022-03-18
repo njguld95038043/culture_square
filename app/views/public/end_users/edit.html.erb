@@ -1,4 +1,4 @@
-<div class="container background-color-arange p-5">
+<div class="container background-color p-5">
   <div class="row">
     <h3 class="p-3"><span class="header">ユーザー情報編集</span></h3>
   </div>
@@ -7,54 +7,54 @@
     <form>
       <div class="form-group row">
         <%= f.label :プロフィール画像, class:"col-sm-3 col-form-label" %>
-          <div class="col-md-3">
+          <div class="col-md-5">
             <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
           </div>
       </div>
       <div class="form-group row">
         <%= f.label :ニックネーム, class:"col-sm-3 col-form-label" %>
-          <div class="col-md-3">
+          <div class="col-md-5">
            <%= f.text_field :nick_name, autofocus: true, class:"form-control" %>
           </div>
       </div>
 
       <div class="form-group row">
         <%= f.label :性別, class:"col-sm-3 col-form-label" %>
-        <div class="col-md-3">
+        <div class="col-md-5">
          <%= f.select :gender, EndUser.genders.keys.map {|k| [I18n.t("enums.end_user.gender.#{k}"), k]}.to_a, include_blank: "性別を選択してください" %><!--genderの中にある情報を一つずつ取り出していくイメージ-->
         </div>
       </div>
 
       <div class="form-group row">
         <%= f.label :職業, class:"col-sm-3 col-form-label" %>
-        <div class="col-md-3">
+        <div class="col-md-5">
          <%= f.select :occupation, [['会社員・会社役員'], ['自営業'], ['公務員'], ['主婦'], ['学生'], ['フリーター'], ['無職'], ['その他'] ], include_blank: "職業を選択してください" %>
         </div>
       </div>
 
       <div class="form-group row">
         <%= f.label :生年月日, class:"col-sm-3 col-form-label" %>
-        <div class="col-md-3">
+        <div class="col-md-5">
          <%= f.date_select :birthday, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1990, 1, 1) %>
         </div>
       </div>
 
       <div class="form-group row">
         <%= f.label :メールアドレス, class:"col-sm-3 col-form-label" %>
-        <div class="col-md-3">
+        <div class="col-md-5">
          <%= f.email_field :email, autocomplete: "email", placeholder:"sample@example.com", class:"form-control" %>
         </div>
       </div>
 
       <div class="form-group row">
-        <div class="col-md-3 offset-3">
-          <%= link_to 'Back', end_user_path(current_end_user), data: { 'turbolinks': false }, class: "btn btn-outline-secondary nav-link mx-2 text-dark" %>
-        </div>
-        <div class="col-md-3">
-          <%= f.submit "変更内容を保存", class: "btn btn-outline-success nav-link mx-2 text-dark" %>
+        <div class="col-md-5 offset-3">
+          <%= f.submit "変更内容を保存", class: "btn btn-outline-success btn-block nav-link text-dark" %>
         </div>
         <div class="col-md-2">
-          <%= link_to "退会する", end_users_unsubscribe_path, class: "btn btn-outline-danger nav-link mx-2 text-dark" %>
+          <%= link_to 'Back', end_user_path(@end_user), data: { 'turbolinks': false }, class: "btn btn-outline-secondary nav-link text-dark" %>
+        </div>
+        <div class="col-md-2">
+          <%= link_to "退会する", unsubscribe_path(@end_user), class: "btn btn-outline-danger nav-link text-dark" %>
         </div>
       </div>
    </form>

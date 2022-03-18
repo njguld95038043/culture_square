@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @end_user = current_end_user
+    # @end_user = current_end_user
     @genres = Genre.all
     @random_reviews = Review.includes(:favorited_end_users).limit(12).sort {|a,b| b.favorited_end_users.size <=> a.favorited_end_users.size}#いいね数順にランキング
   end

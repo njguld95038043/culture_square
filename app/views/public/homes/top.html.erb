@@ -1,13 +1,13 @@
-<div class="container background-color-arange p-4 mb-5">
+<div class="container background-color p-4 mb-5">
   <div class="row">
     <div class="mx-auto p-5">
-      <%= form_with url: rakuten_books_path, method: :get, local:true do |f| %>
-        <%= f.text_field :keyword, autofocus: true, style:"text-align: left;", placeholder: "Search for books here to share your cultures ...", class: "btn btn-outline-light text-dark", size: 90 %>
-        <%= f.submit 'Search', class: "btn btn-outline-light text-dark" %>
-      <% end %>
-    </div>
+    <% if end_user_signed_in? %>
+        <%= form_with url: rakuten_books_path, method: :get, local:true do |f| %>
+          <%= f.text_field :keyword, autofocus: true, style:"text-align: left;", placeholder: "Search for books here to share your cultures ...", class: "btn btn-outline-light text-dark", size: 90 %>
+          <%= f.submit 'Search', class: "btn btn-outline-light text-dark" %>
+        <% end %>
+      </div>
   </div>
-  <% if end_user_signed_in? %>
   <div class="row">
     <div class="col-2" style="width: 30rem;">
       <%= render 'layouts/genre_index', genres: @genres %>
@@ -55,7 +55,7 @@
                         });
                     </script>
                   </p>
-                  <p><%= link_to 'レビューを見る', review_path(random_review), class: "btn btn-primary" %></p>
+                  <p><%= link_to 'レビューを見る', review_path(random_review), class: "btn btn-outline-primary nav-link text-dark btn-block" %></p>
                 </div>
               </div>
             <% end %>
@@ -79,7 +79,7 @@
       興味のある投稿から学べたり、他者の投稿に対してコメントや質問を残すことができます。また、書籍をその場で検索することもできます。<br />
       投稿者は書籍から学んだ有益な知識や印象的だった内容を投稿し、閲覧者は興味がある分野について他者が発信した投稿を閲覧、コメント、評価できるので、お互いに効率良く教養を高めていくことができます。
     </p>
-    <%= link_to 'ログインする', new_end_user_session_path, class:"btn btn-primary btn-lg" %>
+    <%= link_to 'ログインする', new_end_user_session_path, class: "btn btn-outline-primary nav-link text-dark" %>
   </div>
   <% end %>
 </div>

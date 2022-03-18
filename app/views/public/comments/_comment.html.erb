@@ -14,9 +14,9 @@
       <td class="col-6">
         <span class="comment-text-wrap"><%= comment.comment %></span>
       </td>
-      <td class="col-2">
+      <td class="col-1">
         <% if comment.end_user == current_end_user %>
-          <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, remote:true, class: "btn btn-danger" %>
+          <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, remote:true, class: "btn btn-outline-danger nav-link text-dark btn-block" %>
         <% end %>
       </td>
     </tr>

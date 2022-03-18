@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container text-center background-color p-5">
   <div class="row">
     <div class="col-8 mx-auto">
       <h1 class="my-5"><strong>本当に退会しますか？</strong></h1>
@@ -12,10 +12,10 @@
 
   <div class="row mt-5 d-flex justify-content-center">
     <div class="col-2">
-      <%= link_to "退会しない", end_users_my_page_path, class: "btn btn-primary btn-block btn-sm"%>
+      <%= link_to "退会しない", end_user_path(@end_user), data: { 'turbolinks': false }, class: "btn btn-outline-primary nav-link text-dark btn-block" %>
     </div>
     <div class="col-2">
-      <%= link_to "退会する", end_users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger btn-block btn-sm"%>
+      <%= link_to "退会する", end_users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger nav-link text-dark" %>
     </div>
   </div>
 </div>
