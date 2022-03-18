@@ -1,22 +1,22 @@
-<div class="container">
-  <div class="row">
+<div class="container background-color p-5">
+  <div class="row offset-4">
     <h3 class="p-3"><span class="header">ジャンル一覧・追加</span></h3>
   </div>
   <%= form_with model: @genre, url:admin_genres_path, method: :post, local: true do |f| %>
-    <div class="form-group row">
+    <div class="form-group row offset-2">
       <%= f.label :ジャンル名, class:"col-2 col-form-label font-weight-bold"%>
-        <div class="col-2">
+        <div class="col-5">
           <%= f.text_field :name, autofocus: true, placeholder: "ジャンル名", class:"form-control"  %>
         </div>
         <div class="col-2">
-          <%= f.submit '新規登録', class:"btn btn-success btn-bg form-control" %>
+          <%= f.submit '新規登録', class: "btn btn-outline-success text-dark" %>
         </div>
     </div>
   <% end %>
 
-  <div class="row mt-5">
-    <div class="col-4">
-      <table class="table admin_genres_table">
+  <div class="row mt-5 offset-4">
+    <div class="col-5">
+      <table class="table">
         <tbody>
           <tr class="table-active">
             <td>ジャンル名</td>
@@ -25,7 +25,7 @@
           <% @genres.each do |genre| %>
             <tr>
               <td><%= genre.name %></td>
-              <td><%= link_to "削除する", admin_genre_path(genre), method: :delete, class: "btn btn-danger" %></td>
+              <td><%= link_to "削除する", admin_genre_path(genre), method: :delete, class: "btn btn-outline-danger text-dark" %></td>
             </tr>
           <% end %>
         </tbody>
