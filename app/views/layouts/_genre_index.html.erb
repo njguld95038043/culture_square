@@ -18,13 +18,22 @@ function changeGenrePanelAttribute(genre_id)
 {
   for (var i = 0;i <= <%=genres.maximum(:id)%>;i++) {
     var id = 'genre_panel_' + i;
-    var panel = document.getElementById(id);
-    if (panel != null) {
+    var panel_id = 'panel-' + i;
+    var genre_panel = document.getElementById(id);
+    var panel = document.getElementById(panel_id);
+    if (panel != null && genre_panel != null) {
       panel.classList.remove('active');
+      genre_panel.classList.remove('active');
     }
   }
   var id = 'genre_panel_' + genre_id;
-  var panel = document.getElementById(id);
+  var panel_id = 'panel-' + genre_id;
+  var genre_panel = document.getElementById(id);
+  var panel = document.getElementById(panel_id);
   panel.classList.add('active');
+  genre_panel.classList.add('active');
+
+
 }
 </script>
+
