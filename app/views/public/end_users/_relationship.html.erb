@@ -1,7 +1,10 @@
 <% if current_end_user != end_user %>
   <% if current_end_user.following?(end_user) %>
-    <%= link_to "フォローを外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-outline-primary nav-link text-dark btn-block" %>
+    <%= link_to "フォローを外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-outline-primary text-dark" %>
+    <% if current_end_user != end_user %>
+      <%= link_to 'Begin Chat', chat_path(end_user.id), class: "btn btn-outline-warning text-dark" %>
+    <% end %>
   <% else %>
-    <%= link_to "フォローをする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-outline-success nav-link text-dark btn-block" %>
+    <%= link_to "フォローをする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-outline-success nav-link text-dark" %>
   <% end %>
 <% end %>

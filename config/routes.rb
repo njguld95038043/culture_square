@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about'
   get '/rakuten_books' => 'public/rakuten_books#search'
   get "/unsubscribe/end_users/:id" => "public/end_users#unsubscribe", as: 'unsubscribe'
+  get 'chat/:id' => 'public/chats#show', as: 'chat'
 
   scope module: :public do
     patch "/end_users/withdraw" => "end_users#withdraw"
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
         get 'sort_rate'
       end
     end
+    resources :chats, only: [:create]
   end
 
   namespace :admin do
