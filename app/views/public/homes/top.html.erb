@@ -1,12 +1,13 @@
 <div class="container background-color p-4 mb-5">
   <div class="row">
-    <div class="mx-auto p-5">
-    <% if end_user_signed_in? %>
+    <div class="col-md-10 mx-auto p-5">
+      <h2 class="mx-auto">Please Post books!!</h2>
+      <% if end_user_signed_in? %>
         <%= form_with url: rakuten_books_path, method: :get, local:true do |f| %>
-          <%= f.text_field :keyword, autofocus: true, style:"text-align: left;", placeholder: "Search for books here to share your cultures ...", class: "btn btn-outline-light text-dark", size: 90 %>
-          <%= f.submit 'Search', class: "btn btn-outline-light text-dark" %>
+          <%= f.text_field :keyword, autofocus: true, placeholder: "Search for books here to share your cultures ...", class: "form-control", size: 90 %>
+          <%= f.submit 'Search', class: "btn btn-outline-primary", style:"text-align: right;" %>
         <% end %>
-      </div>
+    </div>
   </div>
   <div class="row">
     <div class="col-2" style="width: 30rem;">
