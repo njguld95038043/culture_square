@@ -28,4 +28,18 @@ class Review < ApplicationRecord
     Review.includes(:favorited_end_users).limit(12).sort {|a,b| b.favorited_end_users.size <=> a.favorited_end_users.size}
   end
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @review = Review.where("review LIKE?","#{word}")
+    elsif search == "forward_match"
+      @review = Review.where("review LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @review = Review.where("review LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @review = Review.where("review LIKE?","%#{word}%")
+    else
+      @review = Review.all
+    end
+  end
+
 end

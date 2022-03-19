@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'searches/search_result'
+  end
   devise_for  :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -14,6 +17,7 @@ Rails.application.routes.draw do
   get '/rakuten_books' => 'public/rakuten_books#search'
   get "/unsubscribe/end_users/:id" => "public/end_users#unsubscribe", as: 'unsubscribe'
   get 'chat/:id' => 'public/chats#show', as: 'chat'
+  get "search" => "public/searches#search"
 
   scope module: :public do
     patch "/end_users/withdraw" => "end_users#withdraw"
