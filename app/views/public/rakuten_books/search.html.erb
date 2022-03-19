@@ -1,4 +1,4 @@
-<div class="container background-color-arange p-5">
+<div class="container background-color p-5 mb-5">
   <div class="row mt-5">
     <div class="col-12">
       <table class="table table-hover background-color-arange">
@@ -41,7 +41,7 @@
                   ¥<%= rakuten_book.item_price.to_s(:delimited, delimiter: ',') %>
                   <%= f.hidden_field :item_price, :value => rakuten_book.item_price %>
                 </td>
-                <td><%= f.submit 'レビュー登録', class:'btn btn-primary' %></td>
+                <td><%= f.submit 'レビュー登録', class: "btn btn-outline-primary nav-link text-dark btn-block" %></td>
                 <%= f.hidden_field :item_caption, :value => rakuten_book.item_caption %>
                 <%= f.hidden_field :isbn, :value => rakuten_book.isbn %>
                 <%= f.hidden_field :small_image_url, :value => rakuten_book.small_image_url %>
