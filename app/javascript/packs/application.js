@@ -26,3 +26,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery')
+
+document.addEventListener('DOMContentLoaded', function(){
+  console.log("test")
+});
