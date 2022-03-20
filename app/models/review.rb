@@ -6,6 +6,7 @@ class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_end_users, through: :favorites, source: :end_user
+  has_many :notifications, dependent: :destroy
 
 
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
@@ -40,6 +41,49 @@ class Review < ApplicationRecord
     else
       @review = Review.all
     end
+  end
+
+  def create_notification_favorite!(current_end_user)
+    # すでに「いいね」されているか検索
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and review_id = ? and action = ? ", current_end_user.id, end_user_id, id, 'like'])
+    # いいねされていない場合のみ、通知レコードを作成
+    if temp.blank?
+      notification = current_end_user.active_notifications.new(
+        review_id: id,
+        visited_id: end_user_id,
+        action: 'favorite'
+      )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
+  end
+
+  def create_notification_comment!(current_end_user, comment_id)
+    # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
+    temp_ids = Comment.select(:end_user_id).where(review_id: id).where.not(end_user_id: current_end_user.id).distinct
+    temp_ids.each do |temp_id|
+      save_notification_comment!(current_end_user, comment_id, temp_id['end_user_id'])
+    end
+    # まだ誰もコメントしていない場合は、投稿者に通知を送る
+    save_notification_comment!(current_end_user, comment_id, end_user_id) if temp_ids.blank?
+  end
+
+  def save_notification_comment!(current_end_user, comment_id, visited_id)
+    # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
+    notification = current_end_user.active_notifications.new(
+      review_id: id,
+      comment_id: comment_id,
+      visited_id: visited_id,
+      action: 'comment'
+    )
+    # 自分の投稿に対するコメントの場合は、通知済みとする
+    if notification.visitor_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
   end
 
 end
