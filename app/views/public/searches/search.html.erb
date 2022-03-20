@@ -1,6 +1,12 @@
 <div class="container background-color p-5 mb-5">
   <div class="row">
-    <h2 class="p-3 mx-auto">Results index</h2>
+    <% if @range == "EndUser" %>
+     <h2 class="p-3 mx-auto">Users Search for　<strong><%= @nick_name %></strong>　さん</h2>
+    <% elsif @range == "Review" %>
+     <h2 class="p-3 mx-auto">Reviews Search for <strong><%= @review %></strong></h2>
+    <% else %>
+     <h2 class="p-3 mx-auto">Reviews Search for <strong><%= @book %></strong></h2>
+    <% end %>
   </div>
 
   <div class="row">
