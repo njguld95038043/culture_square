@@ -28,6 +28,13 @@
           <li class="pr-3">
             <%= link_to 'Log out', destroy_end_user_session_path, method: :delete, class: "btn btn-outline-secondary text-dark" %>
           </li>
+          <li class="pr-3">
+           <% if unchecked_notifications.any? %>
+             <li><%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary fas fa-bell" %>
+           <% else %>
+              <li><%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary fas fa-check" %>
+           <% end %>
+          </li>
           <li><%= render 'layouts/search' %></li>
         <% elsif admin_signed_in? %>
           <li class="pr-3">
