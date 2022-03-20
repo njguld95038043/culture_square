@@ -10,9 +10,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mx-auto">
+      <ul class="navbar-nav">
         <% if end_user_signed_in? %>
-          <h3 class="pr-1">Welcome to<strong><%= current_end_user.nick_name %></strong>！</h3>
+          <h3 class="ml-5">Welcome to<br />
+            <strong><%= current_end_user.nick_name %></strong>さん!
+          </h3>
           <li class="pr-3">
             <%= link_to 'Top', root_path, class: "btn btn-outline-secondary text-dark" %>
           </li>
@@ -30,7 +32,7 @@
           </li>
           <li class="pr-3">
            <% if unchecked_notifications.any? %>
-             <li><%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary fas fa-bell" %>
+             <li><%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary fas fa-bell", style: "color:tomato;" %>
            <% else %>
               <li><%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary fas fa-check" %>
            <% end %>
