@@ -25,13 +25,15 @@ class Public::EndUsersController < ApplicationController
   end
 
   def unsubscribe
-    @end_user = EndUser.find(params[:id])
+    @end_user = current_end_user
   end
 
   def withdraw
     @end_user = current_end_user
-    @end_user.update(is_deleted: true)
-    redirect_to root_path
+    @end_user.update(is_deleted: true)#ここでis_deletedカラムの値をtrueに更新します。
+    reset_session #この記述で現在のログイン状況をリセット
+    flash[:notice] = "退会が完了しました。"
+    redirect_to root_path #処理完了後ルートパスへ遷移。
   end
 
   private

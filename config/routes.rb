@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "/unsubscribe/end_users/:id" => "public/end_users#unsubscribe", as: 'unsubscribe'
   get 'chat/:id' => 'public/chats#show', as: 'chat'
   get "search" => "public/searches#search"
+  patch "end_users/withdraw" => "public/end_users#withdraw"
 
   scope module: :public do
     patch "/end_users/withdraw" => "end_users#withdraw"
