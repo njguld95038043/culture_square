@@ -14,10 +14,18 @@
     <% when 'follow' then %>
       <p>あなたをフォローしました</p>
     <% when 'favorite' then %>
-      あなたの投稿<%= notification.review.review.truncate(20) %>にいいねしました
+      あなたの投稿
+      <%= link_to review_path(notification.review) do %>
+        <%= notification.review.review.truncate(20) %>
+      <% end %>
+      にいいねしました
     <% when 'comment' then %>
       <% if notification.review.end_user_id == visited.id %>
-        あなたの投稿<%= notification.review.review.truncate(20) %>にコメントしました。
+        あなたの投稿
+          <%= link_to review_path(notification.review) do %>
+            <%= notification.review.review.truncate(20) %>
+          <% end %>
+        にコメントしました。
       <% end %>
   <% end %>
   <span><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
