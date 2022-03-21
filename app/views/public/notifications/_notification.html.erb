@@ -1,7 +1,10 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
-<div>
+<div class="row">
+  <%= link_to end_user_path(visitor), data: { 'turbolinks': false } do %>
+    <strong><%= image_tag visitor.get_profile_image(50,50) %></strong>
+  <% end %>
   <%= link_to end_user_path(visitor), data: { 'turbolinks': false } do %>
     <strong><%= visitor.nick_name %></strong>
   <% end %>さんが
