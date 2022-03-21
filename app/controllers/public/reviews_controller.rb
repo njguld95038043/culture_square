@@ -13,8 +13,11 @@ class Public::ReviewsController < ApplicationController
 
     @review = current_end_user.reviews.new(review_params)
     @review.book_id = @book.id
-    @review.save
-    redirect_to review_path(@review)
+    if @review.save
+      redirect_to review_path(@review), notice: 'Your review have been updated!'
+    else
+      render :new
+    end
   end
 
 

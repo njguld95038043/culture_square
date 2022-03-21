@@ -95,6 +95,9 @@
         <div class="comments-counter offset-1 mt-3">
           <%= render 'public/comments/counter', review: @review %>
         </div>
+        <div id="comments_error" style="color: red;">
+          <%= render 'layouts/errors', obj: @review %>
+        </div>
         <div class="comments-index">
           <%= render 'public/comments/comment', review: @review %>
         </div>

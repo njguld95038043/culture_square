@@ -5,6 +5,11 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
   enum gender: { man: 1, woman: 2, other: 3}
 
+  validates :nick_name, presence: true
+  validates :gender, presence: true
+  validates :occupation, presence: true
+  validates :email, presence: true
+
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

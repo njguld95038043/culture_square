@@ -53,6 +53,9 @@
       <div class="row">
         <h2 class="mx-auto">レビュー登録</h2>
       </div>
+        <h5 class="error_explanation">
+          <%= render 'layouts/errors', obj: @review %>
+        </h5>
       <%= fields_for :review, @review do |fi| %>
       <div class="row offset-1">
         <div class="mx-auto">
