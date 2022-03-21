@@ -1,33 +1,42 @@
 <div class="container background-color p-5 mb-5">
   <div class="row">
-    <div class="mx-auto">
-    <%= form_with url: reviews_path, method: :post, local: true do |f| %>
-      <h2>書籍情報</h2>
-      <div>
-        <table>
-          <tbody>
+    <h2 class="mx-auto">書籍情報</h2>
+      <%= form_with url: reviews_path, method: :post, local: true do |f| %>
+        <table class="table table-striped">
+          <thead>
             <tr>
-              <td><%= link_to (image_tag(@book.large_image_url)), @book.item_url %></td>
-              <td>タイトル<%= @book.title %></td>
-              <td>著者<%= @book.author %></td>
-              <td>発売日<%= @book.sales_date %></td>
-              <%= fields_for :book, @book do |fi| %><!--fields_forはform_withの中で使えるメソッド。Bookモデルに入れる情報とReviewモデルに入れる情報を分けて送ることを可能にしてくれるメソッド-->
-                <%= fi.hidden_field :item_url, :value => @book.item_url %>
-                <%= fi.hidden_field :title, :value => @book.title %>
-                <%= fi.hidden_field :author, :value => @book.author %>
-                <%= fi.hidden_field :isbn, :value => @book.isbn %>
-                <%= fi.hidden_field :sales_date, :value => @book.sales_date %>
-                <%= fi.hidden_field :item_price, :value => @book.item_price %>
-                <%= fi.hidden_field :item_caption, :value => @book.item_caption %>
-                <%= fi.hidden_field :publisher_name, :value => @book.publisher_name %>
-                <%= fi.hidden_field :small_image_url, :value => @book.small_image_url %>
-                <%= fi.hidden_field :medium_image_url, :value => @book.medium_image_url %>
-                <%= fi.hidden_field :large_image_url, :value => @book.large_image_url %>
-              <% end %>
+              <th>
+                <div class="d-flex">
+                  <div class="offset-3 mr-5">
+                    <%= link_to (image_tag(@book.large_image_url)), @book.item_url %>
+                  </div>
+                  <div class="offset-3 mr-5">
+                    タイトル<%= @book.title %>
+                  </div>
+                  <div class="offset-3 mr-5">
+                    著者<%= @book.author %>
+                  </div>
+                  <div class="offset-3 mr-5">
+                    発売日<%= @book.sales_date %>
+                  </div>
+                    <%= fields_for :book, @book do |fi| %><!--fields_forはform_withの中で使えるメソッド。Bookモデルに入れる情報とReviewモデルに入れる情報を分けて送ることを可能にしてくれるメソッド-->
+                      <%= fi.hidden_field :item_url, :value => @book.item_url %>
+                      <%= fi.hidden_field :title, :value => @book.title %>
+                      <%= fi.hidden_field :author, :value => @book.author %>
+                      <%= fi.hidden_field :isbn, :value => @book.isbn %>
+                      <%= fi.hidden_field :sales_date, :value => @book.sales_date %>
+                      <%= fi.hidden_field :item_price, :value => @book.item_price %>
+                      <%= fi.hidden_field :item_caption, :value => @book.item_caption %>
+                      <%= fi.hidden_field :publisher_name, :value => @book.publisher_name %>
+                      <%= fi.hidden_field :small_image_url, :value => @book.small_image_url %>
+                      <%= fi.hidden_field :medium_image_url, :value => @book.medium_image_url %>
+                      <%= fi.hidden_field :large_image_url, :value => @book.large_image_url %>
+                    <% end %>
+                </div>
+              </th>
             </tr>
-          </tbody>
+          </thead>
         </table>
-      </div>
       <div>
         <%= fields_for :review, @review do |fi| %>
         <h3>レビュー登録</h3>
@@ -63,6 +72,5 @@
         </div>
       </div>
     <% end %>
-    </div>
   </div>
 </div>
