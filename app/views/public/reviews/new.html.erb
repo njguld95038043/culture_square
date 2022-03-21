@@ -1,23 +1,27 @@
 <div class="container background-color p-5 mb-5">
   <div class="row">
     <h2 class="mx-auto">書籍情報</h2>
-      <%= form_with url: reviews_path, method: :post, local: true do |f| %>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>
-                <div class="d-flex">
-                  <div class="offset-3 mr-5">
-                    <%= link_to (image_tag(@book.large_image_url)), @book.item_url %>
+    <%= form_with url: reviews_path, method: :post, local: true do |f| %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              <div class="d-flex">
+                <div class="offset-3 mr-5">
+                  <%= link_to (image_tag(@book.large_image_url)), @book.item_url %>
+                </div>
+                <div class="p-3">
+                  <div class="mb-5">
+                    <%= @book.title %>
                   </div>
-                  <div class="offset-3 mr-5">
-                    タイトル<%= @book.title %>
+                  <div class="mb-3">
+                    <%= @book.author %>
                   </div>
-                  <div class="offset-3 mr-5">
-                    著者<%= @book.author %>
+                  <div class="mb-3">
+                    <%= @book.sales_date %>　発売
                   </div>
-                  <div class="offset-3 mr-5">
-                    発売日<%= @book.sales_date %>
+                  <div class="mb-3">
+                    ¥<%= @book.item_price.to_s(:delimited, delimiter: ',') %>-
                   </div>
                     <%= fields_for :book, @book do |fi| %><!--fields_forはform_withの中で使えるメソッド。Bookモデルに入れる情報とReviewモデルに入れる情報を分けて送ることを可能にしてくれるメソッド-->
                       <%= fi.hidden_field :item_url, :value => @book.item_url %>
@@ -32,45 +36,64 @@
                       <%= fi.hidden_field :medium_image_url, :value => @book.medium_image_url %>
                       <%= fi.hidden_field :large_image_url, :value => @book.large_image_url %>
                     <% end %>
-                </div>
-              </th>
-            </tr>
-          </thead>
-        </table>
-      <div>
-        <%= fields_for :review, @review do |fi| %>
-        <h3>レビュー登録</h3>
-        <div class="form-group row">
-          <%= fi.label :ジャンル, class:"col-sm-3 col-form-label" %><br />
-          <div class="col-md-3">
-           <%= fi.collection_select :genre_id, Genre.all, :id, :name, include_blank: "本のジャンルを選択してください" %>
-          </div>
-        </div>
-        <div class="form-group row">
-          <div id="review_star">
-            <%= f.label :rate,  "星評価 (※必須)" ,id: "e" %>
-            <script>
-                $('#review_star').raty({
-                    starOff:  '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    scoreName: 'review[rate]',
-                    half: true,
-                });
-            </script>
-          </div>
-        </div>
-        <div class="form-group row">
-          <%= fi.label :レビューや感想、勉強になったこと %><br />
-          <div class="col-md-3">
-            <%= fi.text_area :review, style:"text-align: left;", placeholder: "コメントをここに", class: "btn btn-outline-light text-dark", size: "80x5" %>
-          </div>
-        </div>
-        <% end %>
-        <div>
-          <%= f.submit '投稿する', class: "btn btn-outline-light text-dark" %>
+                  </div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= @book.item_caption %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <h2 class="mx-auto">レビュー登録</h2>
+      </div>
+      <%= fields_for :review, @review do |fi| %>
+      <div class="row offset-1">
+        <div class="mx-auto">
+          <table>
+            <tbody>
+              <tr class="text-center">
+                <td>
+                  <h4><%= fi.label :ジャンル, class:"col-form-label" %></h4>
+                  <%= fi.collection_select :genre_id, Genre.all, :id, :name, include_blank: "本のジャンルを選択してください" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <div id="review_star">
+                    <h5><%= f.label :rate,  "星評価 (※必須)" ,id: "e" %></h5>
+                    <span id="star-rate-<%= @review.id %>"></span>
+                    <script>
+                      $('#star-rate-<%= @review.id %>').empty();
+                        $('#review_star').raty({
+                            starOff:  '<%= asset_path('star-off.png') %>',
+                            starOn : '<%= asset_path('star-on.png') %>',
+                            starHalf: '<%= asset_path('star-half.png') %>',
+                            scoreName: 'review[rate]',
+                            half: true,
+                        });
+                    </script>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h5><%= fi.label :レビューや感想、勉強になったこと %></h5>
+                  <%= fi.text_area :review, style:"text-align: left;", placeholder: "コメントをここに", class: "form-control", size: "80x5" %>
+                  <%= f.submit '投稿する', class: "btn btn-outline-primary" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>

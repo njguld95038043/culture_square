@@ -25,7 +25,7 @@
                       <%= @review.book.sales_date %>発売
                     </div>
                     <div>
-                      ¥<%= @review.book.item_price.to_s(:delimited, delimiter: ',') %>
+                      ¥<%= @review.book.item_price.to_s(:delimited, delimiter: ',') %>-
                     </div>
                   </div>
                 </div>
@@ -97,7 +97,7 @@
         <div class="comments-index">
           <%= render 'public/comments/comment', review: @review %>
         </div>
-        <div>
+        <div class="mx-auto">
           <%= render "public/comments/form", review: @review, comment: @comment %>
         </div>
       </div>

@@ -20,7 +20,7 @@
                   <%= @review.book.sales_date %>発売
                 </div>
                 <div>
-                  ¥<%= @review.book.item_price.to_s(:delimited, delimiter: ',') %>
+                  ¥<%= @review.book.item_price.to_s(:delimited, delimiter: ',') %>-
                 </div>
               </div>
             </div>
@@ -48,11 +48,12 @@
       <div class="mx-auto">
         <table>
           <tbody>
-            <tr>
+            <tr class="text-center">
               <td>
-                <h4>評価：<%= @review.rate %>点</h4>
+                <h5>評価：<%= @review.rate %>点</h5>
                 <span id="star-rate-<%= @review.id %>"></span>
                 <script>
+                $('#star-rate-<%= @review.id %>').empty();
                   $('#star-rate-<%= @review.id %>').raty({
                     size: 36,
                     starOff:  '<%= asset_path('star-off.png') %>',
@@ -65,24 +66,20 @@
                 </script>
               </td>
             </tr>
-            <tr>
+            <tr class="text-center">
               <td>
-                <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "本のジャンルを選択してください" %>
+                <h5>ジャンル</h5><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "本のジャンルを選択してください" %>
               </td>
             </tr>
             <tr>
               <td>
-              </td>
-            </tr>
-            <tr>
-              <td>
+                <%= f.text_area :review, class: "form-control", size: "60x5" %>
+                <%= f.submit '内容を保存', class: "btn btn-outline-primary" %>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-  <span class="offset-3"><%= f.text_area :review, rows: '5', style:"text-align: left;", class: "btn btn-outline-light text-dark", size: "80x5" %></span><br />
-  <span class="offset-3"><%= f.submit '内容を保存', class: "btn btn-outline-light text-dark" %></span>
   <% end %>
 </div>
