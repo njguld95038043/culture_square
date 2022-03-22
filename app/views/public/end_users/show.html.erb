@@ -55,7 +55,12 @@
 
       <div class="form-group row">
         <%= render 'public/end_users/relationship', end_user: @end_user %>
-        <div><%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-outline-success btn-block text-dark"%></div>
+        <% if @end_user == current_end_user %>
+          <div>
+            <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-outline-success btn-block text-dark"%>
+          </div>
+        <% end %>
+        <div><%= link_to 'トップへ戻る', root_path, class: "btn btn-outline-secondary btn-block text-dark" %></div>
       </div>
     </div>
 
