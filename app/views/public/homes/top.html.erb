@@ -36,7 +36,7 @@
                   <p class="card-text text-truncate mb-0"><strong>「<%= random_review.book.title %>」</strong></p>
                   <p class="card-text text-truncate offset-1">(<%= random_review.book.author %>. 著)</p>
                   <p class="card-text text-truncate"><%= random_review.end_user.nick_name %></p>
-                  <p>いいね数　　　<i class="fas fa-thumbs-up"></i><%= random_review.favorites.count %>件</p>
+                  <p>いいね数　　　<i class="fas fa-heart"></i><%= random_review.favorites.count %>件</p>
                   <p>閲覧数: <%= random_review.impressions_count %></p>
                   <p id="star-rate-<%= random_review.id %>"></p>
                   <p class="card-text mb-0">

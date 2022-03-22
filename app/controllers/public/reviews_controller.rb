@@ -1,4 +1,8 @@
 class Public::ReviewsController < ApplicationController
+
+  before_action :authenticate_end_user!
+  before_action :ensure_correct_end_user, only: [:edit, :update, :destroy]
+
   def new
     @review = Review.new
     @genres = Genre.all
@@ -67,6 +71,14 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:review, :genre_id, :rate)
+  end
+
+  def ensure_correct_end_user
+    @review = Review.find(params[:id])
+    @end_user = @review.end_user
+    unless @end_user == current_end_user
+      redirect_to root_path
+    end
   end
 
 end
