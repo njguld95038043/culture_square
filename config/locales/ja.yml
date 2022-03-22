@@ -38,6 +38,7 @@ ja:
         occupation: 職業
         birthday: 生年月日
         email: メールアドレス
+        password: パスワード
       chat:
         message: メッセージ
       genre:

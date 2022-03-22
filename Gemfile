@@ -67,3 +67,4 @@ end
 gem 'rakuten_web_service'
 gem 'kaminari','~> 1.2.1'
 gem 'impressionist'
+gem 'devise-i18n'
