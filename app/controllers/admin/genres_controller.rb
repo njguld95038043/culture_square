@@ -7,7 +7,7 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to request.referer, notice: 'Genre have been created!'
+      redirect_to request.referer, notice: 'ジャンルの新規登録に成功しました。'
     else
       @genres = Genre.all
       render :index

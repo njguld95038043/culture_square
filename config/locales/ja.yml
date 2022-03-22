@@ -43,3 +43,5 @@ ja:
         message: メッセージ
       genre:
         name: ジャンル名
+      admin:
+        email: メールアドレス
