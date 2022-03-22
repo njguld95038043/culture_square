@@ -1,4 +1,7 @@
 class Public::RakutenBooksController < ApplicationController
+
+  before_action :authenticate_end_user!
+
   def search
     if params[:keyword].present?
       @rakuten_books = RakutenWebService::Books::Book.search(title: params[:keyword])#keywordをもとに楽天ブックスの書籍から探し出し、その情報を@rakuten_booksへ格納する

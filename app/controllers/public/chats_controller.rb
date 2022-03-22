@@ -1,5 +1,7 @@
 class Public::ChatsController < ApplicationController
 
+  before_action :authenticate_end_user!
+
   def show
     #相手のEndUser情報を取得。
     @end_user = EndUser.find(params[:id])
