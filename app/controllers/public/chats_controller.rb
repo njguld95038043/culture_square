@@ -24,7 +24,11 @@ class Public::ChatsController < ApplicationController
 
   def create
     @chat = current_end_user.chats.new(chat_params)
-    @chat.save
+    if @chat.save
+
+    else
+      render 'error'
+    end
   end
 
   private

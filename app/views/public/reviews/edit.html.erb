@@ -11,7 +11,7 @@
               </div>
               <div class="p-3">
                 <div class="mb-5">
-                  「<%= @review.book.title %>」（ジャンル:<%= @review.genre.name %>）
+                  「<%= @review.book.title %>」
                 </div>
                 <div class="mb-3">
                   <%= @review.book.author %>
@@ -43,6 +43,9 @@
   <div class="row">
     <h2 class="mx-auto">書籍編集</h2>
   </div>
+  <h5 class="error_explanation">
+    <%= render 'layouts/errors', obj: @review %>
+  </h5>
   <%= form_with model: @review, url: review_path(@review), method: :patch, local: true do |f| %>
     <div class="row offset-1">
       <div class="mx-auto">

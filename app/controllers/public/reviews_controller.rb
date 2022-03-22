@@ -14,7 +14,7 @@ class Public::ReviewsController < ApplicationController
     @review = current_end_user.reviews.new(review_params)
     @review.book_id = @book.id
     if @review.save
-      redirect_to review_path(@review), notice: 'Your review have been updated!'
+      redirect_to review_path(@review), notice: 'Your review has been posted!'
     else
       render :new
     end
@@ -36,8 +36,11 @@ class Public::ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @review.update(review_params)
-    redirect_to review_path(@review)
+    if @review.update(review_params)
+      redirect_to review_path(@review), notice: 'Your review has been updated!'
+    else
+      render :edit
+    end
   end
 
   def destroy

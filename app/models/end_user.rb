@@ -8,6 +8,7 @@ class EndUser < ApplicationRecord
   validates :nick_name, presence: true
   validates :gender, presence: true
   validates :occupation, presence: true
+  validates :birthday, presence: true
   validates :email, presence: true
 
   has_many :reviews, dependent: :destroy

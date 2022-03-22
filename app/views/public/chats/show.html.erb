@@ -2,6 +2,9 @@
   <div class="row">
     <div class="col-md-7 mx-auto">
         <h2>Chat with <%= @end_user.nick_name %></h2>
+        <div id="chats_error" style="color: red;">
+          <%= render 'layouts/errors', obj: @chat %>
+        </div>
         <table class="message table">
           <thead>
             <tr>

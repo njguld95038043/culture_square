@@ -21,9 +21,8 @@ class Public::EndUsersController < ApplicationController
   def update
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
-      redirect_to end_user_path(@end_user), notice: 'Your review have been updated!'
+      redirect_to end_user_path(@end_user), notice: 'Your information have been updated!'
     else
-      flash.now[:alert] = 'You must input all items.'
       render :edit
     end
   end

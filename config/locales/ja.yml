@@ -24,3 +24,19 @@ ja:
     - :year
     - :month
     - :day
+  activerecord:
+    attributes:
+      review:
+        genre: ジャンル
+        review: レビュー
+        rate: 星評価
+      comment:
+        comment: コメント
+      end_user:
+        nick_name: ニックネーム
+        gender: 性別
+        occupation: 職業
+        birthday: 生年月日
+        email: メールアドレス
+      chat:
+        message: メッセージ

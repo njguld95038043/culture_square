@@ -2,6 +2,9 @@
   <div class="row">
     <h3 class="p-3"><span class="header">ユーザー情報編集</span></h3>
   </div>
+  <h5 class="error_explanation">
+    <%= render 'layouts/errors', obj: @end_user %>
+  </h5>
 
   <%= form_with model: @end_user, url: end_user_path(@end_user), method: :patch do |f| %>
     <form>
