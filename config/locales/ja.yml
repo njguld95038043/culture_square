@@ -40,3 +40,5 @@ ja:
         email: メールアドレス
       chat:
         message: メッセージ
+      genre:
+        name: ジャンル名

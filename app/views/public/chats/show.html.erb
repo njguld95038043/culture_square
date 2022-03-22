@@ -32,9 +32,8 @@
             <% end %>
           <% end %>
         </table>
-
         <%= form_with model: @chat, local: false do |f| %>
-          <%= f.text_field :message, size:70 %>
+          <%= f.text_field :message, autocomplete: "email", placeholder:"チャットを送る（1文字以上、140文字以内）", class:"form-control" %>
           <%= f.hidden_field :room_id %>
           <%= f.submit "Send", class: "btn btn-outline-success nav-link text-dark" %>
         <% end %>
