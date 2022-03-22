@@ -4,6 +4,7 @@
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
     <form>
       <div class="form-group row">
         <%= f.label :メールアドレス, class:"col-2 offset-3 col-form-label" %><br /><!-- col-form-labelを適用するとフォームコントロールの中央に垂直に配置される -->
