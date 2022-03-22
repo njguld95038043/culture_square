@@ -24,10 +24,6 @@ class Public::ReviewsController < ApplicationController
     end
   end
 
-
-  def index
-  end
-
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new

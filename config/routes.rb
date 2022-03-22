@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
-    resources :reviews do
+    resources :reviews, except: [:index] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
       collection do
