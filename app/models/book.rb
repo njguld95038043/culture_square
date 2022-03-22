@@ -3,7 +3,9 @@ class Book < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   def self.looks(search, word)
-    if search == "perfect_match"
+    if word == ""#空白で検索された場合はallで抽出
+      @book = Book.all
+    elsif search == "perfect_match"
       @book = Book.where("title LIKE?","#{word}")
     elsif search == "forward_match"
       @book = Book.where("title LIKE?","#{word}%")

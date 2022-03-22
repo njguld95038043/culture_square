@@ -53,8 +53,10 @@ class EndUser < ApplicationRecord
   end
 
   def self.looks(search, word)
-    if search == "perfect_match"
-      @end_user = EndUser.where("nick_name LIKE?", "#{word}")
+    if word == ""#空白で検索された場合はallで抽出
+      @end_user = EndUser.all
+    elsif search == "perfect_match"
+      @end_user = EndUser.where("nick_name = ?", "#{word}")
     elsif search == "forward_match"
       @end_user = EndUser.where("nick_name LIKE?","#{word}%")
     elsif search == "backward_match"

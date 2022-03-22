@@ -32,7 +32,9 @@ class Review < ApplicationRecord
   end
 
   def self.looks(search, word)
-    if search == "perfect_match"
+    if word == ""#空白で検索された場合はallで抽出
+      @review = Review.all
+    elsif search == "perfect_match"
       @review = Review.where("review LIKE?","#{word}")
     elsif search == "forward_match"
       @review = Review.where("review LIKE?","#{word}%")
