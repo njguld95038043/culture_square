@@ -42,6 +42,11 @@
             <% end %>
           </tbody>
         </table>
+        <div class="row">
+          <div class="mx-auto">
+            <%= paginate @end_users %>
+          </div>
+        </div>
       <% elsif @range == "Review" %>
         <table class="table table-hover">
           <thead class="table-active">
@@ -71,6 +76,11 @@
             <% end %>
           </tbody>
         </table>
+        <div class="row">
+          <div class="mx-auto">
+            <%= paginate @reviews %>
+          </div>
+        </div>
       <% else %>
         <table class="table table-hover background-color-arange">
           <thead class="table-active">
@@ -108,6 +118,12 @@
             <% end %>
           </tbody>
         </table>
+        <div class="row">
+          <div class="mx-auto">
+            <%= paginate @books %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
+</div>
