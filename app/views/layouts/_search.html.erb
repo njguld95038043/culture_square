@@ -3,6 +3,6 @@
     <%= f.text_field :word, placeholder:"サイト内検索...", class:"form-control" %>
     <%= f.select :range, options_for_select([['User', 'EndUser'], ['Review'], ['Book']]) %>
     <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backword_match"], ["部分一致","partial_match"]]) %>
-    <%= f.submit "検索", class: "btn btn-outline-primary text-dark btn-sm" %>
+    <%= f.submit "検索", class: "btn btn-outline-primary text-dark btn-sm mt-2" %>
   <% end %>
 <% end %>
