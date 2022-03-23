@@ -28,14 +28,14 @@
             <%= link_to 'Users', end_users_path, class: "btn btn-outline-secondary text-dark" %>
           </li>
           <li class="pr-3">
-            <%= link_to 'Log out', destroy_end_user_session_path, method: :delete, class: "btn btn-outline-secondary text-dark" %>
+            <% if unchecked_notifications.any? %>
+              <%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary text-dark", style: "background-color: orange;" %>
+            <% else %>
+              <%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary text-dark" %>
+            <% end %>
           </li>
           <li class="pr-3">
-           <% if unchecked_notifications.any? %>
-             <li><%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary fas fa-bell", style: "color:tomato;" %>
-           <% else %>
-              <li><%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary fas fa-check" %>
-           <% end %>
+            <%= link_to 'Log out', destroy_end_user_session_path, method: :delete, class: "btn btn-outline-secondary text-dark" %>
           </li>
           <li><%= render 'layouts/search' %></li>
         <% elsif admin_signed_in? %>
