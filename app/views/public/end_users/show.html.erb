@@ -158,34 +158,36 @@
           <strong><%= @end_user.nick_name %>さん</strong>のレビュー投稿一覧
         </h3>
       </div>
-      <table class="table table-hover">
-        <thead class="table-active">
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Sales Date</th>
-            <th>Publiser</th>
-            <th>Price</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @end_user.reviews.each do |review| %>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="table-active">
             <tr>
-              <td>
-                <%= link_to (image_tag(review.book.small_image_url)), review.book.item_url %>
-              </td>
-              <td>「<%= review.book.title %>」（ジャンル:<%= review.genre.name %>）</td>
-              <td><%= review.book.author %></td>
-              <td><%= review.book.sales_date %>発売</td>
-              <td><%= review.book.publisher_name %></td>
-              <td>¥<%= review.book.item_price.to_s(:delimited, delimiter: ',') %></td>
-              <td><%= link_to '詳細', review_path(review), class: "btn btn-outline-primary nav-link text-dark btn-block" %></td>
+              <th style='width: 10%;'></th>
+              <th style='width: 20%;'>Title</th>
+              <th style='width: 10%;'>Author</th>
+              <th style='width: 20%;'>Sales Date</th>
+              <th style='width: 10%;'>Publiser</th>
+              <th style='width: 10%;'>Price</th>
+              <th style='width: 10%;'></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @reviews.each do |review| %>
+              <tr>
+                <td>
+                  <%= link_to (image_tag(review.book.small_image_url)), review.book.item_url %>
+                </td>
+                <td>「<%= review.book.title %>」（ジャンル:<%= review.genre.name %>）</td>
+                <td><%= review.book.author %></td>
+                <td><%= review.book.sales_date %>発売</td>
+                <td><%= review.book.publisher_name %></td>
+                <td>¥<%= review.book.item_price.to_s(:delimited, delimiter: ',') %></td>
+                <td><%= link_to '詳細', review_path(review), class: "btn btn-outline-primary nav-link text-dark btn-block" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div class="row">

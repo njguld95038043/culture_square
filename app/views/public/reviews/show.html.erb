@@ -11,11 +11,11 @@
           <thead>
             <tr>
               <th>
-                <div class="d-flex">
-                  <div class="offset-3 mr-5">
+                <div class="row">
+                  <div class="offset-md-3 col-md-3 offset-3">
                     <%= link_to (image_tag(@review.book.large_image_url)), @review.book.item_url %>
                   </div>
-                  <div class="p-3">
+                  <div class="col-md-6 p-3 offset-3">
                     <div class="mb-5">
                       「<%= @review.book.title %>」（ジャンル:<%= @review.genre.name %>）
                     </div>
@@ -95,7 +95,7 @@
       </div>
 
       <div class="row">
-        <h2 class="offset-4">レビューに対するコメント</h2>
+        <h2 class="offset-md-3">レビューに対するコメント</h2>
         <div class="comments-counter offset-1 mt-3">
           <%= render 'public/comments/counter', review: @review %>
         </div>
