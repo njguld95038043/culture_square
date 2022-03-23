@@ -1,31 +1,22 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
-<div class="row">
+<div class='row justify-content-center mx-auto'>
   <%= link_to end_user_path(visitor), data: { 'turbolinks': false } do %>
     <strong><%= image_tag visitor.get_profile_image(50,50) %></strong>
   <% end %>
   <%= link_to end_user_path(visitor), data: { 'turbolinks': false } do %>
     <strong><%= visitor.nick_name %></strong>
   <% end %>さんが
-</div>
-<div class='row justify-content-center mx-auto'>
+
   <% case notification.action %>
     <% when 'follow' then %>
       <p>あなたをフォローしました</p>
     <% when 'favorite' then %>
-      あなたの投稿
-      <%= link_to review_path(notification.review) do %>
-        <%= notification.review.review.truncate(20) %>
-      <% end %>
-      にいいねしました
+      <%= link_to 'あなたの投稿', review_path(notification.review) %>にいいねしました
     <% when 'comment' then %>
       <% if notification.review.end_user_id == visited.id %>
-        あなたの投稿
-          <%= link_to review_path(notification.review) do %>
-            <%= notification.review.review.truncate(20) %>
-          <% end %>
-        にコメントしました。
+        <%= link_to 'あなたの投稿', review_path(notification.review) %>にコメントしました。
       <% end %>
   <% end %>
   <span><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
