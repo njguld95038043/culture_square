@@ -29,7 +29,7 @@
           </li>
           <li class="pr-3">
             <% if unchecked_notifications.any? %>
-              <%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary text-dark", style: "background-color: orange;" %>
+              <%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary bg-warning", style: "color: white;" %>
             <% else %>
               <%= link_to "Notice", notifications_path, class: "btn btn-outline-secondary text-dark" %>
             <% end %>
