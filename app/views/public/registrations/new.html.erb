@@ -1,74 +1,74 @@
 <div class="container background-color p-5 mb-5">
   <div class="row">
-    <h3 class="p-5">新規登録</h2>
+    <h3 class="p-5 mx-auto">新規登録</h2>
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
       <form>
         <div class="form-group row">
-          <%= f.label :ニックネーム, class:"col-sm-2 offset-3 col-form-label" %><br />
+          <%= f.label :ニックネーム, class:"col-12 col-md-2 offset-3 col-form-label" %><br />
           <div class="col-md-5">
            <%= f.text_field :nick_name, autofocus: true, autocomplete: "nick_name", placeholder:"タロウ", class:"form-control" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :性別, class:"col-sm-2 offset-3 col-form-label" %><br />
+          <%= f.label :性別, class:"col-12 col-md-2 offset-3 col-form-label" %><br />
           <div class="col-md-5">
            <%= f.select :gender, EndUser.genders.keys.map {|k| [I18n.t("enums.end_user.gender.#{k}"), k]}.to_a, include_blank: "性別を選択してください" %><!--genderの中にある情報を一つずつ取り出していくイメージ-->
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :職業, class:"col-sm-2 offset-3 col-form-label" %><br />
+          <%= f.label :職業, class:"col-12 col-md-2 offset-3 col-form-label" %><br />
           <div class="col-md-5">
            <%= f.select :occupation, [['会社員・会社役員'], ['自営業'], ['公務員'], ['主婦'], ['学生'], ['フリーター'], ['無職'], ['その他'] ], include_blank: "職業を選択してください" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :生年月日, class:"col-sm-2 offset-3 col-form-label" %>
+          <%= f.label :生年月日, class:"col-12 col-md-2 offset-3 col-form-label" %>
           <div class="col-md-5">
            <%= f.date_select :birthday, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1990, 1, 1) %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :メールアドレス, class:"col-sm-2 offset-3 col-form-label" %><br />
+          <%= f.label :メールアドレス, class:"col-12 col-md-2 offset-3 col-form-label" %><br />
           <div class="col-md-5">
            <%= f.email_field :email, autocomplete: "email", placeholder:"sample@example.com", class:"form-control" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :パスワード, class:"col-sm-2 offset-3 col-form-label" %>
+          <%= f.label :パスワード, class:"col-12 col-md-2 offset-3 col-form-label" %>
           <div class="col-md-5">
            <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :パスワード再確認, class:"col-sm-2 offset-3 col-form-label" %><br />
+          <%= f.label :パスワード再確認, class:"col-12 col-md-2 offset-3 col-form-label" %><br />
           <div class="col-md-5">
            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
           </div>
         </div>
 
         <div class="form-group row">
-          <div class="col-md-5 offset-5">
+          <div class="col-10 col-md-5 offset-5">
            <%= f.submit "新規登録", class: "btn btn-outline-success nav-link text-success btn-block text-dark" %>
           </div>
         </div>
       </form>
   <% end %>
   <div class="row mt-3">
-    <div class="col-3 offset-2">
+    <div class="col-10 col-md-3 offset-3">
       <h6><span class="header">既に登録済みの方</span></h6>
     </div>
   </div>
   <div class="row mt-3">
-    <div class="col-5 offset-3">
+    <div class="col-10 col-md-5 offset-3">
       <%= link_to "こちら", new_end_user_session_path, class: "btn btn-outline-primary text-dark" %> からログインしてください。
     </div>
   </div>

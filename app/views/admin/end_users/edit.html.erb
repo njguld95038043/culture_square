@@ -9,8 +9,8 @@
   <%= form_with model: @end_user, url: admin_end_user_path(@end_user), method: :patch do |f| %>
     <form>
       <div class="form-group row">
-        <%= f.label :ユーザーID, class:"col-sm-2 col-form-label" %>
-        <div class="col-md-3">
+        <%= f.label :ユーザーID, class:"col-6 col-md-2 col-form-label" %>
+        <div class="col-6 col-md-5 mt-2">
           <%= @end_user.id %>
         </div>
       </div>

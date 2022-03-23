@@ -4,51 +4,51 @@
   </div>
 
   <div class="form-group row">
-    <div class="col-2">ユーザーID</div>
-    <div class="col-2"><%= @end_user.id%></div>
+    <div class="col-6 col-md-2">ユーザーID</div>
+    <div class="col-6 col-md-6"><%= @end_user.id%></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-2">ユーザー画像</div>
-    <div class="col-2"><%= image_tag @end_user.get_profile_image(80,80) %></div>
+    <div class="col-6 col-md-2">ユーザー画像</div>
+    <div class="col-6 col-md-6"><%= image_tag @end_user.get_profile_image(80,80) %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-2">ニックネーム</div>
-    <div class="col-5"><%= @end_user.nick_name %></div>
+    <div class="col-6 col-md-2">ニックネーム</div>
+    <div class="col-6 col-md-6"><%= @end_user.nick_name %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-2">メールアドレス</div>
-    <div class="col-5"><%= @end_user.email %></div>
+    <div class="col-6 col-md-2">メールアドレス</div>
+    <div class="col-6 col-md-6"><%= @end_user.email %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-2">性別</div>
-    <div class="col-5"><%= @end_user.gender_i18n %></div>
+    <div class="col-6 col-md-2">性別</div>
+    <div class="col-6 col-md-6"><%= @end_user.gender_i18n %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-2">年齢</div>
-    <div class="col-5"><%= @end_user.calc_age %></div>
+    <div class="col-6 col-md-2">年齢</div>
+    <div class="col-6 col-md-6"><%= @end_user.calc_age %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-2">職業</div>
-    <div class="col-5"><%= @end_user.occupation %></div>
+    <div class="col-6 col-md-2">職業</div>
+    <div class="col-6 col-md-6"><%= @end_user.occupation %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-2">ユーザーステータス</div>
+    <div class="col-7 col-md-2">ユーザーステータス</div>
     <% if @end_user.is_deleted == false %>
-      <div class="col-2 text-success">有効</div>
+      <div class="col-3 text-success">有効</div>
     <% else %>
-      <div class="col-2 text-secondary">退会</div>
+      <div class="col-3 text-secondary">退会</div>
     <% end %>
   </div>
 
   <div class="row">
-    <div class="col-7 offset-2">
+    <div class="col-12 offset-2">
       <%= link_to "編集する", edit_admin_end_user_path(@end_user.id), class: "btn btn-outline-success text-dark" %>
     </div>
   </div>
