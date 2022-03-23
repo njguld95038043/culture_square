@@ -57,10 +57,9 @@
         <%= render 'public/end_users/relationship', end_user: @end_user %>
         <% if @end_user == current_end_user %>
           <div>
-            <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-outline-success btn-block text-dark"%>
+            <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-outline-success text-dark mr-2 mt-2" %>
           </div>
         <% end %>
-        <div><%= link_to 'トップへ戻る', root_path, class: "btn btn-outline-secondary btn-block text-dark" %></div>
       </div>
     </div>
 
@@ -153,6 +152,9 @@
 
   <div class="row">
     <div class="col-12 col-md-12">
+      <div class="row mb-3">
+        <h3 class="mx-auto"><strong><%= @end_user.nick_name %>さん</strong>のレビュー投稿一覧</h3>
+      </div>
       <table class="table table-hover">
         <thead class="table-active">
           <tr>
@@ -181,6 +183,11 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= link_to 'トップへ戻る', root_path, class: "btn btn-outline-secondary text-dark" %>
     </div>
   </div>
 </div>
