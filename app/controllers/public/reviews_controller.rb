@@ -20,7 +20,7 @@ class Public::ReviewsController < ApplicationController
     if @review.save
       redirect_to review_path(@review), notice: 'Your review has been posted!'
     else
-      render :new
+      redirect_to request.referer, alert: 'エラーが発生しました。項目をすべて入力してください。'
     end
   end
 
