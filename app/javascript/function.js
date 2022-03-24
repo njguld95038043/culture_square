@@ -1,18 +1,18 @@
-import book1 from 'images/book1.jpg'
-import book2 from 'images/book2.jpg'
-import book3 from 'images/book3.jpg'
-import book4 from 'images/book4.jpg'
+import book5 from 'images/book5.jpg'
+import book6 from 'images/book6.jpg'
+import book7 from 'images/book7.jpg'
+import book8 from 'images/book8.jpg'
 
 $(document).on('turbolinks:load', function () {
     $('#vegas-body').vegas({
     slides: [
-        { src: book1 },
-        { src: book2 },
-        { src: book3 },
-        { src: book4 },
+        { src: book5 },
+        { src: book6 },
+        { src: book7 },
+        { src: book8 },
     ],
     transition: [ 'blur2' ],
-    animation: 'kenburnsDown',
+    animation: 'kenburnsUpRight',
     delay: 10000,
     animationDuration: 10000,
   });
