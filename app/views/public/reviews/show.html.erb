@@ -33,6 +33,7 @@
               </th>
             </tr>
           </thead>
+          <% if @review.book.item_caption.present? %>
           <tbody>
             <tr>
               <td>
@@ -40,6 +41,7 @@
               </td>
             </tr>
           </tbody>
+          <% end %>
         </table>
       </div>
 
@@ -102,7 +104,7 @@
         <div id="comments_error" style="color: red;">
           <%= render 'layouts/errors', obj: @review %>
         </div>
-        <div class="comments-index">
+        <div class="comments-index col-md-12">
           <%= render 'public/comments/comment', review: @review %>
         </div>
         <div class="mx-auto">
