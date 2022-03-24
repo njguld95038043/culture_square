@@ -1,25 +1,31 @@
-<% review.comments.each do |comment| %>
-<table class="table table-hover table-responsive">
-  <tbody>
-    <tr>
-      <td class="col-1">
-        <%= image_tag comment.end_user.get_profile_image(60,60) %>
-      </td>
-      <td class="col-3">
-        <%= comment.end_user.nick_name %>
-      </td>
-      <td class="col-1">
-        <%= comment.created_at.strftime('%Y/%m/%d') %>
-      </td>
-      <td class="col-6">
-        <span class="comment-text-wrap"><%= comment.comment %></span>
-      </td>
-      <td class="col-1">
-        <% if comment.end_user == current_end_user %>
-          <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, remote:true, class: "btn btn-outline-danger nav-link text-dark btn-block" %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<% end %>
+<div class="row">
+  <div class="col-12 col-md-12">
+    <% review.comments.each do |comment| %>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <td class="col-1">
+              <%= image_tag comment.end_user.get_profile_image(60,60) %>
+            </td>
+            <td class="col-2">
+              <%= comment.end_user.nick_name %>
+            </td>
+            <td class="col-1">
+              <%= comment.created_at.strftime('%Y/%m/%d') %>
+            </td>
+            <td class="col-6 comment-text">
+              <span><%= comment.comment %></span>
+            </td>
+            <td class="col-2">
+              <% if comment.end_user == current_end_user %>
+                <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, remote:true, class: "btn btn-outline-danger nav-link text-dark btn-block" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <% end %>
+  </div>
+</div>

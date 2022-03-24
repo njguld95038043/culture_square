@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :rate, presence: true
-  validates :review, presence: true
+  validates :review, length: { minimum: 1, maximum: 400 }
 
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
   scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
