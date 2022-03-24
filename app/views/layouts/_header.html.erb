@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light background-color-header-footer p-3 mb-5">
-  <div class="col-2 col-md-1 pl-5">
+  <div class="col-2 col-md-1 offset-md-1">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <h2>Culture Square</h2>
-      <p>- Let's boost your cultures!! -</p>
+    <p class="logo"></p>
     <% end %>
   </div>
   <div class="col-10 col-md-11">
@@ -10,9 +9,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mx-auto">
+      <ul class="navbar-nav">
         <% if end_user_signed_in? %>
-          <h3 class="ml-5 pr-5">Welcome to<br />
+          <h3 class="pr-5 pl-5">Welcome to<br />
             <strong><%= current_end_user.nick_name %></strong>さん!
           </h3>
           <li class="pr-3">
