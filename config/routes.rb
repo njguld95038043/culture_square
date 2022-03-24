@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'searches/search_result'
-  end
   devise_for  :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -22,6 +19,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     patch "/end_users/withdraw" => "end_users#withdraw"
+    get 'searches/search_result'
     resources :end_users, only: [:edit, :update, :index, :show] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
