@@ -14,7 +14,7 @@ class Public::EndUsersController < ApplicationController
   end
 
   def index
-    @end_users = EndUser.page(params[:page]).per(5)
+    @end_users = EndUser.page(params[:page]).per(10)
   end
 
   def edit

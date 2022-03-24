@@ -9,7 +9,7 @@
 
 #theTarget{
   width: 100%;
-  height: 600px;
+  height: 50vh;
 }
 
 .image1 {
@@ -209,11 +209,11 @@ border-radius: 5px;
 }
 
 .follower-bottom {
-  margin-bottom: 300px;
+  margin-bottom: 320px;
 }
 
 .following-bottom {
-  margin-bottom: 300px;
+  margin-bottom: 320px;
 }
 
 .flash-message {
@@ -245,4 +245,10 @@ border-radius: 5px;
 }
 .comment-text {
   overflow-wrap: break-word;;
+}
+.notification-bottom {
+  margin-bottom: 320px;
+}
+.toppage-bottom {
+  margin-bottom: 150px;
 }
