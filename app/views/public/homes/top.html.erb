@@ -28,7 +28,7 @@
       </ul>
       <div class="tab-content">
         <div id="panel-0" class="tab-pane active">
-          <div class="d-flex flex-wrap mt-3 ml-4">
+          <div class="d-flex flex-wrap mt-3 ml-2">
             <% @random_reviews.each do |random_review| %>
               <div class="card card-ranking mr-3 mt-2 mx-auto" style="width: 13rem;">
                 <p class="mx-auto mt-1"><%= link_to (image_tag(random_review.book.large_image_url)), random_review.book.item_url %></p>
