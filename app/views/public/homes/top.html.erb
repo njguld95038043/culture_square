@@ -13,11 +13,11 @@
 
     <div class="col-12 col-md-10">
       <ul class="nav nav-tabs justify-content-center">
-        <li class="nav-item">
+        <li class="nav-item mt-md-0 mt-3">
           <a id="genre_panel_0" href="#panel-0" class="nav-link active" data-toggle="tab"><span class="text-dark">総合</span></a>
         </li>
         <% @genres.each do |genre| %>
-          <li class="nav-item ml-4">
+          <li class="nav-item ml-4 mt-md-0 mt-3">
             <a id="genre_panel_<%=genre.id%>" href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab">
               <span class="text-dark">
                 <%= genre.name %>
