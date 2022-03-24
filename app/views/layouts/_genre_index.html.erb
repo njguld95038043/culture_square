@@ -1,14 +1,10 @@
-<div class="container">
-  <div class="row">
-      <div class="card">
-        <div class="card-header">ジャンル</div>
-        <div class="card-body">
-          <a href="#panel-0" class="nav-link" data-toggle="tab" onclick="changeGenrePanelAttribute(0)"><span class="text-blue">総合</span></a>
-          <% genres.each_with_index do |genre, index| %><!--each_with_indexを使うことにより、eachで回す回数をindexへ代入している。-->
-            <a href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab" onclick="changeGenrePanelAttribute(<%=genre.id%>)"><span class="text-blue"><%= genre.name %></span></a>
-          <% end %>
-        </div>
-      </div>
+<div class="card">
+  <div class="card-header text-center">ジャンル</div>
+  <div class="card-body text-center">
+    <a href="#panel-0" class="nav-link" data-toggle="tab" onclick="changeGenrePanelAttribute(0)"><span class="text-blue">総合</span></a>
+    <% genres.each_with_index do |genre, index| %><!--each_with_indexを使うことにより、eachで回す回数をindexへ代入している。-->
+      <a href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab" onclick="changeGenrePanelAttribute(<%=genre.id%>)"><span class="text-blue"><%= genre.name %></span></a>
+    <% end %>
   </div>
 </div>
 

@@ -30,7 +30,7 @@
         <div id="panel-0" class="tab-pane active">
           <div class="d-flex flex-wrap mt-3 ml-4">
             <% @random_reviews.each do |random_review| %>
-              <div class="card card-ranking mr-2 mt-2" style="width: 13rem;">
+              <div class="card card-ranking mr-3 mt-2 mx-auto" style="width: 13rem;">
                 <p class="mx-auto mt-1"><%= link_to (image_tag(random_review.book.large_image_url)), random_review.book.item_url %></p>
                 <div class="card-body card-ranking-body pt-0">
                   <p class="card-text text-truncate mb-0"><strong>「<%= random_review.book.title %>」</strong></p>
