@@ -1,11 +1,11 @@
 $(document).on('turbolinks:load', function () {
   $("#theTarget").skippr({
-    transition : 'slide',
+    transition : 'fade',
     speed : 1000,
     easing : 'easeOutQuart',
-    navType : 'block',
+    navType : 'bubble',
     childrenElementType : 'div',
-    arrows : true,
+    arrows : false,
     autoPlay : true,
     autoPlayDuration : 3000,
     keyboardOnAlways : true,

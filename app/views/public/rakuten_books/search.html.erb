@@ -1,5 +1,8 @@
-<div class="container background-color p-5 mb-5">
-  <div class="row mt-5">
+<div class="container background-color rakuten-books-search p-5">
+  <div class="row">
+    <h2 class="p-3 mx-auto">Search results for　" <strong><%= params[:keyword] %></strong> "</h2>
+  </div>
+  <div class="row mt-4">
     <div class="col-12 col-md-12 table-responsive">
       <table class="table table-hover background-color-arange">
         <thead class="table-active">
@@ -56,7 +59,7 @@
   </div>
   <div class="row">
     <div class="mx-auto mt-3">
-      <%= link_to '戻る', root_path, class: "btn btn-outline-secondary text-dark" %>
+      <%= link_to 'トップへ戻る', root_path, class: "btn btn-outline-secondary text-dark" %>
     </div>
   </div>
 </div>

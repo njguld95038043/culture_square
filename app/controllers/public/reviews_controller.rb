@@ -46,7 +46,7 @@ class Public::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: 'レビューの削除に成功しました!'
   end
 
   def sort_new
