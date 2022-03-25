@@ -1,55 +1,56 @@
 <div class="container background-color p-5 mb-5">
   <div class="row">
-    <h3 class="p-4"><%= @end_user.nick_name %>さんのユーザー情報</h3>
+    <h3 class="p-4 mx-auto"><%= @end_user.nick_name %>さんのユーザー情報</h3>
   </div>
 
   <div class="form-group row">
-    <div class="col-6 col-md-2">ユーザーID</div>
-    <div class="col-6 col-md-6"><%= @end_user.id%></div>
+    <div class="col-6 col-md-2 offset-md-4">ユーザーID</div>
+    <div class="col-6 col-md-3 offset-md-1"><%= @end_user.id%></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-6 col-md-2">ユーザー画像</div>
-    <div class="col-6 col-md-6"><%= image_tag @end_user.get_profile_image(80,80) %></div>
+    <div class="col-6 col-md-2 offset-md-4">ユーザー画像</div>
+    <div class="col-6 col-md-5 offset-md-1"><%= image_tag @end_user.get_profile_image(80,80) %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-6 col-md-2">ニックネーム</div>
-    <div class="col-6 col-md-6"><%= @end_user.nick_name %></div>
+    <div class="col-6 col-md-2 offset-md-4">ニックネーム</div>
+    <div class="col-6 col-md-5 offset-md-1"><%= @end_user.nick_name %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-6 col-md-2">メールアドレス</div>
-    <div class="col-6 col-md-6"><%= @end_user.email %></div>
+    <div class="col-6 col-md-2 offset-md-4">メールアドレス</div>
+    <div class="col-6 col-md-5 offset-md-1"><%= @end_user.email %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-6 col-md-2">性別</div>
-    <div class="col-6 col-md-6"><%= @end_user.gender_i18n %></div>
+    <div class="col-6 col-md-2 offset-md-4">性別</div>
+    <div class="col-6 col-md-5 offset-md-1"><%= @end_user.gender_i18n %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-6 col-md-2">年齢</div>
-    <div class="col-6 col-md-6"><%= @end_user.calc_age %></div>
+    <div class="col-6 col-md-2 offset-md-4">年齢</div>
+    <div class="col-6 col-md-5 offset-md-1"><%= @end_user.calc_age %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-6 col-md-2">職業</div>
-    <div class="col-6 col-md-6"><%= @end_user.occupation %></div>
+    <div class="col-6 col-md-2 offset-md-4">職業</div>
+    <div class="col-6 col-md-5 offset-md-1"><%= @end_user.occupation %></div>
   </div>
 
   <div class="form-group row">
-    <div class="col-7 col-md-2">ユーザーステータス</div>
+    <div class="col-7 col-md-2 offset-md-4">ユーザーステータス</div>
     <% if @end_user.is_deleted == false %>
-      <div class="col-3 text-success">有効</div>
+      <div class="col-3 text-success col-md-5 offset-md-1">有効</div>
     <% else %>
-      <div class="col-3 text-secondary">退会</div>
+      <div class="col-3 text-secondary col-md-5 offset-md-1">退会</div>
     <% end %>
   </div>
 
   <div class="row">
-    <div class="col-12 offset-2">
+    <div class="col-12 offset-2 col-md-5 offset-md-7">
       <%= link_to "編集する", edit_admin_end_user_path(@end_user.id), class: "btn btn-outline-success text-dark" %>
+      <%= link_to '戻る', admin_end_users_path, class: "btn btn-outline-secondary text-dark offset-md-1" %>
     </div>
   </div>
 </div>

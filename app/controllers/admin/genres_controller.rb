@@ -19,8 +19,12 @@ class Admin::GenresController < ApplicationController
 
   def destroy
     @genre = Genre.find(params[:id])
-    @genre.destroy
-    redirect_to request.referer
+    if @genre.destroy
+      redirect_to request.referer, notice: 'ジャンルの削除に成功しました。'
+    else
+      @genres = Genre.all
+      render :index
+    end
   end
 
   private

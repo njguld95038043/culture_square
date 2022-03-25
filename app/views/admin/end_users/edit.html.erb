@@ -1,6 +1,6 @@
 <div class="container background-color p-5 mb-5">
   <div class="row">
-    <h3 class="p-3"><%= @end_user.nick_name %>さんのユーザー情報編集</h3>
+    <h3 class="p-3 mx-auto"><%= @end_user.nick_name %>さんのユーザー情報編集</h3>
   </div>
   <h5 class="error_explanation">
     <%= render 'layouts/errors', obj: @end_user %>
@@ -9,50 +9,50 @@
   <%= form_with model: @end_user, url: admin_end_user_path(@end_user), method: :patch do |f| %>
     <form>
       <div class="form-group row">
-        <%= f.label :ユーザーID, class:"col-6 col-md-2 col-form-label" %>
-        <div class="col-6 col-md-5 mt-2">
+        <%= f.label :ユーザーID, class:"col-6 col-md-2 col-form-label col-md-2 offset-md-4" %>
+        <div class="col-6 mt-2 col-md-5 offset-md-1">
           <%= @end_user.id %>
         </div>
       </div>
 
       <div class="form-group row">
-        <%= f.label :ニックネーム, class:"col-sm-2 col-form-label" %>
-          <div class="col-md-3">
+        <%= f.label :ニックネーム, class:"col-6 col-form-label col-md-2 offset-md-4" %>
+          <div class="col-md-3 offset-md-1">
            <%= f.text_field :nick_name, autofocus: true, class:"form-control" %>
           </div>
       </div>
 
       <div class="form-group row">
-        <%= f.label :性別, class:"col-sm-2 col-form-label" %>
-        <div class="col-md-3">
+        <%= f.label :性別, class:"col-sm-2 col-form-label col-md-2 offset-md-4" %>
+        <div class="col-md-3 offset-md-1">
          <%= f.select :gender, EndUser.genders.keys.map {|k| [I18n.t("enums.end_user.gender.#{k}"), k]}.to_a, include_blank: "性別を選択してください" %><!--genderの中にある情報を一つずつ取り出していくイメージ-->
         </div>
       </div>
 
       <div class="form-group row">
-        <%= f.label :職業, class:"col-sm-2 col-form-label" %>
-        <div class="col-md-3">
+        <%= f.label :職業, class:"col-sm-2 col-form-label col-md-2 offset-md-4" %>
+        <div class="col-md-3 offset-md-1">
          <%= f.select :occupation, [['会社員・会社役員'], ['自営業'], ['公務員'], ['主婦'], ['学生'], ['フリーター'], ['無職'], ['その他'] ], include_blank: "職業を選択してください" %>
         </div>
       </div>
 
       <div class="form-group row">
-        <%= f.label :生年月日, class:"col-sm-2 col-form-label" %>
-        <div class="col-md-3">
+        <%= f.label :生年月日, class:"col-sm-2 col-form-label col-md-2 offset-md-4" %>
+        <div class="col-md-3 offset-md-1">
          <%= f.date_select :birthday, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1990, 1, 1) %>
         </div>
       </div>
 
       <div class="form-group row">
-        <%= f.label :メールアドレス, class:"col-sm-2 col-form-label" %>
-        <div class="col-md-3">
+        <%= f.label :メールアドレス, class:"col-sm-2 col-form-label col-md-2 offset-md-4" %>
+        <div class="col-md-3 offset-md-1">
          <%= f.email_field :email, autocomplete: "email", placeholder:"sample@example.com", class:"form-control" %>
         </div>
       </div>
 
       <div class="form-group row">
-        <%= f.label :会員ステータス, class:"col-sm-2 col-form-label"%>
-        <div class="col-md-3">
+        <%= f.label :会員ステータス, class:"col-sm-2 col-form-label col-md-2 offset-md-4" %>
+        <div class="col-md-3 offset-md-1">
           <%= f.radio_button :is_deleted, "false"%>
           <%= f.label :is_deleted, "有効", class: "text-secondary mr-3"%>
           <%= f.radio_button :is_deleted, "true"%>
@@ -61,8 +61,9 @@
       </div>
 
       <div class="row">
-        <div class="col-3 offset-2">
+        <div class="col-12 offset-2 col-md-5 offset-md-7">
           <%= f.submit "変更を保存", class: "btn btn-outline-success text-dark" %>
+          <%= link_to '戻る', admin_end_user_path(@end_user), class: "btn btn-outline-secondary text-dark offset-md-1" %>
         </div>
       </div>
     </form>

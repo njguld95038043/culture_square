@@ -30,7 +30,7 @@ class Public::SessionsController < Devise::SessionsController
     @end_user = EndUser.find_by(email: params[:end_user][:email])
     if @end_user
       if @end_user.valid_password?(params[:end_user][:password]) && @end_user.is_deleted == true
-        flash[:notice] = "退会済みの為、再登録が必要です。"
+        flash[:alert] = "退会済みの為、再登録が必要です。"
         redirect_to new_end_user_registration_path
       end
     end

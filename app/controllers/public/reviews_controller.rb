@@ -18,9 +18,9 @@ class Public::ReviewsController < ApplicationController
     @review = current_end_user.reviews.new(review_params)
     @review.book_id = @book.id
     if @review.save
-      redirect_to review_path(@review), notice: 'Your review has been posted!'
+      redirect_to review_path(@review), notice: 'レビュー登録に成功しました!'
     else
-      redirect_to request.referer, alert: 'エラーが発生しました。項目をすべて入力してください。'
+      redirect_to request.referer, alert: 'レビュー登録項目をすべて入力してください。'
     end
   end
 
@@ -37,7 +37,7 @@ class Public::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to review_path(@review), notice: 'Your review has been updated!'
+      redirect_to review_path(@review), notice: 'レビュー内容の更新に成功しました!'
     else
       render :edit
     end

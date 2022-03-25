@@ -3,8 +3,8 @@
     <h3 class="p-3 mx-auto"><span class="header">Users</span></h3>
   </div>
 
-  <div class="row">
-    <div class="col-12 col-md-12">
+  <!--<div class="row">-->
+    <div class="col-12 col-md-12 table-responsive">
       <table class="table table-hover">
         <thead class="table-active">
           <tr>
@@ -22,7 +22,11 @@
           <% @end_users.each do |end_user| %>
             <tr>
               <td><%= end_user.id %></td>
-              <td><%= image_tag end_user.get_profile_image(80,80) %></td>
+              <td>
+                <%= link_to admin_end_user_path(end_user) do %>
+                  <%= image_tag end_user.get_profile_image(80,80) %>
+                <% end %>
+              </td>
               <td><u><%=link_to end_user.nick_name, admin_end_user_path(end_user.id), class: "text-dark" %></u></td>
               <td><%= end_user.gender_i18n %></td>
               <td><%= end_user.calc_age %>歳</td>
@@ -38,5 +42,5 @@
         </tbody>
       </table>
     </div>
-  </div>
+  <!--</div>-->
 </div>
