@@ -1,4 +1,4 @@
-<div class="container background-color p-5 mb-5">
+<div class="container background-color chat-bottom p-5">
   <div class="row">
     <div class="col-md-7 mx-auto">
         <h2>Chat with <%= @end_user.nick_name %></h2>
@@ -33,9 +33,9 @@
           <% end %>
         </table>
         <%= form_with model: @chat, local: false do |f| %>
-          <%= f.text_field :message, autocomplete: "email", placeholder:"チャットを送る（1文字以上、140文字以内）", class:"form-control" %>
+          <%= f.text_field :message, autocomplete: "email", placeholder:"チャットを送る（140文字以内）", class:"form-control" %>
           <%= f.hidden_field :room_id %>
-          <%= f.submit "Send", class: "btn btn-outline-success nav-link text-dark mt-2" %>
+          <%= f.submit "送信", class: "btn btn-outline-success nav-link text-dark mt-2" %>
         <% end %>
     </div>
   </div>
