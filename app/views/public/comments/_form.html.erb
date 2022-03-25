@@ -1,4 +1,4 @@
 <%= form_with model: [review, comment], local:false do |f| %>
-  <%= f.text_area :comment, style:"text-align: left;", placeholder: "コメントをここに", class: "form-control", size: "100x5" %>
+  <%= f.text_area :comment, style:"text-align: left;", placeholder: "コメントをここに（140文字以内）", class: "form-control", size: "100x5" %>
   <p><%= f.submit "送信する", class: "btn btn-outline-primary text-dark mt-2" %></p>
 <% end %>
