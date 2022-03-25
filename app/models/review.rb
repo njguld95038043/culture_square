@@ -49,7 +49,7 @@ class Review < ApplicationRecord
 
   def create_notification_favorite!(current_end_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and review_id = ? and action = ? ", current_end_user.id, end_user_id, id, 'like'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and review_id = ? and action = ? ", current_end_user.id, end_user_id, id, 'favorite'])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_end_user.active_notifications.new(
