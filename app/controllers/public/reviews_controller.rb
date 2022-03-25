@@ -20,7 +20,7 @@ class Public::ReviewsController < ApplicationController
     if @review.save
       redirect_to review_path(@review), notice: 'レビュー登録に成功しました!'
     else
-      redirect_to request.referer, alert: '項目をすべて正しく入力してください。'
+      redirect_to request.referer, alert: '項目はすべて正しく入力してください。'
     end
   end
 
