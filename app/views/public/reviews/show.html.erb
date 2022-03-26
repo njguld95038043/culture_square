@@ -6,7 +6,7 @@
     <div class="col-12 col-md-10">
       <%= render 'layouts/rakuten_books_search' %>
       <div class="row">
-        <h2 class="mx-auto">書籍詳細</h2>
+        <h2 class="mx-auto mt-3">書籍詳細</h2>
         <table class="table table-hover">
           <thead>
             <tr>
@@ -44,7 +44,7 @@
       </div>
 
       <div class="row">
-        <h2 class="mx-auto">
+        <h2 class="mx-auto mt-3">
           <%= @review.end_user.nick_name %>さんのレビュー
           <span class="review_font">
             （閲覧数: <%= @review.impressions_count %>）
@@ -95,7 +95,7 @@
       </div>
 
       <div class="row">
-        <h2 class="offset-md-3">レビューに対するコメント</h2>
+        <h2 class="offset-md-3 mt-3">レビューに対するコメント</h2>
         <div class="comments-counter offset-1 mt-3">
           <%= render 'public/comments/counter', review: @review %>
         </div>
