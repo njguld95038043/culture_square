@@ -13,41 +13,41 @@
       </div>
 
       <div class="form-group row">
-        <div>ニックネーム</div>
-        <div class="col-12 ">
+        <div class="col-md-5">ニックネーム</div>
+        <div class="col-md-7 end-user-email">
           <strong><%= @end_user.nick_name %></strong>
         </div>
       </div>
 
       <div class="form-group row">
-        <div>メールアドレス</div>
-        <div class="col-12 ">
-          <strong><%= @end_user.email %></strong>
+        <div class="col-md-5">メールアドレス</div>
+        <div class="col-md-7">
+          <strong><span class="end-user-email"><%= @end_user.email %></span></strong>
         </div>
       </div>
       <div class="form-group row">
-        <div>性別</div>
-        <div class="col-7">
+        <div class="col-md-5">性別</div>
+        <div class="col-md-7 col-7">
           <strong><%= @end_user.gender_i18n %></strong>
         </div>
       </div>
 
       <div class="form-group row">
-        <div>年齢</div>
-        <div class="col-5">
+        <div class="col-md-5">年齢</div>
+        <div class="col-md-7 col-5">
           <strong><%= @end_user.calc_age %></strong> 歳
         </div>
       </div>
 
       <div class="form-group row">
-        <div>職業</div>
-        <div class="col-12">
+        <div class="col-md-5">職業</div>
+        <div class="col-md-7">
           <strong><%= @end_user.occupation %></strong>
         </div>
       </div>
 
       <div class="form-group row">
-        <div>ユーザーステータス</div>
+        <div class="col-md-5">ユーザステータス</div>
         <% if @end_user.is_deleted == false %>
           <div class="col-5 text-success">
             <strong>有効</strong>
@@ -58,15 +58,15 @@
       </div>
 
       <div class="form-group row">
-        <div>フォロー</div>
-        <div class="col-5">
+        <div class="col-md-5">フォロー</div>
+        <div class="col-md-5 col-5">
           <strong><%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %></strong>
         </div>
       </div>
 
       <div class="form-group row">
-        <div>フォロワー</div>
-        <div class="col-5">
+        <div class="col-md-5">フォロワー</div>
+        <div class="col-md-5 col-5">
           <strong><%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %></strong>
         </div>
       </div>
@@ -74,8 +74,8 @@
       <div class="form-group row">
         <%= render 'public/end_users/relationship', end_user: @end_user %>
         <% if @end_user == current_end_user %>
-          <div>
-            <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-outline-success text-dark mr-2 mt-2" %>
+          <div class="col-md-6 offset-md-5">
+            <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-outline-success text-dark btn-block mt-2" %>
           </div>
         <% end %>
       </div>
