@@ -4,6 +4,14 @@
     <p class="logo"></p>
     <% end %>
   </div>
+  <% if end_user_signed_in? %>
+    <div class="header-search">
+      <h5>Welcome to<br />
+        <strong><%= current_end_user.nick_name %></strong>さん!
+      </h5>
+      <%= render 'layouts/search' %>
+    </div>
+  <% end %>
   <div class="col-10 col-md-10">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

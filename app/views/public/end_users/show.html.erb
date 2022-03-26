@@ -3,7 +3,9 @@
     <div class="col-12 col-md-5 p-5">
 
       <div class="row">
-        <h3 class="col-12 pb-3"><%= @end_user.nick_name %>さんの情報</h3>
+        <h3 class="col-12 pb-3">
+          <strong><%= @end_user.nick_name %></strong> さんの情報
+        </h3>
       </div>
 
       <div class="form-group row">
@@ -12,32 +14,44 @@
 
       <div class="form-group row">
         <div>ニックネーム</div>
-        <div class="col-12 "><%= @end_user.nick_name %></div>
+        <div class="col-12 ">
+          <strong><%= @end_user.nick_name %></strong>
+        </div>
       </div>
 
       <div class="form-group row">
         <div>メールアドレス</div>
-        <div class="col-12 "><%= @end_user.email %></div>
+        <div class="col-12 ">
+          <strong><%= @end_user.email %></strong>
+        </div>
       </div>
       <div class="form-group row">
         <div>性別</div>
-        <div class="col-7"><%= @end_user.gender_i18n %></div>
+        <div class="col-7">
+          <strong><%= @end_user.gender_i18n %></strong>
+        </div>
       </div>
 
       <div class="form-group row">
         <div>年齢</div>
-        <div class="col-5"><%= @end_user.calc_age %>歳</div>
+        <div class="col-5">
+          <strong><%= @end_user.calc_age %></strong> 歳
+        </div>
       </div>
 
       <div class="form-group row">
         <div>職業</div>
-        <div class="col-12"><%= @end_user.occupation %></div>
+        <div class="col-12">
+          <strong><%= @end_user.occupation %></strong>
+        </div>
       </div>
 
       <div class="form-group row">
         <div>ユーザーステータス</div>
         <% if @end_user.is_deleted == false %>
-          <div class="col-5 text-success">有効</div>
+          <div class="col-5 text-success">
+            <strong>有効</strong>
+          </div>
         <% else %>
           <div class="col-5 text-secondary">退会</div>
         <% end %>
@@ -45,12 +59,16 @@
 
       <div class="form-group row">
         <div>フォロー</div>
-        <div class="col-5"><%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %></div>
+        <div class="col-5">
+          <strong><%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %></strong>
+        </div>
       </div>
 
       <div class="form-group row">
         <div>フォロワー</div>
-        <div class="col-5"><%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %></div>
+        <div class="col-5">
+          <strong><%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %></strong>
+        </div>
       </div>
 
       <div class="form-group row">
@@ -191,7 +209,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="mx-auto">
+    <div class="mx-auto mt-3">
       <%= link_to 'トップへ戻る', root_path, class: "btn btn-outline-secondary text-dark" %>
     </div>
   </div>
