@@ -1,5 +1,4 @@
 class Public::FavoritesController < ApplicationController
-
   before_action :authenticate_end_user!
 
   def create
@@ -14,5 +13,4 @@ class Public::FavoritesController < ApplicationController
     @favorite = current_end_user.favorites.find_by(review_id: @review.id)
     @favorite.destroy
   end
-
 end

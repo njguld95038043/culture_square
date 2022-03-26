@@ -45,6 +45,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -65,6 +66,6 @@ group :production do
   gem 'mysql2'
 end
 gem 'rakuten_web_service'
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'impressionist'
 gem 'devise-i18n'

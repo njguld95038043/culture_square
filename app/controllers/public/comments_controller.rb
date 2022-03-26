@@ -1,5 +1,4 @@
 class Public::CommentsController < ApplicationController
-
   before_action :authenticate_end_user!
 
   def create
@@ -7,11 +6,10 @@ class Public::CommentsController < ApplicationController
     @comment = current_end_user.comments.new(comment_params)
     @comment.review_id = @review.id
     if @comment.save
-       @review.create_notification_comment!(current_end_user, @comment.id)
+      @review.create_notification_comment!(current_end_user, @comment.id)
     else
       render 'error'
     end
-
   end
 
   def destroy
@@ -24,5 +22,4 @@ class Public::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment)
   end
-
 end

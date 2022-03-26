@@ -1,5 +1,4 @@
 class Admin::EndUsersController < ApplicationController
-
   before_action :authenticate_admin!
 
   def index
@@ -26,6 +25,13 @@ class Admin::EndUsersController < ApplicationController
   private
 
   def end_user_params
-    params.require(:end_user).permit(:nick_name, :birthday, :gender, :occupation, :email, :is_deleted)
+    params.require(:end_user).permit(
+      :nick_name,
+      :birthday,
+      :gender,
+      :occupation,
+      :email,
+      :is_deleted
+    )
   end
 end
