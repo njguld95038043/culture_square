@@ -1,15 +1,17 @@
 <div class="container background-color p-5 mb-5">
-  <div class="row offset-4">
-    <h3 class="p-3"><span class="header">ジャンル一覧・追加</span></h3>
+  <div class="row offset-md-4">
+    <h3 class="p-3">
+      <span>ジャンル一覧・追加</span>
+    </h3>
   </div>
   <h5 class="error_explanation">
     <%= render 'layouts/errors', obj: @genre %>
   </h5>
   <%= form_with model: @genre, url:admin_genres_path, method: :post, local: true do |f| %>
     <div class="form-group row offset-2">
-      <%= f.label :ジャンル名, class:"col-12 col-md-2 col-form-label font-weight-bold" %>
+      <%= f.label :ジャンル名, class:"col-12 col-md-2 col-form-label font-weight-bold ml-4" %>
         <div class="col-12 col-md-5">
-          <%= f.text_field :name, autofocus: true, placeholder: "ジャンル名", class:"form-control"  %>
+          <%= f.text_field :name, autofocus: true, placeholder: "ジャンル名", class:"form-control mb-2"  %>
         </div>
         <div class="col-12 col-md-2">
           <%= f.submit '新規登録', class: "btn btn-outline-success text-dark" %>
@@ -17,8 +19,8 @@
     </div>
   <% end %>
 
-  <div class="row mt-5 offset-4">
-    <div class="col-12 col-md-5">
+  <div class="row mt-5 offset-md-4">
+    <div class="col-md-6">
       <table class="table">
         <tbody>
           <tr class="table-active">

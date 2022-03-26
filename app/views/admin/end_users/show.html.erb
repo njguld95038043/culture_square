@@ -20,7 +20,7 @@
 
   <div class="form-group row">
     <div class="col-6 col-md-2 offset-md-4">メールアドレス</div>
-    <div class="col-6 col-md-5 offset-md-1"><%= @end_user.email %></div>
+    <div class="col-6 col-md-5 offset-md-1 end-user-email"><%= @end_user.email %></div>
   </div>
 
   <div class="form-group row">
@@ -39,7 +39,7 @@
   </div>
 
   <div class="form-group row">
-    <div class="col-7 col-md-2 offset-md-4">ユーザーステータス</div>
+    <div class="col-6 col-md-2 offset-md-4">ユーザーステータス</div>
     <% if @end_user.is_deleted == false %>
       <div class="col-3 text-success col-md-5 offset-md-1">有効</div>
     <% else %>
