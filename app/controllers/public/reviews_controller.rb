@@ -1,5 +1,4 @@
 class Public::ReviewsController < ApplicationController
-
   before_action :authenticate_end_user!
   before_action :ensure_correct_end_user, only: [:edit, :update, :destroy]
 
@@ -10,7 +9,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    unless @book = Book.find_by(isbn: book_params[:isbn])#同じ本を二重で登録しないようにfind_byでisbnを探し、trueとfalseで条件分岐を行う
+    @book = Book.find_by(isbn: book_params[:isbn]) # 同じ本を二重で登録しないようにfind_byでisbnを探し、trueとfalseで条件分岐を行う
+    unless @book
       @book = Book.new(book_params)
       @book.save!
     end
@@ -62,7 +62,19 @@ class Public::ReviewsController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :isbn, :sales_date, :item_price, :item_caption, :publisher_name, :small_image_url, :medium_image_url, :large_image_url, :item_url)
+    params.require(:book).permit(
+      :title,
+      :author,
+      :isbn,
+      :sales_date,
+      :item_price,
+      :item_caption,
+      :publisher_name,
+      :small_image_url,
+      :medium_image_url,
+      :large_image_url,
+      :item_url
+    )
   end
 
   def review_params
@@ -76,5 +88,4 @@ class Public::ReviewsController < ApplicationController
       redirect_to root_path
     end
   end
-
 end

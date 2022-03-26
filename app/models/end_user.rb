@@ -3,7 +3,7 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  enum gender: { man: 1, woman: 2, other: 3}
+  enum gender: { man: 1, woman: 2, other: 3 }
 
   validates :nick_name, presence: true
   validates :gender, presence: true
@@ -46,30 +46,30 @@ class EndUser < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def calc_age #生年月日から年齢を計算するメソッド
-    d1 = self.birthday.strftime("%Y%m%d").to_i
+  def calc_age # 生年月日から年齢を計算するメソッド
+    d1 = birthday.strftime("%Y%m%d").to_i
     d2 = Date.today.strftime("%Y%m%d").to_i
-    return (d2 - d1) / 10000
+    (d2 - d1) / 10000
   end
 
   def self.looks(search, word)
-    if word == ""#空白で検索された場合はallで抽出
+    if word == "" # 空白で検索された場合はallで抽出
       @end_user = EndUser.all
     elsif search == "perfect_match"
       @end_user = EndUser.where("nick_name = ?", "#{word}")
     elsif search == "forward_match"
-      @end_user = EndUser.where("nick_name LIKE?","#{word}%")
+      @end_user = EndUser.where("nick_name LIKE?", "#{word}%")
     elsif search == "backward_match"
-      @end_user = EndUser.where("nick_name LIKE?","%#{word}")
+      @end_user = EndUser.where("nick_name LIKE?", "%#{word}")
     elsif search == "partial_match"
-      @end_user = EndUser.where("nick_name LIKE?","%#{word}%")
+      @end_user = EndUser.where("nick_name LIKE?", "%#{word}%")
     else
       @end_user = EndUser.all
     end
   end
 
   def create_notification_follow!(visitor)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",visitor.id, id, 'follow'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", visitor.id, id, 'follow'])
     if temp.blank?
       notification = visitor.active_notifications.new(
         visited_id: id,
@@ -78,5 +78,4 @@ class EndUser < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
 end

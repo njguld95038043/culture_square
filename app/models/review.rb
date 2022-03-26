@@ -1,5 +1,4 @@
 class Review < ApplicationRecord
-
   belongs_to :end_user
   belongs_to :genre
   belongs_to :book
@@ -28,20 +27,20 @@ class Review < ApplicationRecord
   end
 
   def ranking
-    Review.includes(:favorited_end_users).limit(12).sort {|a,b| b.favorited_end_users.size <=> a.favorited_end_users.size}
+    Review.includes(:favorited_end_users).limit(12).sort { |a, b| b.favorited_end_users.size <=> a.favorited_end_users.size }
   end
 
   def self.looks(search, word)
-    if word == ""#空白で検索された場合はallで抽出
+    if word == "" # 空白で検索された場合はallで抽出
       @review = Review.all
     elsif search == "perfect_match"
-      @review = Review.where("review LIKE?","#{word}")
+      @review = Review.where("review LIKE?", "#{word}")
     elsif search == "forward_match"
-      @review = Review.where("review LIKE?","#{word}%")
+      @review = Review.where("review LIKE?", "#{word}%")
     elsif search == "backward_match"
-      @review = Review.where("review LIKE?","%#{word}")
+      @review = Review.where("review LIKE?", "%#{word}")
     elsif search == "partial_match"
-      @review = Review.where("review LIKE?","%#{word}%")
+      @review = Review.where("review LIKE?", "%#{word}%")
     else
       @review = Review.all
     end
@@ -49,7 +48,8 @@ class Review < ApplicationRecord
 
   def create_notification_favorite!(current_end_user)
     # すでに「いいね」されているか検索
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and review_id = ? and action = ? ", current_end_user.id, end_user_id, id, 'favorite'])
+    temp = Notification
+      .where(["visitor_id = ? and visited_id = ? and review_id = ? and action = ? ", current_end_user.id, end_user_id, id, 'favorite'])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_end_user.active_notifications.new(
@@ -89,5 +89,4 @@ class Review < ApplicationRecord
     end
     notification.save if notification.valid?
   end
-
 end

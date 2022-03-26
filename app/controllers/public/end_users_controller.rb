@@ -6,7 +6,7 @@ class Public::EndUsersController < ApplicationController
     @end_user = EndUser.find(params[:id])
 
     @reviews = @end_user.reviews.reverse_order
-    @today_review =  @reviews.created_today
+    @today_review = @reviews.created_today
     @yesterday_review = @reviews.created_yesterday
     @this_week_review = @reviews.created_this_week
     @last_week_review = @reviews.created_last_week
@@ -36,10 +36,10 @@ class Public::EndUsersController < ApplicationController
 
   def withdraw
     @end_user = current_end_user
-    @end_user.update(is_deleted: true)#ここでis_deletedカラムの値をtrueに更新します。
-    reset_session #この記述で現在のログイン状況をリセット
+    @end_user.update(is_deleted: true) # ここでis_deletedカラムの値をtrueに更新します。
+    reset_session # この記述で現在のログイン状況をリセット
     flash[:notice] = "退会が完了しました。"
-    redirect_to root_path #処理完了後ルートパスへ遷移。
+    redirect_to root_path # 処理完了後ルートパスへ遷移。
   end
 
   private
@@ -54,5 +54,4 @@ class Public::EndUsersController < ApplicationController
       redirect_to end_user_path(current_end_user)
     end
   end
-
 end
