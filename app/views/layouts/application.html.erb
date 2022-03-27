@@ -57,7 +57,7 @@
 
     <main>
       <!--バリデーションチェック用-->
-      <div class="flash-message">
+      <div class="flash-message fadeout">
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, class: key) %>
         <% end %>

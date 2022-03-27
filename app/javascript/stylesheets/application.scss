@@ -311,3 +311,19 @@ border-radius: 5px;
 .admin-session-bottom {
   margin-bottom: 175px;
 }
+
+.fadeout {
+	animation: fadeout 4s linear forwards;
+}
+
+@keyframes fadeout {
+  0% {
+		opacity: 1;
+	}
+  80% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
