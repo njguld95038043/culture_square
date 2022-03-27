@@ -23,6 +23,14 @@
     right: 15px;
     top: 10px;
     z-index: 10;
+    width: 28px;
+    height: 14px;
+  }
+
+  .menu-trigger.active span:nth-child(3) {
+    -webkit-transform: translateY(10px) rotate(315deg);
+    transform: translateY(10px) rotate(315deg);
+    background-color: #B3B3B3;
   }
 }
 @media screen and (min-width:425px) {
