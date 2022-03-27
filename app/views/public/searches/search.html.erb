@@ -12,112 +12,124 @@
   <div class="row">
     <div class="table-responsive">
       <% if @range == "EndUser" %>
-        <table class="table table-hover">
-          <thead class="table-active">
-            <tr>
-              <th></th>
-              <th>Nick Name</th>
-              <th>Gender</th>
-              <th>Age</th>
-              <th>Occupation</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @end_users.each do |end_user| %>
+        <% if @end_users.present? %>
+          <table class="table table-hover">
+            <thead class="table-active">
               <tr>
-                <td>
-                  <%= link_to end_user_path(end_user), data: { 'turbolinks': false } do %>
-                    <%= image_tag end_user.get_profile_image(80,80) %>
-                  <% end %>
-                </td>
-                <td><u><%= link_to end_user.nick_name, end_user_path(end_user), data: { 'turbolinks': false }, class: "text-dark" %></u></td>
-                <td><%= end_user.gender_i18n %></td>
-                <td><%= end_user.calc_age %>歳</td>
-                <td><%= end_user.occupation %></td>
-                <td>
-                  <%= render 'public/end_users/relationship', end_user: end_user %>
-                </td>
+                <th></th>
+                <th>Nick Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Occupation</th>
+                <th></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @end_users.each do |end_user| %>
+                <tr>
+                  <td>
+                    <%= link_to end_user_path(end_user), data: { 'turbolinks': false } do %>
+                      <%= image_tag end_user.get_profile_image(80,80) %>
+                    <% end %>
+                  </td>
+                  <td><u><%= link_to end_user.nick_name, end_user_path(end_user), data: { 'turbolinks': false }, class: "text-dark" %></u></td>
+                  <td><%= end_user.gender_i18n %></td>
+                  <td><%= end_user.calc_age %>歳</td>
+                  <td><%= end_user.occupation %></td>
+                  <td>
+                    <%= render 'public/end_users/relationship', end_user: end_user %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h5 class="text-center">検索結果は0件です。</h5>
+        <% end %>
         <div class="row">
           <div class="mx-auto">
             <%= paginate @end_users %>
           </div>
         </div>
       <% elsif @range == "Review" %>
-        <table class="table table-hover">
-          <thead class="table-active">
-            <tr>
-              <th></th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Sales Date</th>
-              <th>Publiser</th>
-              <th>Price</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @reviews.each do |review| %>
+        <% if @reviews.present? %>
+          <table class="table table-hover">
+            <thead class="table-active">
               <tr>
-                <td>
-                  <%= link_to (image_tag(review.book.small_image_url)), review.book.item_url %>
-                </td>
-                <td>「<%= review.book.title %>」（ジャンル:<%= review.genre.name %>）</td>
-                <td><%= review.book.author %></td>
-                <td><%= review.book.sales_date %>発売</td>
-                <td><%= review.book.publisher_name %></td>
-                <td>¥<%= review.book.item_price.to_s(:delimited, delimiter: ',') %></td>
-                <td><%= link_to '詳細', review_path(review), class: "btn btn-outline-primary nav-link text-dark btn-block" %></td>
+                <th></th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Sales Date</th>
+                <th>Publiser</th>
+                <th>Price</th>
+                <th></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @reviews.each do |review| %>
+                <tr>
+                  <td>
+                    <%= link_to (image_tag(review.book.small_image_url)), review.book.item_url %>
+                  </td>
+                  <td>「<%= review.book.title %>」（ジャンル:<%= review.genre.name %>）</td>
+                  <td><%= review.book.author %></td>
+                  <td><%= review.book.sales_date %>発売</td>
+                  <td><%= review.book.publisher_name %></td>
+                  <td>¥<%= review.book.item_price.to_s(:delimited, delimiter: ',') %></td>
+                  <td><%= link_to '詳細', review_path(review), class: "btn btn-outline-primary nav-link text-dark btn-block" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h5 class="text-center">検索結果は0件です。</h5>
+        <% end %>
         <div class="row">
           <div class="mx-auto">
             <%= paginate @reviews %>
           </div>
         </div>
       <% else %>
-        <table class="table table-hover background-color-arange">
-          <thead class="table-active">
-            <tr>
-              <th></th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Sales Date</th>
-              <th>Publiser Name</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @books.each do |book| %>
+        <% if @books.present? %>
+          <table class="table table-hover background-color-arange">
+            <thead class="table-active">
               <tr>
-                <td>
-                  <%= link_to (image_tag(book.small_image_url)), book.item_url %>
-                </td>
-                <td>
-                  <%= book.title %>
-                </td>
-                <td>
-                  <%= book.author %>
-                </td>
-                <td>
-                  <%= book.sales_date %>
-                </td>
-                <td>
-                  <%= book.publisher_name %>
-                </td>
-                <td>
-                  ¥<%= book.item_price.to_s(:delimited, delimiter: ',') %>
-                </td>
+                <th></th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Sales Date</th>
+                <th>Publiser Name</th>
+                <th>Price</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @books.each do |book| %>
+                <tr>
+                  <td>
+                    <%= link_to (image_tag(book.small_image_url)), book.item_url %>
+                  </td>
+                  <td>
+                    <%= book.title %>
+                  </td>
+                  <td>
+                    <%= book.author %>
+                  </td>
+                  <td>
+                    <%= book.sales_date %>
+                  </td>
+                  <td>
+                    <%= book.publisher_name %>
+                  </td>
+                  <td>
+                    ¥<%= book.item_price.to_s(:delimited, delimiter: ',') %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h5 class="text-center">検索結果は0件です。</h5>
+        <% end %>
         <div class="row">
           <div class="mx-auto">
             <%= paginate @books %>
