@@ -54,7 +54,7 @@
               <%= render 'public/favorites/favorite', review: @review %>
             </span>
           <% else %>
-            <span class="review_font">いいね数　<i class="fas fa-heart"></i><%= @review.favorites.count %>件</span>
+            <span class="review_font">いいね数 <i class="fas fa-heart"></i><%= @review.favorites.count %>件</span>
           <% end %>
           <% if @review.end_user == current_end_user %>
             <%= link_to '編集画面へ進む', edit_review_path(@review), class: "btn btn-outline-primary text-dark" %>
