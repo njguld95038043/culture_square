@@ -45,6 +45,10 @@ ja:
         name: ジャンル名
       admin:
         email: メールアドレス
+      contact:
+        nick_name: ニックネーム
+        email: メールアドレス
+        content: お問い合わせ内容
   views:
     pagination:
       previous: "« 前ページ"

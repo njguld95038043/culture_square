@@ -1,45 +1,40 @@
-<%= form_with(model: @contact, local: true) do |f| %>
-    <div class='form-wrap'>
-      <div class='form-header'>
-        <h5 class='form-header-text'>
-          お問い合わせフォーム
-        </h5>
-      </div>
-    </div>
-    <div class="correct-msg-box">
-      <% if @contact.errors.any? %>
-        <div id="error_explanation">
-          <ul><% @contact.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <div class="correct-msg-main">
-        <div class="contact-form">
-            <div class="correct-text-field">
-              <%= f.label "お名前" %>
-              <%= f.text_field :nick_name, placeholder: "お名前", class: "input-form" %>
-            </div>
-            <div class="correct-text-field">
-              <%= f.label "メールアドレス" %>
-              <%= f.text_field :email, placeholder: "メールアドレス", class: "input-form" %>
-            </div>
-            <div class="correct-text-field">
-              <%= f.label "お問合せ内容" %>
-              <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", class: "input-form" %>
-            </div>
-            <div class="send-btn-contents">
-              <div class="register-btn">
-                <%= f.button type: "submit", class:"register-red-btn", style:'border-style: none;' do %>
-                  送信 <i class="fas fa-paper-plane"></i>
-                <% end %>
-              </div>
-              <div class="register-btn">
-                <%= link_to "もどる", root_path, class:"register-red-btn", style:"background-color: #aaa" %>
-              </div>
-            </div>
-        </div>
-      </div>
+<div class="container background-color p-5 mb-5">
+  <div class="row">
+    <h3 class="p-3 mx-auto">
+      <span class="header">お問い合わせフォーム</span>
+    </h3>
   </div>
-<% end %>
+  <h5 class="error_explanation">
+    <%= render 'layouts/errors', obj: @contact %>
+  </h5>
+  <%= form_with(model: @contact, local: true) do |f| %>
+    <form>
+      <div class="form-group row">
+        <%= f.label :ニックネーム, class:"col-sm-3 col-form-label" %>
+          <div class="col-md-5">
+           <%= f.text_field :nick_name, autofocus: true, placeholder:"タロウ", class:"form-control" %>
+          </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :メールアドレス, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-5">
+         <%= f.email_field :email, autocomplete: "email", placeholder:"sample@example.com", class:"form-control" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :お問い合わせ内容, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-5">
+         <%= f.text_area :content, placeholder: "お問合せ内容を入力してください。", class:"form-control", size: "100x5" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3 offset-md-3 mt-3">
+          <%= f.submit "内容を送信", class: "btn btn-outline-success btn-block nav-link text-dark" %>
+        </div>
+        <div class="col-md-2 mt-3">
+          <%= link_to 'トップへ戻る', root_path, class: "btn btn-outline-secondary nav-link text-dark" %>
+        </div>
+      </div>
+    </form>
+  <% end %>
+</div>
