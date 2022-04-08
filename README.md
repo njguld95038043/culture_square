@@ -31,10 +31,13 @@
 
 ## 設計書
 - ER図 <br />
+  https://drive.google.com/file/d/1wMMG0shyYFxNyiYrWIWgXNeUstI6XzMJ/view?usp=sharing
 
 - テーブル定義書 <br />
+  https://docs.google.com/spreadsheets/d/1CSKLiIrCajXEeHE81NSZYN_yPoA7BHkLLJFRbVIEVm0/edit?usp=sharing
 
 - アプリケーション詳細設計<br />
+  https://docs.google.com/spreadsheets/d/1CC9wpmgfv7hhfmkce6rSQIzlGUyTTYQ-Y19y-S_y4Fo/edit?usp=sharing
 
 
 ## チャレンジ要素一覧
