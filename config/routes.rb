@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'contacts/new'
+  end
   devise_for :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions',
@@ -34,6 +37,7 @@ Rails.application.routes.draw do
     end
     resources :chats, only: [:create]
     resources :notifications, only: [:index, :destroy]
+    resources :contacts, only: [:new, :create]
   end
 
   namespace :admin do

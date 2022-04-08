@@ -5,4 +5,11 @@
       <img class="rakuten-image mt-3" src="https://webservice.rakuten.co.jp/img/developers_logo.svg">
     </p>
   </div>
+  <% if end_user_signed_in? %>
+    <div class="mx-auto">
+      <p class="text-center mt-2">
+        <%= link_to 'お問い合わせ', new_contact_path %>
+      </p>
+    </div>
+  <% end %>
 </div>
