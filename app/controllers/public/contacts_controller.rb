@@ -4,14 +4,15 @@ class Public::ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    @end_user = current_end_user
+    @contact.nick_name = current_end_user.nick_name
+    @contact.email = current_end_user.email
   end
 
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.contact_mail(@contact).deliver
-      redirect_to root_path, notice: 'お問い合わせ内容を送信しました'
+      redirect_to thanks_path, notice: 'お問い合わせは正常に送信されました'
     else
       render :new
     end

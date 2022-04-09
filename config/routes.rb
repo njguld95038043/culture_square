@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'contacts/new'
-  end
+
   devise_for :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions',
@@ -18,6 +16,8 @@ Rails.application.routes.draw do
   get 'chat/:id' => 'public/chats#show', as: 'chat'
   get "search" => "public/searches#search"
   patch "end_users/withdraw" => "public/end_users#withdraw"
+  post "contacts/new" => "public/contacts#create"
+  get "/thanks" => "public/contacts#thanks"
 
   scope module: :public do
     patch "/end_users/withdraw" => "end_users#withdraw"
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     end
     resources :chats, only: [:create]
     resources :notifications, only: [:index, :destroy]
-    resources :contacts, only: [:new, :create]
+    resources :contacts, only: [:new]
   end
 
   namespace :admin do
