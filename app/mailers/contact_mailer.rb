@@ -1,8 +1,8 @@
 class ContactMailer < ApplicationMailer
 
-  def contact_mail(contact, end_user)
+  def contact_mail(contact)
     @contact = contact
-    mail to: end_user, subject: "お問い合わせについて【自動送信】"
+    mail to: ENV['ADMIN_GMAIL'], subject: "エンドユーザーからお問い合わせがありました"
   end
 
 end
