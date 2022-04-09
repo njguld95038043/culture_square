@@ -93,8 +93,8 @@ border-radius: 5px;
   top: .4em;
 }
 
-.review_show {
-  overflow: scroll;
+.review_show:hover {
+  filter: brightness(99%);
 }
 
 .review_show:hover {
