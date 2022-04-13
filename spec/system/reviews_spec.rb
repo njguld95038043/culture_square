@@ -32,3 +32,8 @@ describe '新規登録画面のテスト' do
     expect(current_path).to eq('/')
   end
 end
+describe '楽天ブックス検索' do
+  it '本の検索ができるか' do
+    fill_in 'rakuten_books[keyword]', with: 'お金'
+  end
+end
