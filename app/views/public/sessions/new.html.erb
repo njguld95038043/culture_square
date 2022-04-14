@@ -9,27 +9,25 @@
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <form>
-      <div class="form-group row">
-        <%= f.label :メールアドレス, class:"col-12 col-md-2 offset-md-3 col-form-label" %><br />
-        <div class="col-md-5">
-         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", class:"form-control" %>
-        </div>
+    <div class="form-group row">
+      <%= f.label :メールアドレス, class:"col-12 col-md-2 offset-md-3 col-form-label" %><br />
+      <div class="col-md-5">
+       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", class:"form-control" %>
       </div>
+    </div>
 
-      <div class="form-group row">
-        <%= f.label :パスワード, class:"col-12 col-md-2 offset-md-3 col-form-label" %><br />
-        <div class="col-md-5">
-         <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
-        </div>
+    <div class="form-group row">
+      <%= f.label :パスワード, class:"col-12 col-md-2 offset-md-3 col-form-label" %><br />
+      <div class="col-md-5">
+       <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
       </div>
+    </div>
 
-      <div class="form-group row">
-        <div class="col-12 col-md-5 offset-md-5">
-         <%= f.submit "ログイン", class: "btn btn-outline-primary nav-link text-dark btn-block" %>
-        </div>
+    <div class="form-group row">
+      <div class="col-12 col-md-5 offset-md-5">
+       <%= f.submit "ログイン", class: "btn btn-outline-primary nav-link text-dark btn-block" %>
       </div>
-  　</form>
+    </div>
   <% end %>
   <div class="row mt-5">
     <div class="col-12 col-md-3 offset-md-3">

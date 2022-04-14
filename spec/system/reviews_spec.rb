@@ -33,7 +33,18 @@ describe '新規登録画面のテスト' do
   end
 end
 describe '楽天ブックス検索' do
+  let(:end_user){ create(:end_user) }
+  before do
+    visit new_end_user_session_path
+    fill_in 'end_user[email]', with: end_user.email
+    fill_in 'end_user[password]', with: end_user.password
+    click_on 'ログイン'
+  end
   it '本の検索ができるか' do
-    fill_in 'rakuten_books[keyword]', with: 'お金'
+    fill_in 'keyword', with: '嫌われる勇気'
+    find('#rakuten_seach').click
+    expect(current_path).to eq(rakuten_books_path)
+    click_on ('レビュー登録')
+    expect(current_path).to eq(new_review_path)
   end
 end
