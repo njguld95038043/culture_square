@@ -9,6 +9,7 @@ FactoryBot.define do
     password_confirmation { "testtest" }
   end
   factory :review do
+    genre { 3 }
     review { Faker::Lorem.characters(number:5) }
     rate { Faker::Lorem.characters(3.5) }
   end
