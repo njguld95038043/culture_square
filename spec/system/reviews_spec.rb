@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Review do
+describe Review, js: true do
   describe 'トップ画面(root_path)のテスト' do
     before do
       visit root_path
@@ -57,11 +57,11 @@ describe Review do
       find('#rakuten_seach').click
       click_on ('レビュー登録')
       expect(current_path).to eq(new_review_path)
-
       find("option[value='1']").select_option
-      # fill_in 'review[rate]', with: Faker::Lorem.characters(3.5)
+      find('#review_star').find("img[alt='3']").click
       fill_in 'review[review]', with: "aaaa"
       click_button '投稿する'
+      expect(current_path).to eq('/reviews/1')
     end
   end
 end
