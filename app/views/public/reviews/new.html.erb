@@ -62,7 +62,7 @@
           <tbody>
             <tr class="text-center">
               <td>
-                <h4><%= fi.label :ジャンル, class:"col-form-label" %></h4>
+                <h4><%= fi.label :書籍のジャンル, class:"col-form-label" %></h4>
                 <%= fi.collection_select :genre_id, Genre.all, :id, :name, include_blank: "本のジャンルを選択してください" %>
               </td>
             </tr>
