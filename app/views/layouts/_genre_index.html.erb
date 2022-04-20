@@ -4,11 +4,15 @@
   </div>
   <div class="card-body text-center">
     <a href="#panel-0" class="nav-link" data-toggle="tab" onclick="changeGenrePanelAttribute(0)">
-      <strong><span class="text-blue">総合</span></strong>
+      <strong>
+        <span class="text-blue">総合</span>
+      </strong>
     </a>
     <% genres.each_with_index do |genre, index| %><!--each_with_indexを使うことにより、eachで回す回数をindexへ代入している。-->
       <a href="#panel-<%= genre.id %>" class="nav-link" data-toggle="tab" onclick="changeGenrePanelAttribute(<%=genre.id%>)">
-        <strong><span class="text-blue"><%= genre.name %></span></strong>
+        <strong>
+          <span class="text-blue"><%= genre.name %></span>
+        </strong>
       </a>
     <% end %>
   </div>
@@ -18,10 +22,10 @@
 <script>
 function changeGenrePanelAttribute(genre_id)
 {
-  for (var i = 0;i <= <%=genres.maximum(:id)%>;i++) {
+  for (var i = 0;i <= <%=genres.maximum(:id)%>;i++) {//iの初期値を0、それ以降は全ジャンルのidを取り出している。
     var id = 'genre_panel_' + i;
     var panel_id = 'panel-' + i;
-    var genre_panel = document.getElementById(id);
+    var genre_panel = document.getElementById(id);//documentはhtml要素を取得、getElementByIdでその要素を取得している。
     var panel = document.getElementById(panel_id);
     if (panel != null && genre_panel != null) {
       panel.classList.remove('active');
@@ -32,10 +36,8 @@ function changeGenrePanelAttribute(genre_id)
   var panel_id = 'panel-' + genre_id;
   var genre_panel = document.getElementById(id);
   var panel = document.getElementById(panel_id);
-  panel.classList.add('active');
-  genre_panel.classList.add('active');
-
-
+  panel.classList.add('active');//ジャンル毎のレビューをactiveにしている
+  genre_panel.classList.add('active');//ジャンルパネルをactiveにしている
 }
 </script>
 
