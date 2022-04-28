@@ -8,10 +8,10 @@ class Public::SearchesController < ApplicationController
       @end_users = EndUser.search(params[:search], params[:word]).page(params[:page]).per(10)
       @nick_name = params[:word]
     elsif @range == "Review"
-      @reviews = Review.looks(params[:search], params[:word]).page(params[:page]).per(10)
+      @reviews = Review.search(params[:search], params[:word]).page(params[:page]).per(10)
       @review = params[:word]
     else
-      @books = Book.looks(params[:search], params[:word]).page(params[:page]).per(10)
+      @books = Book.search(params[:search], params[:word]).page(params[:page]).per(10)
       @book = params[:word]
     end
   end

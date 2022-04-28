@@ -1,19 +1,19 @@
 class Book < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
-  def self.looks(search, word)
-    if word == "" # 空白で検索された場合はallで抽出
-      @book = Book.all
-    elsif search == "perfect_match"
-      @book = Book.where("title LIKE?", "#{word}")
+  def self.search(search, word)
+    return all if word.blank?
+
+    if search == "perfect_match"
+      where("title = ?", "#{word}")
     elsif search == "forward_match"
-      @book = Book.where("title LIKE?", "#{word}%")
+      where("title LIKE?", "#{word}%")
     elsif search == "backward_match"
-      @book = Book.where("title LIKE?", "%#{word}")
+      where("title LIKE?", "%#{word}")
     elsif search == "partial_match"
-      @book = Book.where("title LIKE?", "%#{word}%")
+      where("title LIKE?", "%#{word}%")
     else
-      @book = Book.all
+      all
     end
   end
 end
