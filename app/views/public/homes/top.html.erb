@@ -96,24 +96,24 @@
 </div>
 
 <script>
-function onSortNew(){
-  var panel_id = $('.tab-content').children('.active').attr('id');//要素を取得
-  var id = panel_id.substring(6)//最初の6文字を取り除いて数字だけを取得
-  $.ajax({
-    type: 'get',
-    url: 'reviews/sort_new?genre_id='+id,//?でサーバーからデータを取得し、idでparams[:genre_id]として情報を取得してくる
-    datatype: "script"
-  });
+  function genreId() {
+    var panel_id = $('.tab-content').children('.active').attr('id');//attrは属性のこと。divタグの中のclassやidを指定し、=の後の情報を持ってくる。
+    return panel_id.substring(6)
+  }
 
-}
-function onSortRate(){
-  var panel_id = $('.tab-content').children('.active').attr('id');
-  var id = panel_id.substring(6)
-  $.ajax({
-    type: 'get',
-    url: 'reviews/sort_rate?genre_id='+id,
-    datatype: "script"
-  });
+  function sort(path) {//引数のpathは下のonSortNew()かonSortRate()から持ってくる。
+    $.ajax({
+      type: 'get',
+      url: path + genreId(),
+      datatype: "script"
+    });
+  }
 
-}
+  function onSortNew(){//onSortNew()をクリックすると上のfunction sort(path)が呼び出される。
+    sort('reviews/sort_new?genre_id=')
+  }
+
+  function onSortRate(){//onSortNew()をクリックすると上のfunction sort(path)が呼び出される。
+    sort('reviews/sort_rate?genre_id=')
+  }
 </script>

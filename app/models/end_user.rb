@@ -52,19 +52,19 @@ class EndUser < ApplicationRecord
     (d2 - d1) / 10000
   end
 
-  def self.looks(search, word)
-    if word == "" # 空白で検索された場合はallで抽出
-      @end_user = EndUser.all
-    elsif search == "perfect_match"
-      @end_user = EndUser.where("nick_name = ?", "#{word}")
+  def self.search(search, word)
+    return all if word.blank?
+
+    if search == "perfect_match"
+      where("nick_name = ?", "#{word}")
     elsif search == "forward_match"
-      @end_user = EndUser.where("nick_name LIKE?", "#{word}%")
+      where("nick_name LIKE?", "#{word}%")
     elsif search == "backward_match"
-      @end_user = EndUser.where("nick_name LIKE?", "%#{word}")
+      where("nick_name LIKE?", "%#{word}")
     elsif search == "partial_match"
-      @end_user = EndUser.where("nick_name LIKE?", "%#{word}%")
+      where("nick_name LIKE?", "%#{word}%")
     else
-      @end_user = EndUser.all
+      all
     end
   end
 

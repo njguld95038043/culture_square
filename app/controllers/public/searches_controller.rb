@@ -5,7 +5,7 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "EndUser"
-      @end_users = EndUser.looks(params[:search], params[:word]).page(params[:page]).per(10)
+      @end_users = EndUser.search(params[:search], params[:word]).page(params[:page]).per(10)
       @nick_name = params[:word]
     elsif @range == "Review"
       @reviews = Review.looks(params[:search], params[:word]).page(params[:page]).per(10)

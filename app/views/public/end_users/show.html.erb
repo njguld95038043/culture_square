@@ -97,11 +97,11 @@
        </thead>
        <tbody>
         <tr>
-         <th><%= @reviews.created_6days.count %></th>
-         <th><%= @reviews.created_5days.count %></th>
-         <th><%= @reviews.created_4days.count %></th>
-         <th><%= @reviews.created_3days.count %></th>
-         <th><%= @reviews.created_2days.count %></th>
+         <th><%= @reviews.created_some_days_ago(6).count %></th>
+         <th><%= @reviews.created_some_days_ago(5).count %></th>
+         <th><%= @reviews.created_some_days_ago(4).count %></th>
+         <th><%= @reviews.created_some_days_ago(3).count %></th>
+         <th><%= @reviews.created_some_days_ago(2).count %></th>
          <th><%= @yesterday_review.count %></th>
          <th><%= @today_review.count %></th>
         </tr>
@@ -126,11 +126,11 @@
               datasets: [
                 {
                   label: '投稿したレビューの数',
-                  data: [<%= @reviews.created_6days.count %>,
-                         <%= @reviews.created_5days.count %>,
-                         <%= @reviews.created_4days.count %>,
-                         <%= @reviews.created_3days.count %>,
-                         <%= @reviews.created_2days.count %>,
+                  data: [<%= @reviews.created_some_days_ago(6).count %>,
+                         <%= @reviews.created_some_days_ago(5).count %>,
+                         <%= @reviews.created_some_days_ago(4).count %>,
+                         <%= @reviews.created_some_days_ago(3).count %>,
+                         <%= @reviews.created_some_days_ago(2).count %>,
                          <%= @yesterday_review.count %>,
                          <%= @today_review.count%>],
                   borderColor: "rgba(0,0,255,1)",
